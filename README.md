@@ -89,8 +89,8 @@ POI 評価
 | 1 | GitHub リポジトリ作成・コンセプト整理 | ✅ |
 | 2 | POI COGP のローカル取得 | ✅ |
 | 3 | **全件タグプロファイリング** | ✅ → [`reports/tag-profile/REPORT.md`](reports/tag-profile/REPORT.md) |
-| 4 | タグ方針（JEV 評価対象 / 条件付き / 除外）の決定 | 🔄 議論中 |
-| 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ⏳ |
+| 4 | タグ方針（JEV 評価対象 / 条件付き / 除外）の決定 | ✅ → [`docs/tag-policy.md`](docs/tag-policy.md) |
+| 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ✅ → [`experiments/01-jev-tag-eval/`](experiments/01-jev-tag-eval/README.md)、役割の再設計は 🔄 議論中 |
 | 6 | COGP + MapLibre による POI 表示 | ⏳ |
 | 7 | JEV BFF（`POST /api/evaluate-tags`） | ⏳ |
 | 8 | AI Lens 可視化 | ⏳ |
