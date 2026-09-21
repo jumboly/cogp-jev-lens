@@ -1,0 +1,133 @@
+{
+  "source": "data/pois.cogp.parquet",
+  "rows": 30052264,
+  "lod_levels": [
+    {
+      "level": 0,
+      "first_row": 0,
+      "rows": 8103,
+      "resolution_deg_per_px": 0.3515608918613928
+    },
+    {
+      "level": 1,
+      "first_row": 8103,
+      "rows": 16449,
+      "resolution_deg_per_px": 0.1757804459306964
+    },
+    {
+      "level": 2,
+      "first_row": 24552,
+      "rows": 46751,
+      "resolution_deg_per_px": 0.0878902229653482
+    },
+    {
+      "level": 3,
+      "first_row": 71303,
+      "rows": 119668,
+      "resolution_deg_per_px": 0.0439451114826741
+    },
+    {
+      "level": 4,
+      "first_row": 190971,
+      "rows": 268174,
+      "resolution_deg_per_px": 0.02197255574133705
+    },
+    {
+      "level": 5,
+      "first_row": 459145,
+      "rows": 519244,
+      "resolution_deg_per_px": 0.010986277870668524
+    },
+    {
+      "level": 6,
+      "first_row": 978389,
+      "rows": 867593,
+      "resolution_deg_per_px": 0.005493138935334262
+    },
+    {
+      "level": 7,
+      "first_row": 1845982,
+      "rows": 1369034,
+      "resolution_deg_per_px": 0.002746569467667131
+    },
+    {
+      "level": 8,
+      "first_row": 3215016,
+      "rows": 2066800,
+      "resolution_deg_per_px": 0.0013732847338335655
+    },
+    {
+      "level": 9,
+      "first_row": 5281816,
+      "rows": 2899097,
+      "resolution_deg_per_px": 0.0006866423669167828
+    },
+    {
+      "level": 10,
+      "first_row": 8180913,
+      "rows": 3736212,
+      "resolution_deg_per_px": 0.0003433211834583914
+    },
+    {
+      "level": 11,
+      "first_row": 11917125,
+      "rows": 4401243,
+      "resolution_deg_per_px": 0.0001716605917291957
+    },
+    {
+      "level": 12,
+      "first_row": 16318368,
+      "rows": 4573226,
+      "resolution_deg_per_px": 8.583029586459785e-05
+    },
+    {
+      "level": 13,
+      "first_row": 20891594,
+      "rows": 4002605,
+      "resolution_deg_per_px": 4.291514793229892e-05
+    },
+    {
+      "level": 14,
+      "first_row": 24894199,
+      "rows": 2780623,
+      "resolution_deg_per_px": 2.145757396614946e-05
+    },
+    {
+      "level": 15,
+      "first_row": 27674822,
+      "rows": 1502738,
+      "resolution_deg_per_px": 1.072878698307473e-05
+    },
+    {
+      "level": 16,
+      "first_row": 29177560,
+      "rows": 874704,
+      "resolution_deg_per_px": 5.364393491537365e-06
+    }
+  ],
+  "tags_per_row": {
+    "min": 1,
+    "p25": 2.0,
+    "median": 3.0,
+    "p75": 6.0,
+    "p95": 13.0,
+    "p99": 19.0,
+    "max": 195,
+    "mean": 4.644064387295413
+  },
+  "rows_with_name": 15342089,
+  "rows_empty_tags": 0,
+  "extent": {
+    "xmin": -180.0,
+    "ymin": -90.0,
+    "xmax": 180.0,
+    "ymax": 90.0
+  },
+  "rows_in_japan_bbox": 1411768,
+  "tag_pairs_total": 139564649,
+  "distinct_keys": 36482,
+  "expanded_keys": 36396,
+  "expanded_pairs_distinct": 2269656,
+  "expanded_pairs_total": 77357185,
+  "elapsed_sec": 139.2
+}
