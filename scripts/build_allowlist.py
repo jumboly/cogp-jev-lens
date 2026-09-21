@@ -12,7 +12,11 @@
 なぜ `;` 分解をここで行うか: `cuisine=japanese;ramen` のような複数値を 1 値ずつに割ると
 種類数が 1/5 になり、順序違いも同一視できる。分解後の値で出現回数を数える。
 
-    uv run scripts/build_allowlist.py [data/pois.cogp.parquet] [data-dist/tag-allowlist.v1.json] [100]
+なぜ二段基準か: 世界基準 100 件だけだと、日本の中堅チェーン（NATURAL LAWSON、富士そば）や
+日本固有の値（cuisine=tempura、leisure=karaoke）が落ちる。日本で使うアプリなので、
+日本域（122–154E, 20–46N）での出現回数も数え、どちらかを満たせば残す。
+
+    uv run scripts/build_allowlist.py [data/pois.cogp.parquet] [data-dist/tag-allowlist.v1.json] [100] [20]
 """
 from __future__ import annotations
 
@@ -25,6 +29,8 @@ import duckdb
 SRC = Path(sys.argv[1] if len(sys.argv) > 1 else "data/pois.cogp.parquet")
 OUT = Path(sys.argv[2] if len(sys.argv) > 2 else "data-dist/tag-allowlist.v1.json")
 MIN_COUNT = int(sys.argv[3] if len(sys.argv) > 3 else 100)
+MIN_COUNT_JP = int(sys.argv[4] if len(sys.argv) > 4 else 20)
+JP = "bbox.xmin BETWEEN 122 AND 154 AND bbox.ymin BETWEEN 20 AND 46"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
 # docs/tag-policy.md「評価対象キー」と一致させる
@@ -56,22 +62,22 @@ con.execute("SET preserve_insertion_order = false")
 rows = con.execute(
     f"""
 WITH pairs AS (
-  SELECT e.key AS key, e.value AS raw
-  FROM (SELECT unnest(map_entries(tags)) AS e FROM read_parquet('{SRC}'))
+  SELECT e.key AS key, e.value AS raw, ({JP}) AS jp
+  FROM (SELECT unnest(map_entries(tags)) AS e, bbox FROM read_parquet('{SRC}'))
   WHERE e.key IN ({klist})
 ),
 split AS (
-  SELECT key,
+  SELECT key, jp,
          CASE WHEN key IN ({blist}) THEN trim(raw)
               ELSE lower(trim(unnest(string_split(raw, ';')))) END AS value
   FROM pairs
 )
-SELECT key, value, count(*) AS n
+SELECT key, value, count(*) AS n, count(*) FILTER (jp) AS n_jp
 FROM split
 WHERE value <> ''
   AND NOT (key NOT IN ({blist}) AND value IN ({",".join(f"'{v}'" for v in UNKNOWN_VALUES)}))
 GROUP BY key, value
-HAVING count(*) >= {MIN_COUNT}
+HAVING count(*) >= {MIN_COUNT} OR count(*) FILTER (jp) >= {MIN_COUNT_JP}
 ORDER BY key, n DESC
 """
 ).fetchall()
@@ -91,8 +97,8 @@ total_by_key = dict(total)
 
 entries = {}
 by_key: dict[str, dict] = {}
-for key, value, n in rows:
-    entries[f"{key}={value}"] = {"key": key, "value": value, "count": n}
+for key, value, n, n_jp in rows:
+    entries[f"{key}={value}"] = {"key": key, "value": value, "count": n, "count_jp": n_jp}
     bk = by_key.setdefault(key, {"pairs": 0, "covered": 0})
     bk["pairs"] += 1
     bk["covered"] += n
@@ -115,6 +121,8 @@ doc = {
     "source": "COGP v1.0.0 pois.cogp.parquet (OpenStreetMap, ODbL)",
     "policy": "docs/tag-policy.md",
     "min_count": MIN_COUNT,
+    "min_count_jp": MIN_COUNT_JP,
+    "jp_bbox": [122, 20, 154, 46],
     "normalization": {
         "split": ";",
         "lowercase": "all keys except brand",
@@ -126,7 +134,8 @@ doc = {
 }
 OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=1))
 
-print(f"wrote {OUT}  entries={len(entries):,}  size={OUT.stat().st_size/1024:.0f} KiB")
+jp_only = sum(1 for e in entries.values() if e["count"] < MIN_COUNT)
+print(f"wrote {OUT}  entries={len(entries):,} (うち日本基準のみで残った {jp_only:,})  size={OUT.stat().st_size/1024:.0f} KiB")
 print(f"{'key':<24}{'role':<10}{'pairs':>8}{'occurrences':>14}{'coverage':>10}")
 for k, m in sorted(keys_meta.items(), key=lambda kv: -kv[1]["occurrences_total"]):
     print(f"{k:<24}{m['role']:<10}{m['pairs']:>8,}{m['occurrences_total']:>14,}{m['coverage']:>10.3f}")

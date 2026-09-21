@@ -7,9 +7,9 @@
  ],
  "max_level": 13,
  "pois": 8782,
- "pois_with_tags": 8697,
- "unique_tags": 642,
- "dropped_by_allowlist": 277,
+ "pois_with_tags": 8701,
+ "unique_tags": 744,
+ "dropped_by_allowlist": 175,
  "tags": [
   {
    "id": "amenity=restaurant",
@@ -1586,6 +1586,16 @@
    ]
   },
   {
+   "id": "brand=NATURAL LAWSON",
+   "key": "brand",
+   "value": "NATURAL LAWSON",
+   "count": 14,
+   "role": "brand",
+   "sample_names": [
+    "ナチュラルローソン"
+   ]
+  },
+  {
    "id": "cuisine=korean",
    "key": "cuisine",
    "value": "korean",
@@ -1651,6 +1661,16 @@
     "エネオス",
     "昭和シェル",
     "コスモ石油"
+   ]
+  },
+  {
+   "id": "brand=PRONTO",
+   "key": "brand",
+   "value": "PRONTO",
+   "count": 13,
+   "role": "brand",
+   "sample_names": [
+    "プロント"
    ]
   },
   {
@@ -1801,6 +1821,16 @@
     "サブウェイ",
     "アメリカン",
     "Age.3 Ginza"
+   ]
+  },
+  {
+   "id": "brand=エクセルシオール カフェ",
+   "key": "brand",
+   "value": "エクセルシオール カフェ",
+   "count": 12,
+   "role": "brand",
+   "sample_names": [
+    "エクセルシオール カフェ"
    ]
   },
   {
@@ -2329,6 +2359,16 @@
    ]
   },
   {
+   "id": "brand=ゆで太郎",
+   "key": "brand",
+   "value": "ゆで太郎",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "ゆで太郎"
+   ]
+  },
+  {
    "id": "amenity=shelter",
    "key": "amenity",
    "value": "shelter",
@@ -2385,6 +2425,17 @@
    ]
   },
   {
+   "id": "brand=アパホテル",
+   "key": "brand",
+   "value": "アパホテル",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "アパホテル",
+    "アパホテル神保町"
+   ]
+  },
+  {
    "id": "public_transport=station",
    "key": "public_transport",
    "value": "station",
@@ -2404,6 +2455,16 @@
    "role": "brand",
    "sample_names": [
     "ジョナサン"
+   ]
+  },
+  {
+   "id": "brand=ルノアール",
+   "key": "brand",
+   "value": "ルノアール",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "ルノアール"
    ]
   },
   {
@@ -2501,6 +2562,16 @@
    "count": 7,
    "role": "refine",
    "sample_names": []
+  },
+  {
+   "id": "brand=上島珈琲店",
+   "key": "brand",
+   "value": "上島珈琲店",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "上島珈琲店"
+   ]
   },
   {
    "id": "shop=lottery",
@@ -2753,6 +2824,16 @@
    ]
   },
   {
+   "id": "brand=富士そば",
+   "key": "brand",
+   "value": "富士そば",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "富士そば"
+   ]
+  },
+  {
    "id": "shop=beauty",
    "key": "shop",
    "value": "beauty",
@@ -2918,6 +2999,16 @@
     "Oak Hostel Cabin",
     "東京隅田川ユースホステル",
     "Anne Hostel Asakusabashi"
+   ]
+  },
+  {
+   "id": "brand=成城石井",
+   "key": "brand",
+   "value": "成城石井",
+   "count": 5,
+   "role": "brand",
+   "sample_names": [
+    "成城石井"
    ]
   },
   {
@@ -3160,6 +3251,16 @@
     "Saray",
     "ボスボラス ハサン",
     "ASENA"
+   ]
+  },
+  {
+   "id": "brand=いきなり！ステーキ",
+   "key": "brand",
+   "value": "いきなり！ステーキ",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "いきなり！ステーキ"
    ]
   },
   {
@@ -3473,6 +3574,18 @@
    ]
   },
   {
+   "id": "leisure=karaoke",
+   "key": "leisure",
+   "value": "karaoke",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "カラオケまねきねこ",
+    "コーラスライン",
+    "ビッグエコー"
+   ]
+  },
+  {
    "id": "shop=knives",
    "key": "shop",
    "value": "knives",
@@ -3569,6 +3682,18 @@
    ]
   },
   {
+   "id": "brand=クロサワ楽器店",
+   "key": "brand",
+   "value": "クロサワ楽器店",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "Tokyo G'Club",
+    "Dr.Sound Acoustic Guitar",
+    "クロサワウインド"
+   ]
+  },
+  {
    "id": "brand=バーガーキング",
    "key": "brand",
    "value": "バーガーキング",
@@ -3610,6 +3735,16 @@
    "role": "brand",
    "sample_names": [
     "キリンビバレッジ"
+   ]
+  },
+  {
+   "id": "brand=日本調剤",
+   "key": "brand",
+   "value": "日本調剤",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "日本調剤"
    ]
   },
   {
@@ -3761,6 +3896,16 @@
    ]
   },
   {
+   "id": "brand=JTB",
+   "key": "brand",
+   "value": "JTB",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "JTB"
+   ]
+  },
+  {
    "id": "amenity=arts_centre",
    "key": "amenity",
    "value": "arts_centre",
@@ -3784,6 +3929,27 @@
    ]
   },
   {
+   "id": "brand=TOHOシネマズ",
+   "key": "brand",
+   "value": "TOHOシネマズ",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "TOHOシネマズ",
+    "TOHOシネマズシャンテ"
+   ]
+  },
+  {
+   "id": "brand=築地銀だこ",
+   "key": "brand",
+   "value": "築地銀だこ",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "築地銀だこ"
+   ]
+  },
+  {
    "id": "cuisine=takoyaki",
    "key": "cuisine",
    "value": "takoyaki",
@@ -3791,6 +3957,16 @@
    "role": "refine",
    "sample_names": [
     "築地銀だこ"
+   ]
+  },
+  {
+   "id": "brand=ビックカメラ",
+   "key": "brand",
+   "value": "ビックカメラ",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "ビックカメラ"
    ]
   },
   {
@@ -3803,6 +3979,16 @@
     "SMBCヒューマン・キャリア",
     "SMBCスタッフサービス",
     "内定ブリッジ"
+   ]
+  },
+  {
+   "id": "brand=みどりの窓口",
+   "key": "brand",
+   "value": "みどりの窓口",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "みどりの窓口"
    ]
   },
   {
@@ -3850,6 +4036,27 @@
    ]
   },
   {
+   "id": "cuisine=tempura",
+   "key": "cuisine",
+   "value": "tempura",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "てんぷら黒川",
+    "浅草割烹 天とよ 神保町店"
+   ]
+  },
+  {
+   "id": "brand=丸善",
+   "key": "brand",
+   "value": "丸善",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "丸善"
+   ]
+  },
+  {
    "id": "brand=やよい軒",
    "key": "brand",
    "value": "やよい軒",
@@ -3857,6 +4064,16 @@
    "role": "brand",
    "sample_names": [
     "やよい軒"
+   ]
+  },
+  {
+   "id": "brand=カクヤス",
+   "key": "brand",
+   "value": "カクヤス",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "カクヤス"
    ]
   },
   {
@@ -3917,6 +4134,18 @@
    ]
   },
   {
+   "id": "denomination=inari",
+   "key": "denomination",
+   "value": "inari",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "朝日稲荷神社",
+    "寳童稲荷",
+    "幸稲荷神社"
+   ]
+  },
+  {
    "id": "brand=ダイソー",
    "key": "brand",
    "value": "ダイソー",
@@ -3969,6 +4198,16 @@
     "ライオン銀座",
     "ランチョン",
     "Craft Beer Market"
+   ]
+  },
+  {
+   "id": "brand=はなの舞",
+   "key": "brand",
+   "value": "はなの舞",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "はなの舞"
    ]
   },
   {
@@ -4151,6 +4390,16 @@
    "role": "brand",
    "sample_names": [
     "ドン・キホーテ"
+   ]
+  },
+  {
+   "id": "brand=メロンブックス",
+   "key": "brand",
+   "value": "メロンブックス",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "メロンブックス"
    ]
   },
   {
@@ -4378,6 +4627,16 @@
    ]
   },
   {
+   "id": "brand=エイチ・アイ・エス",
+   "key": "brand",
+   "value": "エイチ・アイ・エス",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "エイチ・アイ・エス"
+   ]
+  },
+  {
    "id": "brand=Cartier",
    "key": "brand",
    "value": "Cartier",
@@ -4385,6 +4644,16 @@
    "role": "brand",
    "sample_names": [
     "Cartier"
+   ]
+  },
+  {
+   "id": "brand=リトルマーメイド",
+   "key": "brand",
+   "value": "リトルマーメイド",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "リトルマーメイド"
    ]
   },
   {
@@ -4467,6 +4736,16 @@
    "role": "brand",
    "sample_names": [
     "エニタイムフィットネス"
+   ]
+  },
+  {
+   "id": "brand=ぱぱす",
+   "key": "brand",
+   "value": "ぱぱす",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ぱぱす"
    ]
   },
   {
@@ -4565,6 +4844,16 @@
    ]
   },
   {
+   "id": "brand=カラオケ館",
+   "key": "brand",
+   "value": "カラオケ館",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "カラオケ館"
+   ]
+  },
+  {
    "id": "shop=repair",
    "key": "shop",
    "value": "repair",
@@ -4649,6 +4938,27 @@
    ]
   },
   {
+   "id": "brand=ハンズ",
+   "key": "brand",
+   "value": "ハンズ",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ハンズ"
+   ]
+  },
+  {
+   "id": "club=jazz",
+   "key": "club",
+   "value": "jazz",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "スウィング銀座",
+    "Jazz Big Boy"
+   ]
+  },
+  {
    "id": "brand=くすりの福太郎",
    "key": "brand",
    "value": "くすりの福太郎",
@@ -4656,6 +4966,36 @@
    "role": "brand",
    "sample_names": [
     "くすりの福太郎"
+   ]
+  },
+  {
+   "id": "brand=きらぼし銀行",
+   "key": "brand",
+   "value": "きらぼし銀行",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "きらぼし銀行"
+   ]
+  },
+  {
+   "id": "brand=アクセア",
+   "key": "brand",
+   "value": "アクセア",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "アクセア"
+   ]
+  },
+  {
+   "id": "brand=東日本銀行",
+   "key": "brand",
+   "value": "東日本銀行",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "東日本銀行"
    ]
   },
   {
@@ -4677,6 +5017,16 @@
    "sample_names": [
     "Tsuruya Yoshinobu",
     "未来食堂"
+   ]
+  },
+  {
+   "id": "brand=千葉銀行",
+   "key": "brand",
+   "value": "千葉銀行",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "千葉銀行"
    ]
   },
   {
@@ -4802,6 +5152,16 @@
    "sample_names": []
   },
   {
+   "id": "brand=ECOLO PARK",
+   "key": "brand",
+   "value": "ECOLO PARK",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "エコロパーク"
+   ]
+  },
+  {
    "id": "shop=collector",
    "key": "shop",
    "value": "collector",
@@ -4843,6 +5203,16 @@
    ]
   },
   {
+   "id": "brand=ヤマト運輸",
+   "key": "brand",
+   "value": "ヤマト運輸",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ヤマト運輸"
+   ]
+  },
+  {
    "id": "shop=craft",
    "key": "shop",
    "value": "craft",
@@ -4854,6 +5224,16 @@
    ]
   },
   {
+   "id": "brand=オーケー",
+   "key": "brand",
+   "value": "オーケー",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "オーケーストア"
+   ]
+  },
+  {
    "id": "cuisine=tex-mex",
    "key": "cuisine",
    "value": "tex-mex",
@@ -4862,6 +5242,37 @@
    "sample_names": [
     "フリホーレス大手町ファーストスクエア店",
     "Taco Bell"
+   ]
+  },
+  {
+   "id": "brand=三省堂書店",
+   "key": "brand",
+   "value": "三省堂書店",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "三省堂書店"
+   ]
+  },
+  {
+   "id": "brand=しゃぶしゃぶ温野菜",
+   "key": "brand",
+   "value": "しゃぶしゃぶ温野菜",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "しゃぶしゃぶ温野菜"
+   ]
+  },
+  {
+   "id": "cuisine=焼肉",
+   "key": "cuisine",
+   "value": "焼肉",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "有楽苑",
+    "熟成豚ホルモン えいじ"
    ]
   },
   {
@@ -4926,6 +5337,16 @@
    "role": "brand",
    "sample_names": [
     "ケンタッキーフライドチキン"
+   ]
+  },
+  {
+   "id": "brand=木曽路",
+   "key": "brand",
+   "value": "木曽路",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "木曽路"
    ]
   },
   {
@@ -5013,12 +5434,32 @@
    ]
   },
   {
+   "id": "brand=miniピアゴ",
+   "key": "brand",
+   "value": "miniピアゴ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "miniピアゴ"
+   ]
+  },
+  {
    "id": "shelter_type=picnic_shelter",
    "key": "shelter_type",
    "value": "picnic_shelter",
    "count": 1,
    "role": "refine",
    "sample_names": []
+  },
+  {
+   "id": "brand=Panasonic",
+   "key": "brand",
+   "value": "Panasonic",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "柳北でんき"
+   ]
   },
   {
    "id": "shop=wedding",
@@ -5097,6 +5538,16 @@
    "sample_names": []
   },
   {
+   "id": "brand=ピアゴ",
+   "key": "brand",
+   "value": "ピアゴ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ピアゴ"
+   ]
+  },
+  {
    "id": "leisure=dance",
    "key": "leisure",
    "value": "dance",
@@ -5135,6 +5586,26 @@
    "sample_names": []
   },
   {
+   "id": "brand=LAWSON+スリーエフ",
+   "key": "brand",
+   "value": "LAWSON+スリーエフ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ローソン・スリーエフ"
+   ]
+  },
+  {
+   "id": "brand=セイジョー",
+   "key": "brand",
+   "value": "セイジョー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "セイジョー"
+   ]
+  },
+  {
    "id": "man_made=ceremonial_gate",
    "key": "man_made",
    "value": "ceremonial_gate",
@@ -5162,6 +5633,16 @@
    "role": "refine",
    "sample_names": [
     "Alegria"
+   ]
+  },
+  {
+   "id": "brand=白洋舎",
+   "key": "brand",
+   "value": "白洋舎",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "白洋舎"
    ]
   },
   {
@@ -5263,6 +5744,16 @@
    ]
   },
   {
+   "id": "brand=ジュンク堂書店",
+   "key": "brand",
+   "value": "ジュンク堂書店",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ジュンク堂書店"
+   ]
+  },
+  {
    "id": "cuisine=deli",
    "key": "cuisine",
    "value": "deli",
@@ -5308,6 +5799,16 @@
    "role": "brand",
    "sample_names": [
     "さくら薬局"
+   ]
+  },
+  {
+   "id": "cuisine=カレー",
+   "key": "cuisine",
+   "value": "カレー",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "チャントーヤ・ココナッツカリー"
    ]
   },
   {
@@ -5427,6 +5928,46 @@
    ]
   },
   {
+   "id": "brand=北海道銀行",
+   "key": "brand",
+   "value": "北海道銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "北海道銀行"
+   ]
+  },
+  {
+   "id": "brand=ヴィ・ド・フランス",
+   "key": "brand",
+   "value": "ヴィ・ド・フランス",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ヴィ・ド・フランス"
+   ]
+  },
+  {
+   "id": "religion=konkokyo",
+   "key": "religion",
+   "value": "konkokyo",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "金光教月島教会"
+   ]
+  },
+  {
+   "id": "brand=三井のリハウス",
+   "key": "brand",
+   "value": "三井のリハウス",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "三井のリハウス"
+   ]
+  },
+  {
    "id": "cuisine=okonomiyaki",
    "key": "cuisine",
    "value": "okonomiyaki",
@@ -5434,6 +5975,16 @@
    "role": "refine",
    "sample_names": [
     "松浪"
+   ]
+  },
+  {
+   "id": "brand=フレッシュネスバーガー",
+   "key": "brand",
+   "value": "フレッシュネスバーガー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "フレッシュネスバーガー"
    ]
   },
   {
@@ -5457,6 +6008,16 @@
    ]
   },
   {
+   "id": "cuisine=とんかつ",
+   "key": "cuisine",
+   "value": "とんかつ",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "燕楽"
+   ]
+  },
+  {
    "id": "brand=餃子の王将",
    "key": "brand",
    "value": "餃子の王将",
@@ -5477,6 +6038,36 @@
    ]
   },
   {
+   "id": "brand=ポプラ",
+   "key": "brand",
+   "value": "ポプラ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ポプラ"
+   ]
+  },
+  {
+   "id": "brand=箱根そば",
+   "key": "brand",
+   "value": "箱根そば",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "箱根そば"
+   ]
+  },
+  {
+   "id": "brand=てんや",
+   "key": "brand",
+   "value": "てんや",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "てんや"
+   ]
+  },
+  {
    "id": "cuisine=fries",
    "key": "cuisine",
    "value": "fries",
@@ -5487,6 +6078,26 @@
    ]
   },
   {
+   "id": "brand=文教堂",
+   "key": "brand",
+   "value": "文教堂",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "文教堂"
+   ]
+  },
+  {
+   "id": "brand=芝信用金庫",
+   "key": "brand",
+   "value": "芝信用金庫",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "芝信用金庫"
+   ]
+  },
+  {
    "id": "cuisine=dessert",
    "key": "cuisine",
    "value": "dessert",
@@ -5494,6 +6105,26 @@
    "role": "refine",
    "sample_names": [
     "Balenciaga"
+   ]
+  },
+  {
+   "id": "brand=リカーマウンテン",
+   "key": "brand",
+   "value": "リカーマウンテン",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "リカーマウンテン"
+   ]
+  },
+  {
+   "id": "brand=三井住友信託銀行",
+   "key": "brand",
+   "value": "三井住友信託銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "三井住友信託銀行"
    ]
   },
   {
@@ -5517,6 +6148,16 @@
    ]
   },
   {
+   "id": "brand=一風堂",
+   "key": "brand",
+   "value": "一風堂",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "一風堂"
+   ]
+  },
+  {
    "id": "brand=セリア",
    "key": "brand",
    "value": "セリア",
@@ -5534,6 +6175,16 @@
    "role": "brand",
    "sample_names": [
     "New Balance"
+   ]
+  },
+  {
+   "id": "brand=庄や",
+   "key": "brand",
+   "value": "庄や",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "庄や"
    ]
   },
   {
@@ -5715,6 +6366,16 @@
    ]
   },
   {
+   "id": "brand=おかしのまちおか",
+   "key": "brand",
+   "value": "おかしのまちおか",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "おかしのまちおか"
+   ]
+  },
+  {
    "id": "shop=honey",
    "key": "shop",
    "value": "honey",
@@ -5765,6 +6426,16 @@
    ]
   },
   {
+   "id": "brand=常陽銀行",
+   "key": "brand",
+   "value": "常陽銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "常陽銀行"
+   ]
+  },
+  {
    "id": "brand=クリエイトSD",
    "key": "brand",
    "value": "クリエイトSD",
@@ -5795,6 +6466,16 @@
    ]
   },
   {
+   "id": "brand=サミット",
+   "key": "brand",
+   "value": "サミット",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "サミット"
+   ]
+  },
+  {
    "id": "brand=Patagonia",
    "key": "brand",
    "value": "Patagonia",
@@ -5812,6 +6493,16 @@
    "role": "refine",
    "sample_names": [
     "Patagonia"
+   ]
+  },
+  {
+   "id": "brand=目利きの銀次",
+   "key": "brand",
+   "value": "目利きの銀次",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "目利きの銀次"
    ]
   },
   {
@@ -5852,6 +6543,16 @@
    "role": "refine",
    "sample_names": [
     "Ome Farm Kitchen"
+   ]
+  },
+  {
+   "id": "brand=パレットプラザ",
+   "key": "brand",
+   "value": "パレットプラザ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "パレットプラザ"
    ]
   },
   {
@@ -5903,6 +6604,16 @@
    ]
   },
   {
+   "id": "cuisine=tonkatsu",
+   "key": "cuisine",
+   "value": "tonkatsu",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "さくたろう"
+   ]
+  },
+  {
    "id": "amenity=nursing_home",
    "key": "amenity",
    "value": "nursing_home",
@@ -5943,6 +6654,16 @@
    ]
   },
   {
+   "id": "brand=Super Hotel",
+   "key": "brand",
+   "value": "Super Hotel",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "スーパーホテル"
+   ]
+  },
+  {
    "id": "healthcare:speciality=allergology",
    "key": "healthcare:speciality",
    "value": "allergology",
@@ -5973,6 +6694,16 @@
    ]
   },
   {
+   "id": "brand=カードラボ",
+   "key": "brand",
+   "value": "カードラボ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "カードラボ"
+   ]
+  },
+  {
    "id": "brand=Tesla",
    "key": "brand",
    "value": "Tesla",
@@ -5980,6 +6711,26 @@
    "role": "brand",
    "sample_names": [
     "Tesla"
+   ]
+  },
+  {
+   "id": "brand=タイトーステーション",
+   "key": "brand",
+   "value": "タイトーステーション",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "タイトーステーション"
+   ]
+  },
+  {
+   "id": "brand=焼肉ライク",
+   "key": "brand",
+   "value": "焼肉ライク",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "焼肉ライク"
    ]
   },
   {
@@ -6041,6 +6792,16 @@
    ]
   },
   {
+   "id": "brand=ハローストレージ",
+   "key": "brand",
+   "value": "ハローストレージ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ハローストレージ"
+   ]
+  },
+  {
    "id": "brand=ABCマート",
    "key": "brand",
    "value": "ABCマート",
@@ -6081,6 +6842,16 @@
    ]
   },
   {
+   "id": "brand=アキュア",
+   "key": "brand",
+   "value": "アキュア",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "アキュア"
+   ]
+  },
+  {
    "id": "craft=musical_instrument",
    "key": "craft",
    "value": "musical_instrument",
@@ -6098,6 +6869,16 @@
    "role": "brand",
    "sample_names": [
     "丸亀製麺"
+   ]
+  },
+  {
+   "id": "brand=タウンハウジング",
+   "key": "brand",
+   "value": "タウンハウジング",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "タウンハウジング"
    ]
   },
   {
@@ -6131,12 +6912,32 @@
    ]
   },
   {
+   "id": "brand=ラーメン二郎",
+   "key": "brand",
+   "value": "ラーメン二郎",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ラーメン二郎"
+   ]
+  },
+  {
    "id": "bicycle_parking=floor",
    "key": "bicycle_parking",
    "value": "floor",
    "count": 1,
    "role": "refine",
    "sample_names": []
+  },
+  {
+   "id": "cuisine=うなぎ",
+   "key": "cuisine",
+   "value": "うなぎ",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "うなぎかねいち"
+   ]
   },
   {
    "id": "amenity=water_point",
@@ -6197,6 +6998,16 @@
    ]
   },
   {
+   "id": "leisure=mahjong",
+   "key": "leisure",
+   "value": "mahjong",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "麻雀たぬ"
+   ]
+  },
+  {
    "id": "office=union",
    "key": "office",
    "value": "union",
@@ -6214,6 +7025,16 @@
    "role": "refine",
    "sample_names": [
     "ケアリッツお茶の水"
+   ]
+  },
+  {
+   "id": "brand=白木屋",
+   "key": "brand",
+   "value": "白木屋",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "白木屋"
    ]
   },
   {
@@ -6355,6 +7176,16 @@
    ]
   },
   {
+   "id": "brand=ゴルフパートナー",
+   "key": "brand",
+   "value": "ゴルフパートナー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ゴルフパートナー"
+   ]
+  },
+  {
    "id": "highway=crossing",
    "key": "highway",
    "value": "crossing",
@@ -6362,6 +7193,26 @@
    "role": "category",
    "sample_names": [
     "りそな銀行"
+   ]
+  },
+  {
+   "id": "cuisine=焼き鳥",
+   "key": "cuisine",
+   "value": "焼き鳥",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "鉄火場"
+   ]
+  },
+  {
+   "id": "brand=からやま",
+   "key": "brand",
+   "value": "からやま",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "からやま"
    ]
   },
   {
@@ -6471,6 +7322,16 @@
    ]
   },
   {
+   "id": "brand=大黒屋",
+   "key": "brand",
+   "value": "大黒屋",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "大黒屋"
+   ]
+  },
+  {
    "id": "brand=Prada",
    "key": "brand",
    "value": "Prada",
@@ -6498,6 +7359,16 @@
    "role": "brand",
    "sample_names": [
     "オリジン弁当"
+   ]
+  },
+  {
+   "id": "cuisine=定食",
+   "key": "cuisine",
+   "value": "定食",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Caprice"
    ]
   },
   {
@@ -6657,6 +7528,16 @@
    ]
   },
   {
+   "id": "brand=京都銀行",
+   "key": "brand",
+   "value": "京都銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "京都銀行"
+   ]
+  },
+  {
    "id": "public_transport=stop_position",
    "key": "public_transport",
    "value": "stop_position",
@@ -6664,6 +7545,16 @@
    "role": "category",
    "sample_names": [
     "人形町駅"
+   ]
+  },
+  {
+   "id": "brand=ちよだ鮨",
+   "key": "brand",
+   "value": "ちよだ鮨",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ちよだ鮨"
    ]
   },
   {
@@ -6677,6 +7568,16 @@
    ]
   },
   {
+   "id": "brand=八十二銀行",
+   "key": "brand",
+   "value": "八十二銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "八十二銀行"
+   ]
+  },
+  {
    "id": "craft=brewery",
    "key": "craft",
    "value": "brewery",
@@ -6684,6 +7585,16 @@
    "role": "category",
    "sample_names": [
     "Nihonbashi Brewery"
+   ]
+  },
+  {
+   "id": "brand=山梨中央銀行",
+   "key": "brand",
+   "value": "山梨中央銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "山梨中央銀行"
    ]
   },
   {
@@ -6727,6 +7638,36 @@
    ]
   },
   {
+   "id": "brand=LUUP",
+   "key": "brand",
+   "value": "LUUP",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ループ"
+   ]
+  },
+  {
+   "id": "cuisine=unagi",
+   "key": "cuisine",
+   "value": "unagi",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "うな正"
+   ]
+  },
+  {
+   "id": "brand=クオール",
+   "key": "brand",
+   "value": "クオール",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "クオール"
+   ]
+  },
+  {
    "id": "cuisine=fish_and_chips",
    "key": "cuisine",
    "value": "fish_and_chips",
@@ -6744,6 +7685,26 @@
    "role": "refine",
    "sample_names": [
     "Hub"
+   ]
+  },
+  {
+   "id": "brand=武蔵野銀行",
+   "key": "brand",
+   "value": "武蔵野銀行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "武蔵野銀行"
+   ]
+  },
+  {
+   "id": "brand=自遊空間",
+   "key": "brand",
+   "value": "自遊空間",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "自遊空間"
    ]
   },
   {
@@ -6767,6 +7728,14 @@
    ]
   },
   {
+   "id": "brand=コカコーラ",
+   "key": "brand",
+   "value": "コカコーラ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": []
+  },
+  {
    "id": "brand=大阪王将",
    "key": "brand",
    "value": "大阪王将",
@@ -6787,6 +7756,26 @@
    ]
   },
   {
+   "id": "brand=和民",
+   "key": "brand",
+   "value": "和民",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ミライザカ"
+   ]
+  },
+  {
+   "id": "brand=じゃんぱら",
+   "key": "brand",
+   "value": "じゃんぱら",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "じゃんぱら"
+   ]
+  },
+  {
    "id": "brand=ブックオフ",
    "key": "brand",
    "value": "ブックオフ",
@@ -6794,6 +7783,16 @@
    "role": "brand",
    "sample_names": [
     "ブックオフ"
+   ]
+  },
+  {
+   "id": "brand=スリーエフ",
+   "key": "brand",
+   "value": "スリーエフ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "スリーエフ"
    ]
   },
   {
@@ -6814,6 +7813,16 @@
    "role": "brand",
    "sample_names": [
     "エディオン"
+   ]
+  },
+  {
+   "id": "brand=クラブセガ",
+   "key": "brand",
+   "value": "クラブセガ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "クラブセガ"
    ]
   },
   {
@@ -6844,6 +7853,16 @@
    "role": "category",
    "sample_names": [
     "海神無線"
+   ]
+  },
+  {
+   "id": "brand=BECK'S COFFEE SHOP",
+   "key": "brand",
+   "value": "BECK'S COFFEE SHOP",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ベックスコーヒーショップ"
    ]
   },
   {
@@ -6911,6 +7930,16 @@
    "count": 1,
    "role": "category",
    "sample_names": []
+  },
+  {
+   "id": "clothes=kimono",
+   "key": "clothes",
+   "value": "kimono",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "竹岡商店"
+   ]
   }
  ],
  "dropped_top": [
@@ -6923,23 +7952,7 @@
    26
   ],
   [
-   "brand=NATURAL LAWSON",
-   14
-  ],
-  [
-   "brand=PRONTO",
-   13
-  ],
-  [
-   "brand=エクセルシオール カフェ",
-   12
-  ],
-  [
    "cuisine=monja",
-   7
-  ],
-  [
-   "brand=ゆで太郎",
    7
   ],
   [
@@ -6947,80 +7960,12 @@
    7
   ],
   [
-   "brand=アパホテル",
-   7
-  ],
-  [
-   "brand=ルノアール",
-   7
-  ],
-  [
-   "brand=上島珈琲店",
-   7
-  ],
-  [
-   "brand=富士そば",
-   6
-  ],
-  [
-   "brand=成城石井",
-   5
-  ],
-  [
    "brand=すしざんまい",
    5
   ],
   [
-   "brand=いきなり！ステーキ",
-   4
-  ],
-  [
    "memorial=yes",
    4
-  ],
-  [
-   "leisure=karaoke",
-   4
-  ],
-  [
-   "brand=クロサワ楽器店",
-   4
-  ],
-  [
-   "brand=日本調剤",
-   3
-  ],
-  [
-   "brand=JTB",
-   3
-  ],
-  [
-   "brand=TOHOシネマズ",
-   3
-  ],
-  [
-   "brand=築地銀だこ",
-   3
-  ],
-  [
-   "brand=ビックカメラ",
-   3
-  ],
-  [
-   "brand=みどりの窓口",
-   3
-  ],
-  [
-   "cuisine=tempura",
-   3
-  ],
-  [
-   "brand=丸善",
-   3
-  ],
-  [
-   "brand=カクヤス",
-   3
   ],
   [
    "brand=Sotetsu Fresa Inn",
@@ -7031,20 +7976,8 @@
    3
   ],
   [
-   "denomination=inari",
-   3
-  ],
-  [
    "information=yes",
    3
-  ],
-  [
-   "brand=はなの舞",
-   3
-  ],
-  [
-   "brand=メロンブックス",
-   2
   ],
   [
    "brand=ハナマサ",
@@ -7059,20 +7992,116 @@
    2
   ],
   [
-   "brand=エイチ・アイ・エス",
-   2
-  ],
-  [
-   "brand=リトルマーメイド",
-   2
-  ],
-  [
    "brand=Din Tai Fung",
    2
   ],
   [
    "amenity=food_truck_locatio",
    2
+  ],
+  [
+   "brand=Streamer Coffee Company",
+   2
+  ],
+  [
+   "cuisine=鉄板焼",
+   2
+  ],
+  [
+   "office=printing",
+   2
+  ],
+  [
+   "vending=乗車券",
+   2
+  ],
+  [
+   "vending=特急券",
+   2
+  ],
+  [
+   "brand=ポケモンセンター",
+   2
+  ],
+  [
+   "brand=Godiva",
+   2
+  ],
+  [
+   "cuisine=もんじゃ焼き",
+   2
+  ],
+  [
+   "brand=ディスクユニオン",
+   2
+  ],
+  [
+   "brand=和幸",
+   2
+  ],
+  [
+   "brand=Seiko",
+   2
+  ],
+  [
+   "brand=PocketChange",
+   2
+  ],
+  [
+   "brand=佐川急便",
+   2
+  ],
+  [
+   "vending=suicaチャージ",
+   1
+  ],
+  [
+   "brand=Henn na Hotel",
+   1
+  ],
+  [
+   "brand=MediaCafe POPEYE",
+   1
+  ],
+  [
+   "brand=Ruth's Chris Steak House",
+   1
+  ],
+  [
+   "brand=Arianespace",
+   1
+  ],
+  [
+   "brand=東方見聞録",
+   1
+  ],
+  [
+   "information=information",
+   1
+  ],
+  [
+   "brand=三越劇場",
+   1
+  ],
+  [
+   "cuisine=katsudon",
+   1
+  ],
+  [
+   "brand=明治座",
+   1
+  ],
+  [
+   "brand=McKinsey & Company",
+   1
+  ],
+  [
+   "cuisine=japanese oden",
+   1
+  ],
+  [
+   "cuisine=churrasco",
+   1
   ]
  ]
 }

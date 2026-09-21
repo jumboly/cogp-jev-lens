@@ -298,5 +298,1005 @@
  "artwork_type=sculpture": {
   "ja": "彫刻",
   "en": "Sculpture"
+ },
+ "shop=deli": {
+  "ja": "高級食材の店",
+  "en": "A shop selling delicatessen (fine foods), e.g. cured meat and fish, expensive cheeses, luxury confectionery, etc."
+ },
+ "shop=dry_cleaning": {
+  "ja": "服のドライクリーニングサービスを提供する店舗やキオスクです。",
+  "en": "A shop or kiosk offering a clothes dry cleaning service."
+ },
+ "amenity=ticket_validator": {
+  "ja": "改札機。電車・バスなどの公共交通機関の切符やICカードをチェックし必要により精算する機械。",
+  "en": "An analog device which validates public transport tickets, or devices which are integrated in systems to gain access to an area or service like public transport or parking garages."
+ },
+ "amenity=clock": {
+  "ja": "一般に公開された時計。",
+  "en": "A publicly visible clock"
+ },
+ "shop=toys": {
+  "ja": "おもちゃ屋、玩具店。主に子ども向けの玩具を販売する店",
+  "en": "A shop focussed on selling children's toys."
+ },
+ "cuisine=french": {
+  "ja": null,
+  "en": "A place that mainly sells French food."
+ },
+ "parking=surface": {
+  "ja": null,
+  "en": "An open-air ground-level area explicitly designated for vehicle parking."
+ },
+ "shop=alcohol": {
+  "ja": "酒店。酒類を販売する店舗",
+  "en": "A shop selling alcoholic drinks"
+ },
+ "tourism=gallery": {
+  "ja": "美術館、アートギャラリー。絵画、彫像、塑像、写真などの美術品を展示します。",
+  "en": "An area or building that displays a variety of visual art exhibitions."
+ },
+ "shop=chemist": {
+  "ja": "個人用衛生用品、化粧品、家庭用洗剤などを販売する店舗。",
+  "en": "A shop selling articles of personal hygiene, cosmetics, and household cleaning products."
+ },
+ "amenity=studio": {
+  "ja": "スタジオ。ラジオやテレビの番組を制作したり放送したりします。音楽の録音スタジオを表すのにも使えます。",
+  "en": "A studio used for creating radio or television programmes and broadcasting them. It can also be used to mark a music recording studio."
+ },
+ "memorial=stele": {
+  "ja": null,
+  "en": "Specifies a memorial as a stele."
+ },
+ "artwork_type=statue": {
+  "ja": "耐久性のある素材で人間や動物、神を形どった像",
+  "en": "Figurative sculpture of people, animals or gods in a durable material."
+ },
+ "amenity=theatre": {
+  "ja": "劇場。ライブパフォーマンスが行われる場所です。",
+  "en": "A place where live performances occur, such as plays, musicals and formal concerts."
+ },
+ "cuisine=beef_bowl": {
+  "ja": "日本発祥の、牛肉をご飯に載せた丼料理です。",
+  "en": "A bowl of beef served on rice, originating in Japan."
+ },
+ "shop=jewelry": {
+  "ja": "宝石店。宝飾店。指輪、ネックレス、イアリング、腕時計などを販売する店。",
+  "en": "A shop that sells rings, necklaces, earrings, watches, etc."
+ },
+ "amenity=social_facility": {
+  "ja": "社会福祉施設。社会福祉サービスを提供する施設",
+  "en": "A facility that provides social services."
+ },
+ "amenity=university": {
+  "ja": "大学。多数の高等教育の学部を持つ、学生が授業を受けたり実験をしたりするために設計された教育機関。",
+  "en": "An educational institution designed for instruction, examination, or both, of students in many branches of advanced learning."
+ },
+ "shop=electronics": {
+  "ja": "テレビ、ラジオ、冷蔵庫などの家庭用電化製品を販売する電器店",
+  "en": "A shop selling consumer electronics such as TVs, radios and fridges."
+ },
+ "tourism=viewpoint": {
+  "ja": null,
+  "en": "A place worth visiting, often high, with a good view of surrounding countryside or notable buildings."
+ },
+ "cuisine=barbecue": {
+  "ja": "肉をローストしたり、燻製にしたり、焼いたりして調理するスタイル",
+  "en": "Barbecue is a style of cooking normally meats by roasting, smoking or grilling."
+ },
+ "amenity=college": {
+  "ja": "短期大学、高等専門学校、専門学校など。継続教育のための施設で、ふつうは中等教育後のためのものです",
+  "en": "A place for further education, a post-secondary education institution which is not a University"
+ },
+ "shop=florist": {
+  "ja": "花屋。生花店。花束を販売している店舗",
+  "en": "A shop selling bouquets of flowers."
+ },
+ "shop=variety_store": {
+  "ja": "バラエティ雑貨店や均一価格店とは安価な商品を販売する小売店のことです。",
+  "en": "A variety store or price-point retailer is a retail shop that sells inexpensive items."
+ },
+ "parking=multi-storey": {
+  "ja": "立体駐車場",
+  "en": "Multistorey car park."
+ },
+ "cuisine=seafood": {
+  "ja": null,
+  "en": "A place that mainly sells seafood (fish, shrimps, lobster, etc.)."
+ },
+ "amenity=community_centre": {
+  "ja": "主に地域の行事や祭りやグループ活動に使われる場所です。",
+  "en": "A place mostly used for local events, festivities and group activities."
+ },
+ "healthcare=hospital": {
+  "ja": null,
+  "en": "A hospital providing in-patient medical treatment, used in addition to tag:amenity=hospital."
+ },
+ "religion=buddhist": {
+  "ja": "仏教を表します",
+  "en": "Describes that a feature is related to buddhism"
+ },
+ "amenity=hospital": {
+  "ja": "入院治療を提供する病院",
+  "en": "A hospital providing in-patient medical treatment."
+ },
+ "shop=musical_instrument": {
+  "ja": "楽器、歌詞、楽譜を販売する店舗です。",
+  "en": "Shop selling musical instruments, lyrics, scores."
+ },
+ "cuisine=udon": {
+  "ja": null,
+  "en": null
+ },
+ "shop=bicycle": {
+  "ja": "自転車の購入や修理、周辺グッズの購入が可能な店舗です。",
+  "en": "A store where you can buy and/or repair your bike and buy accessories."
+ },
+ "cuisine=steak_house": {
+  "ja": null,
+  "en": "A place that mainly sells (beef) steaks."
+ },
+ "vending=public_transport_tickets": {
+  "ja": "電車、バス、トラムなどの切符の自動販売機",
+  "en": "A machine vending bus, tram, train... tickets"
+ },
+ "leisure=playground": {
+  "ja": "遊び場: 子どもが遊ぶための場所",
+  "en": "A playground: an area designed for children to play."
+ },
+ "shop=ticket": {
+  "ja": "チケット店、金券ショップ。主にコンサート、イベント、公共交通機関などのチケットやきっぷを販売する店舗。",
+  "en": "A shop selling tickets for concerts, events, public transport, etc."
+ },
+ "cuisine=regional": {
+  "ja": "郷土料理を中心に出すお店",
+  "en": "A place serves mainly regional cuisine."
+ },
+ "shop=greengrocer": {
+  "ja": "果物や野菜を販売している店舗。果物屋。八百屋。",
+  "en": "A shop which sells fruits and vegetables"
+ },
+ "historic=monument": {
+  "ja": "記念建造物。特に大きい（人が立ち入り、歩き回ったり通り抜けたりできる）か、とても高い（少なくとも12メートルくらい）もので、過去の人物や団体を記念したり敬意を表したり、出来事を記念したりするために建設されたものです。",
+  "en": "A memorial object, which is especially large, built to remember, show respect to a person or group of people or to commemorate an event."
+ },
+ "shop=art": {
+  "ja": "美術品店、アート店。美術品を販売する店舗です。",
+  "en": "A shop which sells works of art."
+ },
+ "leisure=picnic_table": {
+  "ja": "ピクニックテーブル",
+  "en": "A table with benches for food and rest"
+ },
+ "amenity=smoking_area": {
+  "ja": "喫煙所。特別に喫煙が許可されたエリア",
+  "en": "To identify a designated smoking area"
+ },
+ "cuisine=korean": {
+  "ja": null,
+  "en": "A place that mainly sells Korean food."
+ },
+ "office=diplomatic": {
+  "ja": "受入国における外国政府又は準国家機関の大使館、外交使節団、領事館又は連絡事務所。",
+  "en": "An embassy, diplomatic mission, consulate or liaison office of a foreign government or parastatal entity in a host country."
+ },
+ "memorial=plaque": {
+  "ja": "記念碑をプラーク（銘板）として指定します。",
+  "en": "Specifies a memorial as a plaque."
+ },
+ "amenity=fuel": {
+  "ja": "ガソリンスタンド。自動車に給油することができる小売施設です。",
+  "en": "A retail facility for refueling motor vehicles"
+ },
+ "cuisine=asian": {
+  "ja": null,
+  "en": "A place that mainly sells Asian food."
+ },
+ "craft=confectionery": {
+  "ja": "砂糖が豊富に含まれた一連の食品、菓子と呼ばれるものを製造している場所。",
+  "en": "A place where the set of food items that are rich in sugar, any one or type of which is called a confection is produced."
+ },
+ "leisure=fitness_centre": {
+  "ja": "エクササイズマシンやフィットネス・ダンス教室がある場所。ジム、ヘルスクラブ、フィットネスクラブとも呼ばれています。",
+  "en": "Fitness centre, health club or gym with exercise machines, fitness classes or both, for exercise."
+ },
+ "shop=pastry": {
+  "ja": "焼菓子を製造・販売している店舗。ケーキ屋。洋菓子店。",
+  "en": "A shop where sweet bakery products are sold."
+ },
+ "office=courier": {
+  "ja": "宅配業者、宅急便",
+  "en": "A courier delivery service, which is neither a post office nor a national post."
+ },
+ "shop=computer": {
+  "ja": "パソコン店。パソコン、周辺機器、ソフト等の販売店",
+  "en": "A shop selling computers, peripherals, software, ..."
+ },
+ "amenity=school": {
+  "ja": "初等・中等教育の学校（生徒はおよそ6から18歳）",
+  "en": "A primary or secondary school (pupils typically aged 6 to 18)."
+ },
+ "shop=optician": {
+  "ja": "処方用のメガネやコンタクトレンズを販売したり、合わせたり、修理したりする店です。",
+  "en": "A shop that sells, fits, and repairs prescription eyeglasses and contact lenses."
+ },
+ "cuisine=noodles": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=sandwich": {
+  "ja": null,
+  "en": "A place that mainly sells sandwiches."
+ },
+ "cuisine=thai": {
+  "ja": null,
+  "en": "A place that mainly sells Thai food."
+ },
+ "social_facility=group_home": {
+  "ja": "グループホーム。一定の人口がいる住まいで、レジャー活動、食事、見守りなどの社会的・医療的サービスを提供しています。",
+  "en": "A group home is a residence for a certain demographic, providing social and medical services, leisure activities, meals, and supervision."
+ },
+ "cuisine=western": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=fish": {
+  "ja": null,
+  "en": "A place that serves or sells fish with exclusion of other seafood; see also cuisine=seafood for a more general category of seafood."
+ },
+ "amenity=fountain": {
+  "ja": "芸術的/装飾的/娯楽的な目的の噴水。",
+  "en": "A fountain with cultural, decorational or historical significance or which serves a recreational purpose."
+ },
+ "cuisine=pizza": {
+  "ja": null,
+  "en": "A place that mainly sells pizza."
+ },
+ "amenity=motorcycle_parking": {
+  "ja": "バイク駐車場。オートバイを駐車するための場所",
+  "en": "A place which is designated for parking motorcycles."
+ },
+ "amenity=fire_station": {
+  "ja": "消防署。消防本部・消防団が運営する基地です。",
+  "en": "A station from which a fire brigade operates."
+ },
+ "vending=food": {
+  "ja": "食品を販売する自動販売機です。",
+  "en": "A machine vending food"
+ },
+ "shop=car": {
+  "ja": "自動車販売店、カーディーラー",
+  "en": "A place that primarily sells cars (automobiles)"
+ },
+ "shop=travel_agency": {
+  "ja": "旅行代理店。旅行に関する商品やサービスを販売する店舗",
+  "en": "A shop selling travel related products and services"
+ },
+ "shop=shoes": {
+  "ja": "靴屋。靴を販売する店舗です。",
+  "en": "A shop selling shoes"
+ },
+ "shop=bag": {
+  "ja": "かばんを販売する店舗です。",
+  "en": "A shop selling bags."
+ },
+ "cuisine=mexican": {
+  "ja": null,
+  "en": "A place that mainly sells Mexican food."
+ },
+ "shop=laundry": {
+  "ja": "コインランドリー。普段着を洗濯するための店。",
+  "en": "A shop to wash clothes and bedding, generally self-service and unattended."
+ },
+ "office=association": {
+  "ja": "協会。非営利組織、社交団体(例えば、学生、スポーツ、消費者、自動車、自転車協会など)の事務所。",
+  "en": "An office of a non-profit organisation, society, e.g. student, sport, consumer, automobile, bike association, etc."
+ },
+ "amenity=gambling": {
+  "ja": "賭博場。ブックメーカー、宝くじ売り場、カジノ、成人むけ遊戯場ではない、賭博を行う場所。",
+  "en": "A place for gambling, not being a bookmaker, lottery shop, casino, or adult gaming centre."
+ },
+ "information=office": {
+  "ja": null,
+  "en": "An office where you can get information about a town or region."
+ },
+ "cuisine=pasta": {
+  "ja": null,
+  "en": "A place that mainly serves pasta (e.g. spaghetti)."
+ },
+ "amenity=karaoke_box": {
+  "ja": null,
+  "en": "A venue specifically for people to enjoy singing along with karaoke, usually with private booths."
+ },
+ "shop=copyshop": {
+  "ja": "コピーサービス店。コピーや印刷サービスを提供する店。",
+  "en": "A shop that offers photocopying and printing services."
+ },
+ "amenity=nightclub": {
+  "ja": "ナイトクラブは夜、ダンスしたりお酒を飲んだりする場所です。",
+  "en": "A place to dance and drink at night. Also known as a disco."
+ },
+ "amenity=bureau_de_change": {
+  "ja": "外貨両替所。外国通貨やトラベラーズチェックの両替を行うオフィス",
+  "en": "An office that exchanges foreign currency and travellers cheques."
+ },
+ "vending=cigarettes": {
+  "ja": "タバコのパックを販売する自動販売機です。",
+  "en": "A cigarette machine is a vending machine that dispenses packets of cigarettes."
+ },
+ "amenity=prep_school": {
+  "ja": "学習塾/予備校。",
+  "en": "Tutor or test prep centre."
+ },
+ "shop=furniture": {
+  "ja": "家具店。家具を販売する店舗です。",
+  "en": "A shop selling furniture."
+ },
+ "shop=houseware": {
+  "ja": "家庭用品店。小さい家庭用品を販売する店舗",
+  "en": "A shop selling small household items."
+ },
+ "office=telecommunication": {
+  "ja": "通信会社の事務所",
+  "en": "An office for a telecommunication company."
+ },
+ "amenity=cinema": {
+  "ja": "映画館。映画を見せる場所です。",
+  "en": "A movie theater, a place showing movies."
+ },
+ "shop=mall": {
+  "ja": "ショッピングモール、ショッピングセンター。店舗の集合で、ふつうは1つの建物の中に集まっています。",
+  "en": "A group of stores, typically associated with a single building structure."
+ },
+ "shop=outdoor": {
+  "ja": "アウトドア店。トレッキング、登山、キャンプ用品を売っている店。",
+  "en": "A shop selling trekking, climbing, camping equipment."
+ },
+ "shop=coffee": {
+  "ja": "コーヒー販売店。コーヒーを販売しているお店です",
+  "en": "A shop selling primarily packaged coffee."
+ },
+ "board_type=plants": {
+  "ja": null,
+  "en": null
+ },
+ "shop=photo": {
+  "ja": "あらゆる形で写真やビデオを扱う店。",
+  "en": "A shop dealing with photos or video in any way."
+ },
+ "amenity=public_bath": {
+  "ja": "公衆浴場、銭湯。一般人がふつうに入浴することができるところ",
+  "en": "A facility for communal bathing that is open to the public."
+ },
+ "craft=coffee_roaster": {
+  "ja": null,
+  "en": null
+ },
+ "memorial=stone": {
+  "ja": "記念・追悼を目的とした石であることを指定します。",
+  "en": "Specifies a memorial as a stone."
+ },
+ "amenity=shelter": {
+  "ja": "ja=シェルター 。悪天候から身を守るための小さな構造物です。",
+  "en": "A small structure for protection against bad weather conditions"
+ },
+ "amenity=library": {
+  "ja": "図書館。本を読んだり借りたりする場所。",
+  "en": "A place to read and/or borrow books."
+ },
+ "shop=seafood": {
+  "ja": "鮮魚店。鮮魚や水産物を販売する店舗です。",
+  "en": "A shop selling fish/seafood."
+ },
+ "public_transport=station": {
+  "ja": "駅は公共交通機関に乗降するために設計された区域です。",
+  "en": "A station is an area designed to access public transport."
+ },
+ "amenity=car_rental": {
+  "ja": "レンタカー店。自動車を借りることができる場所。",
+  "en": "A place from which cars can be rented."
+ },
+ "office=coworking": {
+  "ja": "コワーキングスペース。人々が仕事に行く（ふつうは有料の）場所で、特定の雇用主と関連しないもの。",
+  "en": "An office where people can go to work (typically requires a fee); not limited to a single employer."
+ },
+ "shop=kiosk": {
+  "ja": "歩道上にある小さな店舗で、雑誌、タバコ、新聞、菓子類、切手などを販売しています。",
+  "en": "A small shop on the pavement that sells magazines, tobacco, newspapers, sweets and stamps."
+ },
+ "cuisine=yakitori": {
+  "ja": null,
+  "en": null
+ },
+ "amenity=townhall": {
+  "ja": "市町村の行政センターあるいは集会所として機能する建物。",
+  "en": "A townhall serves as a community administrative center or meeting place."
+ },
+ "amenity=recycling": {
+  "ja": "リサイクル用廃棄物を受け入れる保管所または施設です。",
+  "en": "A container or centre that accepts waste material for reuse or recycling."
+ },
+ "recycling_type=container": {
+  "ja": "リサイクルボックス",
+  "en": "A recycling container, or a group of them."
+ },
+ "shop=lottery": {
+  "ja": "宝くじ店。主に（または専ら）宝くじを販売している店舗です。",
+  "en": "A shop of which the main or only purpose is the sale of lottery tickets."
+ },
+ "shop=music": {
+  "ja": "レコード店。主に録音された音楽（レコード/CD）を販売する店舗",
+  "en": "A store that primarily sells recorded music (typically vinyl/CDs)."
+ },
+ "office=insurance": {
+  "ja": "保険代理店。保険証券を得ることができる事務所です。",
+  "en": "An office at which you can take out insurance policies."
+ },
+ "healthcare:speciality=dermatology": {
+  "ja": null,
+  "en": "Medical specialty concerning hair, nails, skin, and their diseases."
+ },
+ "healthcare:speciality=internal": {
+  "ja": null,
+  "en": "Medical specialty dealing with the prevention, diagnosis, and treatment of internal diseases."
+ },
+ "cuisine=american": {
+  "ja": null,
+  "en": "A place that mainly sells American food."
+ },
+ "shop=chocolate": {
+  "ja": "チョコレート店。主にチョコレートを販売する店舗です。",
+  "en": "Shop focused on selling chocolate."
+ },
+ "amenity=courthouse": {
+  "ja": "裁判所。法律について争う場の建物です。",
+  "en": "A building which is home to a court of law, which administers justice according to the rule of law."
+ },
+ "vending=water": {
+  "ja": "飲料水を販売する自動販売機です。",
+  "en": "A machine vending drinking water"
+ },
+ "social_facility:for=senior": {
+  "ja": null,
+  "en": "Social facility for seniors and elderly people"
+ },
+ "sport=fitness": {
+  "ja": null,
+  "en": "To mark a physical feature related to fitness sports."
+ },
+ "religion=christian": {
+  "ja": "キリスト教に分類される宗教的な地物",
+  "en": "Classify a religious feature (e.g. church) as Christian"
+ },
+ "memorial=hazard_memorial": {
+  "ja": null,
+  "en": null
+ },
+ "tourism=apartment": {
+  "ja": "リゾートマンション。台所や風呂場が付いた家具付きの集合住宅の部屋で、休日に貸し出されるもの。",
+  "en": "A furnished apartment or flat with cooking and bathroom facilities that can be rented for holiday vacations."
+ },
+ "shop=tailor": {
+  "ja": "仕立屋。プロが服（特にスーツや紳士服）を制作したり、修理したり、直したりする場所です。",
+  "en": "A place where clothing is professionally made (and sold), repaired or altered."
+ },
+ "cuisine=chicken": {
+  "ja": null,
+  "en": "A place that mainly sells chicken"
+ },
+ "shop=beauty": {
+  "ja": null,
+  "en": "A non-hairdresser beauty shop, spa, nail salon, etc."
+ },
+ "shop=hobby": {
+  "ja": null,
+  "en": null
+ },
+ "shop=department_store": {
+  "ja": "百貨店、デパート。複数の衣料品やその他の販売部門を全般的にもつ大規模店舗です。",
+  "en": "A large store with multiple clothing and other general merchandise departments."
+ },
+ "shop=antiques": {
+  "ja": "骨董品を売る店",
+  "en": "A shop where you can buy antiques."
+ },
+ "shop=anime": {
+  "ja": "アニメショップ",
+  "en": "A shop that sells anime, manga, clothes for cosplay and related items."
+ },
+ "vending=locker": {
+  "ja": null,
+  "en": null
+ },
+ "amenity=parking_space": {
+  "ja": "駐車場の中の一区画",
+  "en": "A single parking space on a parking lot."
+ },
+ "man_made=survey_point": {
+  "ja": "測量標。三角点、水準点、その他の測量士が使う固定された標識。",
+  "en": "A triangulation pillar, geodetic vertex, or other piece of fixed equipment used by topographers."
+ },
+ "amenity=conference_centre": {
+  "ja": "会議センターは、会議の開催に使われる大きな建物です",
+  "en": "A conference centre is a large building used to hold a convention"
+ },
+ "board_type=nature": {
+  "ja": null,
+  "en": null
+ },
+ "shop=cosmetics": {
+  "ja": "化粧品店。化粧品を専門に販売する店舗",
+  "en": "Shop primarily selling cosmetics."
+ },
+ "artwork_type=bust": {
+  "ja": "胸像",
+  "en": "A sculptured representation of the upper part of the human figure. For historical, living or fictitious person use tag:memorial=bust."
+ },
+ "tourism=hostel": {
+  "ja": "ホステル。ベッドルームを共用する安価な宿泊施設。",
+  "en": "Cheap accommodation with shared bedrooms."
+ },
+ "social_facility=assisted_living": {
+  "ja": "ケアハウス。グループホームに似た居住施設ですが、世話がもっと独立的なものです。ふつう、「軽度の」障碍を持つ人々向けと考えられているものです。",
+  "en": "A residential facility like group_home, but the occupants are more independent. Usually conceived for people with minor disabilities."
+ },
+ "shop=interior_decoration": {
+  "ja": "主に内装用品を販売する店舗。インテリアショップ。",
+  "en": "A shop focused on selling interior decorations."
+ },
+ "shop=camera": {
+  "ja": "カメラ店。主にカメラやレンズを販売する店",
+  "en": "A shop mainly selling cameras and lenses."
+ },
+ "cuisine=fried_food": {
+  "ja": null,
+  "en": null
+ },
+ "leisure=amusement_arcade": {
+  "ja": "ゲームセンター。ゲーセン。料金を支払ってゲームをする場所",
+  "en": "A venue with pay-to-play games."
+ },
+ "office=it": {
+  "ja": "IT の専門家の事務所。",
+  "en": "An office for an IT company."
+ },
+ "shop=wholesale": {
+  "ja": "卸売店。商品を大口で販売する店舗です。",
+  "en": "A store that sells items in bulk."
+ },
+ "amenity=shower": {
+  "ja": "公衆用のシャワー。人々が水しぶきを浴びれる場所",
+  "en": "Public showers, where people can bathe under water sprays"
+ },
+ "healthcare:speciality=psychiatry": {
+  "ja": null,
+  "en": "Medical specialty concerning the study, diagnosis, treatment, and prevention of mental disorders."
+ },
+ "amenity=ice_cream": {
+  "ja": "アイスクリームやフローズンヨーグルトをカウンター越しに顧客に販売する場所。",
+  "en": "A place that sells ice cream and/or frozen yoghurt over the counter."
+ },
+ "amenity=bus_station": {
+  "ja": "「バスターミナル」はふつう多くの路線の起終点となり、路線間を乗り換えできるところです。",
+  "en": "A bus station would usually be a terminus where many routes stop / start, and where you can change between routes, etc."
+ },
+ "cuisine=cake": {
+  "ja": null,
+  "en": "Most of the time a small cafe where you can buy and eat cakes (main business cakes not coffee, see cuisine=coffee_shop)."
+ },
+ "office=lawyer": {
+  "ja": "法律事務所、弁護士事務所。",
+  "en": "An office for a lawyer."
+ },
+ "amenity=childcare": {
+  "ja": "保育所。様々な年齢の子供を世話する場所です",
+  "en": "A place where children are looked after which is not a kindergarten."
+ },
+ "shop=video_games": {
+  "ja": "テレビゲーム店。テレビゲームを販売する店舗。",
+  "en": "Shop selling video games."
+ },
+ "shop=sewing": {
+  "ja": "手芸用品店、編み物用品店。縫製用品(生地、縫い糸、編み糸、編み針、ミシンなど)を販売する店舗",
+  "en": "A shop that sells sewing supplies (fabric, thread, yarn, knitting needles, sewing machines, etc.)."
+ },
+ "cuisine=turkish": {
+  "ja": null,
+  "en": "A place that mainly sells Turkish food."
+ },
+ "cuisine=kebab": {
+  "ja": null,
+  "en": "A place that mainly sells kebab."
+ },
+ "shop=butcher": {
+  "ja": "精肉店、肉屋。肉や肉製品を販売する店舗。",
+  "en": "A shop selling meat or meat products."
+ },
+ "waste=trash": {
+  "ja": null,
+  "en": "A bin made for the disposal of trash/rubbish."
+ },
+ "amenity=ferry_terminal": {
+  "ja": "フェリーターミナル。人・車等々がフェリーから乗り降りする場所です。",
+  "en": "A place where people, cars etc. can board and leave a ferry."
+ },
+ "cuisine=spanish": {
+  "ja": null,
+  "en": "A place that mainly sells Spanish food."
+ },
+ "social_facility=outreach": {
+  "ja": null,
+  "en": "A non-residential facility that provides social welfare services such as advocacy, counseling, job placement, veterans services, housing placement, wellness programs or leisure activities."
+ },
+ "office=foundation": {
+  "ja": "財団の事務所です。",
+  "en": "An office of a foundation"
+ },
+ "office=consulting": {
+  "ja": "他の企業や団体に専門的な助言を提供するコンサルティング会社の事務所です。",
+  "en": "An office for a consulting firm, providing expert professional advice to other companies or organisations."
+ },
+ "cuisine=taiwanese": {
+  "ja": null,
+  "en": null
+ },
+ "craft=caterer": {
+  "ja": "仕出し屋、ケータリング。注文を受けて弁当を製造したり、グループの集まりに食事を提供したりする人の作業場または事務所",
+  "en": "A workplace or office of one who prepares customized meals for takeout, or provides prepared meals or supplies to a group at social gatherings"
+ },
+ "amenity=photo_booth": {
+  "ja": "即席写真を作成するスタンドです。",
+  "en": "A stand to create instant photos."
+ },
+ "shop=video": {
+  "ja": "レンタルビデオ店。ビデオや DVD を販売したり貸し出したりする店舗",
+  "en": "A shop that sells or rents out videos/DVDs"
+ },
+ "healthcare:speciality=ophthalmology": {
+  "ja": null,
+  "en": "Medical specialty concerning the diagnosis and treatment of eye disorders."
+ },
+ "amenity=food_court": {
+  "ja": "フードコート。複数のセルフサービスの食品販売店と座席の設備がある場所",
+  "en": "A place with sit-down facilities shared by multiple self-service food vendors."
+ },
+ "shop=hifi": {
+  "ja": "オーディオ店。高品質のオーディオ装置を販売する店",
+  "en": "Shop selling high fidelity audio components"
+ },
+ "shop=hardware": {
+  "ja": "金物店。木材、工具、その他の建設用具を販売する店舗",
+  "en": "Shop selling primarily metal fasteners and tools, sometimes also other workshop and homeware products."
+ },
+ "shop=second_hand": {
+  "ja": "中古品を扱う店。中古屋。リサイクルショップ。",
+  "en": "A shop selling second hand goods."
+ },
+ "shop=erotic": {
+  "ja": "成人向け娯楽品店、ポルノショップ。大人のおもちゃ、性的な下着、避妊具、性的なゲームや贈り物、ポルノ映画や雑誌を販売する店舗",
+  "en": "A shop selling erotic products such as sex toys, erotic lingerie, fetish clothing, safe sex products, erotic games and gifts, and pornographic films and magazines."
+ },
+ "shop=tea": {
+  "ja": "茶舗。茶を売る店舗",
+  "en": "A shop selling loose-leaf and/or packaged tea."
+ },
+ "shop=knives": {
+  "ja": "主にナイフを販売する店舗です。",
+  "en": "Shop which is selling primarily knives"
+ },
+ "leisure=adult_gaming_centre": {
+  "ja": "パチンコ店、パチスロ店など。ギャンブルマシンがあり通常年齢制限のある施設です。",
+  "en": "A venue with gambling machines, usually with a minimum age requirement."
+ },
+ "shop=general": {
+  "ja": "よろず屋。いろいろなものを売る小さな店。",
+  "en": "A general store. Small shop selling variety of different products."
+ },
+ "shop=watches": {
+  "ja": "腕時計店。腕時計を販売する店舗です。",
+  "en": "A shop that sells watches."
+ },
+ "cuisine=tea": {
+  "ja": null,
+  "en": "Indicates that an amenity sells tea ready to drink."
+ },
+ "amenity=internet_cafe": {
+  "ja": "インターネットカフェ。インターネットサービスを提供することが主な役割である場所",
+  "en": "A place whose principal role is providing internet services."
+ },
+ "leisure=sports_centre": {
+  "ja": "さまざまなスポーツを行う為に囲われた独立した施設",
+  "en": "A sports centre is a distinct facility where sports take place within an enclosed area."
+ },
+ "sport=golf": {
+  "ja": "ゴルフ",
+  "en": "A stick and ball game played from a 'tee' to a hole."
+ },
+ "craft=key_cutter": {
+  "ja": "合鍵を作成できる場所。",
+  "en": "A place where keys can be duplicated from originals."
+ },
+ "amenity=fixme": {
+  "ja": null,
+  "en": "Added by Every Door"
+ },
+ "amenity=events_venue": {
+  "ja": "イベント施設。宴会や結婚式などのイベントを行うための設備を提供する場所。",
+  "en": "A place that provides facilities for events such as banquets, weddings etc."
+ },
+ "bicycle_parking=informal": {
+  "ja": null,
+  "en": null
+ },
+ "amenity=car_sharing": {
+  "ja": "カーシェアリングステーション。予約した車を受け取る場所で、ふつう駐車場とは分離された区画です。",
+  "en": "Carsharing station, where you get your booked car, often separate areas on parking places."
+ },
+ "cuisine=pancake": {
+  "ja": "生地を平らに焼いたケーキで、朝食やデザートとして食べられる",
+  "en": "A place that sells pancakes, a flat cake made from batter."
+ },
+ "leisure=park": {
+  "ja": "都市公園。開放されたレクリエーションのための緑地。通常は公営。",
+  "en": "A park, usually in an urban (municipal) setting, created for recreation and relaxation."
+ },
+ "memorial=sculpture": {
+  "ja": "記念物が彫刻であることを指定します。",
+  "en": "Specifies a memorial as a sculpture."
+ },
+ "railway=train_station_entrance": {
+  "ja": null,
+  "en": "The entrance point of a train station."
+ },
+ "leisure=garden": {
+  "ja": "庭園。花やそのほかの植物を装飾様式に従ってあるいは学術的な目的によって栽培する場所。",
+  "en": "A place where flowers and other plants are grown in a decorative and structured manner or for scientific purposes."
+ },
+ "bicycle_parking=wall_loops": {
+  "ja": null,
+  "en": "Metal bracket for the front wheel for parking bicycles."
+ },
+ "historic=archaeological_site": {
+  "ja": "遺跡。過去の活動の証拠が保存されている場所です。",
+  "en": "A place in which evidence of past activity is preserved."
+ },
+ "office=ngo": {
+  "ja": "NGO（非政府組織）の事務所",
+  "en": "An office for a non-profit, non-governmental organisation (NGO)."
+ },
+ "amenity=arts_centre": {
+  "ja": "アートセンター。様々なアートが公演されたり制作されたりする場所です。",
+  "en": "An arts centre. A venue where a variety of arts are performed or conducted"
+ },
+ "cuisine=international": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=takoyaki": {
+  "ja": null,
+  "en": null
+ },
+ "office=employment_agency": {
+  "ja": "職業安定所・人材派遣会社。リクルート会社。",
+  "en": "An office for an employment service."
+ },
+ "shop=car_repair": {
+  "ja": "自動車修理工場。自動車を修理する店舗です。",
+  "en": "A business where cars are repaired."
+ },
+ "highway=street_lamp": {
+  "ja": "道路を照らす1つ以上の照明がある単一の柱です。",
+  "en": "A single pole with one or more lights to illuminate the street."
+ },
+ "clothes=men": {
+  "ja": null,
+  "en": null
+ },
+ "office=political_party": {
+  "ja": "政党事務所",
+  "en": "An office of a political party"
+ },
+ "shop=motorcycle": {
+  "ja": "バイク店。オートバイや関連するアクセサリの販売、サービスを提供する店",
+  "en": "A shop that sells motorcycles and/or related accessories and services."
+ },
+ "shop=religion": {
+  "ja": "宗教用品店。仏壇仏具店。宗教に関する商品を販売している店舗",
+  "en": "A shop selling merchandise related to religion"
+ },
+ "amenity=coworking_space": {
+  "ja": "コワーキングスペース。人々が仕事に行く（ふつうは有料の）場所で、特定の雇用主と関連しないもの。",
+  "en": "A place where people can go to work (typically requires a fee); not limited to a single employer."
+ },
+ "craft=watchmaker": {
+  "ja": "時計職人。腕時計を作ったり修理したりする職人。現在は工業生産品が普及しているので、主に腕時計の修理を行います。",
+  "en": "A watchmaker is an artisan who makes and repairs watches. Today due to industrial production they mostly repair watches."
+ },
+ "shop=pawnbroker": {
+  "ja": "質屋。個人が所有するものを担保として、お金を貸し出す商売。",
+  "en": "A business that offers secured loans against items of personal property as collateral."
+ },
+ "cuisine=local": {
+  "ja": null,
+  "en": null
+ },
+ "amenity=biergarten": {
+  "ja": "ビアガーデン。ビールが提供され、自分の食べ物を持ってくることができる屋外の区域です。",
+  "en": "An open-air seating area where beer is served."
+ },
+ "leisure=sauna": {
+  "ja": "サウナ。乾式または湿式の熱いひと時を体験するための場所として作られた部屋や施設です。",
+  "en": "A room or object designed as a place to heat a wet or dry body."
+ },
+ "office=research": {
+  "ja": "研究開発の事務所",
+  "en": "An office for research and development"
+ },
+ "amenity=vacant": {
+  "ja": null,
+  "en": null
+ },
+ "shop=tobacco": {
+  "ja": "たばこ店、タバコ店。たばこを販売する店で、その他の便利な商品を売っている可能性があります",
+  "en": "A shop selling tobacco, and possibly other convenience items"
+ },
+ "leisure=fitness_station": {
+  "ja": "フィットネス・ステーション。一般的なフィットネスができる屋外施設。屋外ジム、ストリートワークアウト、体操公園。",
+  "en": "An outdoor facility where people can practise typical fitness exercises"
+ },
+ "shelter_type=public_transport": {
+  "ja": "公共交通機関のプラットホームの位置またはその近くにあり、待っている乗客を保護するために設計された小さな待合所です。",
+  "en": "A small shelter located at or near a public transport platform designed to provide protection for waiting passengers."
+ },
+ "amenity=language_school": {
+  "ja": "外国語学校、英会話教室",
+  "en": "An educational institution where one studies a foreign language."
+ },
+ "cuisine=vietnamese": {
+  "ja": null,
+  "en": "A place that mainly sells Vietnamese food."
+ },
+ "office=tax_advisor": {
+  "ja": "税理士の事務所",
+  "en": "An office for a financial expert specially trained in tax law"
+ },
+ "man_made=water_tap": {
+  "ja": "公衆利用可能な水道蛇口、給水栓",
+  "en": "Publicly usable water tap"
+ },
+ "shop=fabric": {
+  "ja": "布地を販売する店。布地店、生地店。",
+  "en": "A shop that sells fabric"
+ },
+ "memorial=statue": {
+  "ja": "記念物が像（statue）であることを指定します。",
+  "en": "Specifies a memorial as a statue."
+ },
+ "historic=ruins": {
+  "ja": "いったん完成され、部分的または完全に破壊された残骸です。",
+  "en": "Remains of historic structures that were once complete, but have fallen into partial or complete disrepair."
+ },
+ "parking=street_side": {
+  "ja": "道路外すぐ脇に設けられ連絡路を使うことなく直接アクセスできる駐車用の区画。",
+  "en": "Area suitable or designated for parking which is directly adjacent to the carriageway of a road and can be reached directly from the roadway without having to use an access way."
+ },
+ "cuisine=breakfast": {
+  "ja": null,
+  "en": null
+ },
+ "leisure=golf_course": {
+  "ja": "ゴルフをプレイできる場所・区域。",
+  "en": "A golf course"
+ },
+ "office=property_management": {
+  "ja": "住宅用アパート、商業用オフィススペース、その他の不動産を扱う賃貸会社の事務所です。",
+  "en": "Office of a property rental company for residential apartments or commercial office space or any other property."
+ },
+ "waste=paper": {
+  "ja": null,
+  "en": null
+ },
+ "healthcare:speciality=cardiology": {
+  "ja": null,
+  "en": "Medical specialty concerning the disorders of the heart as well as parts of the circulatory system."
+ },
+ "amenity=veterinary": {
+  "ja": "動物病院。動物の病気の予防、診断、治療をするところです。",
+  "en": "A place that deals with the prevention, diagnosis and treatment of disease in animals."
+ },
+ "historic=building": {
+  "ja": "歴史的建造物（全般）。",
+  "en": "Unspecified historic building."
+ },
+ "cuisine=gyoza": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=juice": {
+  "ja": null,
+  "en": null
+ },
+ "historic=cannon": {
+  "ja": "歴史的な/引退した大砲。要塞や古戦場によくあります。",
+  "en": "A historic/retired cannon. Usually found on forts or battlefields."
+ },
+ "memorial=war_memorial": {
+  "ja": "戦争に関わる追悼のための地物であることを指定します。",
+  "en": "Specifies a memorial as a war memorial."
+ },
+ "historic=statue": {
+  "ja": null,
+  "en": null
+ },
+ "shop=vacant": {
+  "ja": "空き店舗。現在は使用されていない店舗です。",
+  "en": "Shop that is currently not being used."
+ },
+ "artwork_type=installation": {
+  "ja": null,
+  "en": "Installation art"
+ },
+ "craft=electrician": {
+  "ja": "電気や電気システムの仕事をする人や会社です。",
+  "en": "A person or company that works with electricity or electrical systems."
+ },
+ "office=accountant": {
+  "ja": "会計事務所。会計士の事務所です。",
+  "en": "An office for an accountant."
+ },
+ "bicycle_parking=front_wheel": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=italian_pizza": {
+  "ja": null,
+  "en": null
+ },
+ "amenity=library_dropoff": {
+  "ja": "図書返却ポスト、図書返却ボックス。図書館から離れた返却場所。",
+  "en": "A remote dropoff location for a library."
+ },
+ "office=notary": {
+  "ja": "コモン・ロー (common law) における公証人の事務所です。",
+  "en": "An office for a notary public (common law)"
+ },
+ "office=architect": {
+  "ja": "建築設計事務所、設計事務所。建築家または建築家グループのオフィス。",
+  "en": "An office for an architect or group of architects."
+ },
+ "healthcare:speciality=otolaryngology": {
+  "ja": null,
+  "en": "A surgical subspecialty within medicine that deals with the surgical and medical management of conditions of the head and neck."
+ },
+ "office=engineer": {
+  "ja": "技術者または技術者グループの事務所です。",
+  "en": "An office for an engineer or group of engineers."
+ },
+ "shop=pet": {
+  "ja": "ペットを販売する店舗。ペットショップ。ペット用品店。",
+  "en": "A shop selling pets and/or pet supplies"
+ },
+ "shop=storage_rental": {
+  "ja": "レンタル倉庫、貸し倉庫、トランクルーム、レンタル収納スペース。",
+  "en": "Paid storage of household goods, i.e. self storage."
+ },
+ "shop=repair": {
+  "ja": "一般的な修理店。必要に応じて、より適切なタグを使用してください。",
+  "en": "A general repair shop. More precise tagging should be used where appropriate."
+ },
+ "building=public": {
+  "ja": "一般的な公共用途に使われる建物です（役場、警察署、裁判所など）。",
+  "en": "A building constructed as accessible to the public (town hall, police station, court house)."
+ },
+ "clothes=women": {
+  "ja": null,
+  "en": "Sells clothes for women."
+ },
+ "cuisine=salad": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=teahouse": {
+  "ja": null,
+  "en": "A place to take time over cups of tea. In some cultures accompanied with a light meal e.g. tea sandwiches, clotted cream, cakes, scones."
  }
 }
