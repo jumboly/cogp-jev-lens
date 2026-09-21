@@ -1,0 +1,302 @@
+{
+ "amenity=restaurant": {
+  "ja": "レストラン。着席で、給仕により一式の食事が提供され、酒類の販売もある場合がある。",
+  "en": "A restaurant sells full sit-down meals with servers, and may sell alcohol."
+ },
+ "amenity=cafe": {
+  "ja": "喫茶店。一般に座席があり、飲み物や軽食やスナックを販売しているフォーマルではない場所です。",
+  "en": "A generally informal place with sit-down facilities selling beverages and light meals and/or snacks."
+ },
+ "tourism=information": {
+  "ja": "旅行者や訪問者向けの案内、案内所も含む",
+  "en": "Information for tourists and visitors, including information offices"
+ },
+ "amenity=vending_machine": {
+  "ja": "自販機。食品、飲料、チケット、その他の商品の自動販売機",
+  "en": "A vending machine sells food, drinks, tickets or other goods automatically."
+ },
+ "shop=convenience": {
+  "ja": "コンビニエンスストアは地域にある小さな店舗で、包装された食品や衛生用品のようなさまざまな日用品を扱います。",
+  "en": "A small local shop carrying a variety of everyday products, such as packaged food and hygiene products."
+ },
+ "vending=drinks": {
+  "ja": "温かい飲み物や冷たい飲み物を販売する自動販売機です。",
+  "en": "A machine vending hot or cold drinks"
+ },
+ "amenity=pub": {
+  "ja": "パブ。居酒屋。",
+  "en": null
+ },
+ "cuisine=japanese": {
+  "ja": "日本料理を主に販売、提供している場所",
+  "en": "A place that mainly sells or serves Japanese cuisine."
+ },
+ "office=company": {
+  "ja": "私企業の事務所",
+  "en": "An office of a private company."
+ },
+ "cuisine=coffee_shop": {
+  "ja": "他の料理も提供されるとしても、コーヒーで知られている場所。",
+  "en": "Specifies that a location is most known for its coffee, even if it may serve other types of food."
+ },
+ "amenity=fast_food": {
+  "ja": "ファストフード。素早いカウンターのみのサービスと、食べ物の持ち帰りに重点を置く場所です。",
+  "en": "A place which offers self-service and take-away food."
+ },
+ "information=board": {
+  "ja": "掲示板、インフォメーションボード",
+  "en": "An information board."
+ },
+ "amenity=post_box": {
+  "ja": "郵便ポスト。郵便物を出すボックスです。",
+  "en": "A box to deposit outgoing postal items."
+ },
+ "amenity=parking_entrance": {
+  "ja": "地下駐車場や立体駐車場の入り口",
+  "en": "An entrance to an underground or multi storey parking facility."
+ },
+ "amenity=bicycle_rental": {
+  "ja": "レンタル自転車を受け取ったり戻したりする場所。",
+  "en": "A place, often unattended, where you can pick up and drop off rented bikes."
+ },
+ "amenity=bench": {
+  "ja": "ベンチ。人々が座るための場所、数人が座れるだけの余裕があります。",
+  "en": "A place for people to sit, allowing room for one or more people."
+ },
+ "amenity=toilets": {
+  "ja": "公衆が利用できるトイレ",
+  "en": "Indicates publicly accessible toilets."
+ },
+ "amenity=telephone": {
+  "ja": "公衆電話",
+  "en": "A public telephone."
+ },
+ "cuisine=chinese": {
+  "ja": null,
+  "en": "A place that mainly sells Chinese food."
+ },
+ "historic=memorial": {
+  "ja": "ふつう特別な人物や戦争で命を落とした人々を思い出すための小さな記念碑",
+  "en": "Small memorials, usually remembering special persons, people who lost their lives in the wars, past events or missing places."
+ },
+ "amenity=bar": {
+  "ja": "バー。その場で飲むための酒類を販売する施設、騒がしくて活気のある雰囲気が特徴です。ふつうは食事として食べるための食品は販売していません。音楽は普通大音量で、立ったままでいなければならない場合もしばしばあります。",
+  "en": null
+ },
+ "information=map": {
+  "ja": "地図が掲載された案内板",
+  "en": "A board with a map."
+ },
+ "cuisine=ramen": {
+  "ja": null,
+  "en": "A establishment that mainly sells ramen."
+ },
+ "tourism=hotel": {
+  "ja": "ホテル - 有料で宿泊サービスを提供する施設です。",
+  "en": "Hotel – an establishment that provides paid lodging."
+ },
+ "information=guidepost": {
+  "ja": "道標やガイドポストを示すために使います",
+  "en": "Used to mark a guidepost/signpost"
+ },
+ "amenity=bank": {
+  "ja": "銀行。顧客がお金を預けたり借りたり、他のサービスを受けすることができる金融機関です。",
+  "en": "A financial establishment where customers can, among other services, deposit money and take loans."
+ },
+ "shop=clothes": {
+  "ja": "衣類を扱っている店舗",
+  "en": "A shop which primarily sells clothing"
+ },
+ "tourism=artwork": {
+  "ja": "公開されている美術作品です。",
+  "en": "A public piece of art."
+ },
+ "amenity=pharmacy": {
+  "ja": "薬局。薬剤師が医薬品を販売する店舗です",
+  "en": "A shop where a pharmacist sells medications."
+ },
+ "healthcare=pharmacy": {
+  "ja": null,
+  "en": "A shop where a pharmacist sells prescription medications. Used in addition to tag:amenity=pharmacy."
+ },
+ "cuisine=noodle": {
+  "ja": null,
+  "en": "Japanese, Chinese, Korean, Vietnamese noodles. Japanese udon, soba, and ramen. Chinese dandan noodles and tan men. Korean renmyon and bibin myon. Vietnamese phở and bún."
+ },
+ "amenity=parking": {
+  "ja": "自動車を駐車する場所",
+  "en": "A place for parking cars."
+ },
+ "amenity=post_office": {
+  "ja": "郵便局。手紙や小包を発送する場所。",
+  "en": "A place where letters and parcels may be sent or collected."
+ },
+ "cuisine=sushi": {
+  "ja": "主に寿司を提供するお店。",
+  "en": "A place that mainly sells sushi."
+ },
+ "office=government": {
+  "ja": "（国際、）国、地方、地域の政府機関または支局の事務所です",
+  "en": "An office of a (supra)national, regional or local government agency or department"
+ },
+ "amenity=place_of_worship": {
+  "ja": "宗教行事が行われる場所",
+  "en": "A place where religious services are conducted."
+ },
+ "amenity=dentist": {
+  "ja": "歯科の開業医/外科処置が行われている場所",
+  "en": "A dentist practice / surgery."
+ },
+ "healthcare=dentist": {
+  "ja": null,
+  "en": "A dentist practice / surgery. Used in addition to amenity=dentist"
+ },
+ "board_type=history": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=italian": {
+  "ja": null,
+  "en": "A place that mainly sells Italian food."
+ },
+ "amenity=doctors": {
+  "ja": "医院・診療所。医師から治療や検査を受けることができる場所です。",
+  "en": "A doctor's office, a place to get medical attention or a check up from a physician."
+ },
+ "healthcare=doctor": {
+  "ja": "診療所。医師から治療や検査を受けることができる場所です。amenity=doctorsに追加して使用します。",
+  "en": "A place to get medical attention or a check up from a physician. Used in addition to tag:amenity=doctors."
+ },
+ "shop=books": {
+  "ja": "書店。書籍販売を専門とする店舗ですが、新聞や雑誌などその他の印刷物も扱う場合があります。",
+  "en": "A store specializing in the sale of books, although it may also sell other printed publications, such as newspapers and magazines."
+ },
+ "amenity=drinking_water": {
+  "ja": "水飲み場は、人がその場で飲むために飲用水を入手できる場所です。通常、水は飲用専用です。 drinking fountain や bubbler とも呼ばれています。",
+  "en": "A drinking water source which provides potable water for consumption."
+ },
+ "shop=supermarket": {
+  "ja": "食料、生鮮品などの商品を販売する大きな店舗",
+  "en": "A large shop selling groceries, fresh produce, and other goods."
+ },
+ "religion=shinto": {
+  "ja": "神道",
+  "en": "Describes that a feature is related to Shinto."
+ },
+ "amenity=police": {
+  "ja": "警察署。警察の業務を行う基地です。",
+  "en": "A police station is a facility where police officers patrol from and that is a first point of contact for civilians."
+ },
+ "shop=gift": {
+  "ja": "土産物店、ギフトショップ。贈り物、グリーティングカード、あるいは観光みやげを販売する店舗です。",
+  "en": "Shop selling gifts, greeting cards, or tourist gifts (souvenirs)."
+ },
+ "amenity=atm": {
+  "ja": "ATM。金融機関の顧客が金融取引を行うことができる機器。",
+  "en": "A device that provides the clients of a financial institution with access to financial transactions."
+ },
+ "parking=underground": {
+  "ja": null,
+  "en": "Underground car park"
+ },
+ "tourism=museum": {
+  "ja": "博物館です。",
+  "en": "A museum: an institution with exhibitions on scientific, historical, cultural topics"
+ },
+ "vending=parking_tickets": {
+  "ja": "駐車場のチケットを販売する機械",
+  "en": "A machine selling tickets for parking"
+ },
+ "shop=bakery": {
+  "ja": "パン屋。パンを販売する店です。",
+  "en": "A shop selling bread"
+ },
+ "shop=hairdresser": {
+  "ja": "理容店・美容院。髪の毛を切ってもらえる店舗です",
+  "en": "A hairdressers or barbers shop, where hair is cut"
+ },
+ "shop=confectionery": {
+  "ja": "甘いものや菓子を売る店です。",
+  "en": "A shop selling sweets and candies."
+ },
+ "shop=sports": {
+  "ja": "スポーツ用品店。スポーツの装備やスポーツウェアを販売する店舗です。",
+  "en": "A shop selling sports equipment and clothing."
+ },
+ "cuisine=soba": {
+  "ja": null,
+  "en": null
+ },
+ "shop=massage": {
+  "ja": "マッサージ店",
+  "en": "Massage shop"
+ },
+ "cuisine=curry": {
+  "ja": null,
+  "en": "A curry as cuisine."
+ },
+ "board_type=notice": {
+  "ja": null,
+  "en": null
+ },
+ "cuisine=indian": {
+  "ja": null,
+  "en": "A place that mainly sells Indian food."
+ },
+ "amenity=kindergarten": {
+  "ja": "幼稚園や保育園。就学前の子供の面倒を見たり、（普通は）早期教育を施したりする場所です。",
+  "en": "A place for looking after preschool children and (typically) giving early education."
+ },
+ "cuisine=burger": {
+  "ja": null,
+  "en": "A place that mainly sells burgers"
+ },
+ "shop=mobile_phone": {
+  "ja": "携帯電話店。主に携帯電話やアクセサリを販売する店舗",
+  "en": "A shop that primarily sells mobile phones and accessories."
+ },
+ "amenity=bicycle_parking": {
+  "ja": "自転車を停めるための場所。",
+  "en": "A parking space designed for bicycles."
+ },
+ "tourism=attraction": {
+  "ja": "一般的な観光名所です。",
+  "en": "An object of interest for a tourist, or a purpose-built tourist attraction"
+ },
+ "shop=stationery": {
+  "ja": "文具店。オフィスのサプライ品を販売する店",
+  "en": "A shop selling office supplies."
+ },
+ "amenity=waste_basket": {
+  "ja": "ごみ箱。歩行者が利用しやすいように作られたごみを入れるための小さな単一の容器",
+  "en": "A single small container for depositing garbage that is easily accessible for pedestrians."
+ },
+ "amenity=clinic": {
+  "ja": "中規模の医療センターで、ふつう入院患者の受け入れを行っていないものです。",
+  "en": "A clinic is a medical centre, with more staff than a doctor's office, that does not admit inpatients."
+ },
+ "cuisine=friture": {
+  "ja": null,
+  "en": "Dutch and Belgian chip shop (fish_and_chips but usually without fish); also called friterie, frietkot."
+ },
+ "amenity=taxi": {
+  "ja": "タクシー乗り場。タクシーが乗客を待つ場所です。たいてい大勢の人が集まる場所の近くにあります。",
+  "en": "A place where taxis wait for passengers. Often near where many people congregate."
+ },
+ "healthcare=clinic": {
+  "ja": null,
+  "en": "A medical facility, with more staff than a doctor's office, that does not admit inpatients. Used in addition to tag:amenity=clinic."
+ },
+ "historic=wayside_shrine": {
+  "ja": "しばしば宗教的な表現のある祠。現代の祠にも用いる。",
+  "en": "A shrine often showing a religious depiction. Tag is used also for modern shrines."
+ },
+ "office=estate_agent": {
+  "ja": "住居を借りたり買ったりすることができる場所です。",
+  "en": "A place where you can rent or buy a house."
+ },
+ "artwork_type=sculpture": {
+  "ja": "彫刻",
+  "en": "Sculpture"
+ }
+}

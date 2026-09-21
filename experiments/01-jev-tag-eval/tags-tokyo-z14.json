@@ -1,0 +1,7078 @@
+{
+ "bbox": [
+  139.74,
+  35.66,
+  139.79,
+  35.7
+ ],
+ "max_level": 13,
+ "pois": 8782,
+ "pois_with_tags": 8697,
+ "unique_tags": 642,
+ "dropped_by_allowlist": 277,
+ "tags": [
+  {
+   "id": "amenity=restaurant",
+   "key": "amenity",
+   "value": "restaurant",
+   "count": 1339,
+   "role": "category",
+   "sample_names": [
+    "Le Charbon",
+    "AUX BACHCHANALES",
+    "武蔵野油学会"
+   ]
+  },
+  {
+   "id": "amenity=cafe",
+   "key": "amenity",
+   "value": "cafe",
+   "count": 510,
+   "role": "category",
+   "sample_names": [
+    "スターバックス",
+    "ドトールコーヒーショップ",
+    "カフェ・ド・クリエ"
+   ]
+  },
+  {
+   "id": "tourism=information",
+   "key": "tourism",
+   "value": "information",
+   "count": 478,
+   "role": "category",
+   "sample_names": [
+    "三百年の松",
+    "柳の井",
+    "果樹古品種園 (東)"
+   ]
+  },
+  {
+   "id": "amenity=vending_machine",
+   "key": "amenity",
+   "value": "vending_machine",
+   "count": 464,
+   "role": "category",
+   "sample_names": [
+    "アサヒビール",
+    "キリンビバレッジ",
+    "伊藤園"
+   ]
+  },
+  {
+   "id": "shop=convenience",
+   "key": "shop",
+   "value": "convenience",
+   "count": 372,
+   "role": "category",
+   "sample_names": [
+    "ファミリーマート",
+    "ナチュラルローソン",
+    "ローソン"
+   ]
+  },
+  {
+   "id": "vending=drinks",
+   "key": "vending",
+   "value": "drinks",
+   "count": 362,
+   "role": "refine",
+   "sample_names": [
+    "アサヒビール",
+    "キリンビバレッジ",
+    "伊藤園"
+   ]
+  },
+  {
+   "id": "amenity=pub",
+   "key": "amenity",
+   "value": "pub",
+   "count": 342,
+   "role": "category",
+   "sample_names": [
+    "楽蔵うたげ",
+    "ネバーランドカフェ",
+    "酒蔵駒忠"
+   ]
+  },
+  {
+   "id": "cuisine=japanese",
+   "key": "cuisine",
+   "value": "japanese",
+   "count": 315,
+   "role": "refine",
+   "sample_names": [
+    "ほっともっと",
+    "焼鳥・炙り炭火焼き をどり 大手町店",
+    "幸村"
+   ]
+  },
+  {
+   "id": "office=company",
+   "key": "office",
+   "value": "company",
+   "count": 312,
+   "role": "category",
+   "sample_names": [
+    "(株)たびせん・つなぐ",
+    "ENEOS",
+    "IMAGICA Lab"
+   ]
+  },
+  {
+   "id": "cuisine=coffee_shop",
+   "key": "cuisine",
+   "value": "coffee_shop",
+   "count": 295,
+   "role": "refine",
+   "sample_names": [
+    "スターバックス",
+    "ドトールコーヒーショップ",
+    "カフェ・ド・クリエ"
+   ]
+  },
+  {
+   "id": "amenity=fast_food",
+   "key": "amenity",
+   "value": "fast_food",
+   "count": 241,
+   "role": "category",
+   "sample_names": [
+    "ほっともっと",
+    "小諸そば",
+    "ゆで太郎"
+   ]
+  },
+  {
+   "id": "information=board",
+   "key": "information",
+   "value": "board",
+   "count": 218,
+   "role": "refine",
+   "sample_names": [
+    "三百年の松",
+    "柳の井",
+    "果樹古品種園 (東)"
+   ]
+  },
+  {
+   "id": "amenity=post_box",
+   "key": "amenity",
+   "value": "post_box",
+   "count": 216,
+   "role": "category",
+   "sample_names": [
+    "八重洲1-9-9",
+    "郵便ポスト",
+    "虎ノ門ヒルズ局前"
+   ]
+  },
+  {
+   "id": "amenity=parking_entrance",
+   "key": "amenity",
+   "value": "parking_entrance",
+   "count": 213,
+   "role": "category",
+   "sample_names": [
+    "NTTル・パルク日本橋二丁目第1駐車場",
+    "搬入車専用",
+    "三越駐車場 機械式"
+   ]
+  },
+  {
+   "id": "amenity=bicycle_rental",
+   "key": "amenity",
+   "value": "bicycle_rental",
+   "count": 207,
+   "role": "category",
+   "sample_names": [
+    "東京虎ノ門グローバルスクエア",
+    "ARKMARK八丁堀ASYLCOURT",
+    "半蔵門PREX South"
+   ]
+  },
+  {
+   "id": "amenity=bench",
+   "key": "amenity",
+   "value": "bench",
+   "count": 196,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "amenity=toilets",
+   "key": "amenity",
+   "value": "toilets",
+   "count": 168,
+   "role": "category",
+   "sample_names": [
+    "勝どき橋西詰公衆便所",
+    "西河岸橋際公衆便所",
+    "元八通八橋際公衆便所"
+   ]
+  },
+  {
+   "id": "amenity=telephone",
+   "key": "amenity",
+   "value": "telephone",
+   "count": 162,
+   "role": "category",
+   "sample_names": [
+    "NTT"
+   ]
+  },
+  {
+   "id": "cuisine=chinese",
+   "key": "cuisine",
+   "value": "chinese",
+   "count": 147,
+   "role": "refine",
+   "sample_names": [
+    "龍門酒家",
+    "品香苑",
+    "游楽"
+   ]
+  },
+  {
+   "id": "historic=memorial",
+   "key": "historic",
+   "value": "memorial",
+   "count": 141,
+   "role": "category",
+   "sample_names": [
+    "東京駅新幹線建設記念碑",
+    "一橋徳川家 屋敷跡",
+    "パール博士顕彰碑"
+   ]
+  },
+  {
+   "id": "amenity=bar",
+   "key": "amenity",
+   "value": "bar",
+   "count": 130,
+   "role": "category",
+   "sample_names": [
+    "Cocktail Works",
+    "ANDY",
+    "小紋"
+   ]
+  },
+  {
+   "id": "brand=FamilyMart",
+   "key": "brand",
+   "value": "FamilyMart",
+   "count": 128,
+   "role": "brand",
+   "sample_names": [
+    "ファミリーマート"
+   ]
+  },
+  {
+   "id": "information=map",
+   "key": "information",
+   "value": "map",
+   "count": 125,
+   "role": "refine",
+   "sample_names": [
+    "歴史と文化の散歩道　明治末年の千鳥ヶ淵周辺",
+    "靖国神社境内案内図",
+    "霞が関二丁目１番"
+   ]
+  },
+  {
+   "id": "brand=7-ELEVEN",
+   "key": "brand",
+   "value": "7-ELEVEN",
+   "count": 119,
+   "role": "brand",
+   "sample_names": [
+    "セブン-イレブン"
+   ]
+  },
+  {
+   "id": "cuisine=ramen",
+   "key": "cuisine",
+   "value": "ramen",
+   "count": 117,
+   "role": "refine",
+   "sample_names": [
+    "武蔵野油学会",
+    "喜多方ラーメン坂内",
+    "麺処 銀笹"
+   ]
+  },
+  {
+   "id": "tourism=hotel",
+   "key": "tourism",
+   "value": "hotel",
+   "count": 111,
+   "role": "category",
+   "sample_names": [
+    "ＹＭＣＡアジア青少年センター",
+    "Henn na Hotel Tokyo Ginza",
+    "ホテル日本橋サイボー"
+   ]
+  },
+  {
+   "id": "information=guidepost",
+   "key": "information",
+   "value": "guidepost",
+   "count": 107,
+   "role": "refine",
+   "sample_names": [
+    "千鳥ヶ淵さんぽみち",
+    "丸の内今昔散歩",
+    "赤坂山王散歩"
+   ]
+  },
+  {
+   "id": "amenity=bank",
+   "key": "amenity",
+   "value": "bank",
+   "count": 103,
+   "role": "category",
+   "sample_names": [
+    "中央労働金庫",
+    "ゆうちょ銀行",
+    "みずほ銀行"
+   ]
+  },
+  {
+   "id": "brand=Docomo Bike Share",
+   "key": "brand",
+   "value": "Docomo Bike Share",
+   "count": 97,
+   "role": "brand",
+   "sample_names": [
+    "東京虎ノ門グローバルスクエア",
+    "ARKMARK八丁堀ASYLCOURT",
+    "半蔵門PREX South"
+   ]
+  },
+  {
+   "id": "shop=clothes",
+   "key": "shop",
+   "value": "clothes",
+   "count": 96,
+   "role": "category",
+   "sample_names": [
+    "Suit Select",
+    "PASS THE BATON MARUNOUCHI",
+    "ユニクロ"
+   ]
+  },
+  {
+   "id": "tourism=artwork",
+   "key": "tourism",
+   "value": "artwork",
+   "count": 95,
+   "role": "category",
+   "sample_names": [
+    "Dr.Ochanomizu Manhole Cover",
+    "太田道灌像",
+    "Roots"
+   ]
+  },
+  {
+   "id": "amenity=pharmacy",
+   "key": "amenity",
+   "value": "pharmacy",
+   "count": 92,
+   "role": "category",
+   "sample_names": [
+    "日本調剤",
+    "アガペ薬局",
+    "セイジョー"
+   ]
+  },
+  {
+   "id": "healthcare=pharmacy",
+   "key": "healthcare",
+   "value": "pharmacy",
+   "count": 92,
+   "role": "category",
+   "sample_names": [
+    "日本調剤",
+    "アガペ薬局",
+    "セイジョー"
+   ]
+  },
+  {
+   "id": "cuisine=noodle",
+   "key": "cuisine",
+   "value": "noodle",
+   "count": 85,
+   "role": "refine",
+   "sample_names": [
+    "小諸そば",
+    "ゆで太郎",
+    "尾道ラーメン 麺一筋"
+   ]
+  },
+  {
+   "id": "amenity=parking",
+   "key": "amenity",
+   "value": "parking",
+   "count": 83,
+   "role": "category",
+   "sample_names": [
+    "タイムズ九段南第７",
+    "park station",
+    "トーワパーキング"
+   ]
+  },
+  {
+   "id": "amenity=post_office",
+   "key": "amenity",
+   "value": "post_office",
+   "count": 79,
+   "role": "category",
+   "sample_names": [
+    "新橋四郵便局",
+    "東神田郵便局",
+    "東神田一郵便局"
+   ]
+  },
+  {
+   "id": "brand=ドコモ・バイクシェア",
+   "key": "brand",
+   "value": "ドコモ・バイクシェア",
+   "count": 78,
+   "role": "brand",
+   "sample_names": [
+    "中央区役所",
+    "神田ふれあい通り第２",
+    "ポータル秋葉原"
+   ]
+  },
+  {
+   "id": "cuisine=sushi",
+   "key": "cuisine",
+   "value": "sushi",
+   "count": 78,
+   "role": "refine",
+   "sample_names": [
+    "はま寿司",
+    "すし大",
+    "Miyakozushi Sushi"
+   ]
+  },
+  {
+   "id": "office=government",
+   "key": "office",
+   "value": "government",
+   "count": 73,
+   "role": "category",
+   "sample_names": [
+    "中央区保健所",
+    "裁判官訴追委員会",
+    "沖縄振興開発金融公庫東京本部"
+   ]
+  },
+  {
+   "id": "amenity=place_of_worship",
+   "key": "amenity",
+   "value": "place_of_worship",
+   "count": 71,
+   "role": "category",
+   "sample_names": [
+    "妙真教会",
+    "光宝寺",
+    "今村幸稲荷神社"
+   ]
+  },
+  {
+   "id": "amenity=dentist",
+   "key": "amenity",
+   "value": "dentist",
+   "count": 70,
+   "role": "category",
+   "sample_names": [
+    "加部歯科医院",
+    "柴田歯科医院",
+    "ダイヤビル歯科"
+   ]
+  },
+  {
+   "id": "healthcare=dentist",
+   "key": "healthcare",
+   "value": "dentist",
+   "count": 70,
+   "role": "category",
+   "sample_names": [
+    "加部歯科医院",
+    "柴田歯科医院",
+    "ダイヤビル歯科"
+   ]
+  },
+  {
+   "id": "board_type=history",
+   "key": "board_type",
+   "value": "history",
+   "count": 67,
+   "role": "refine",
+   "sample_names": [
+    "柳の井",
+    "千代田区町名由来板 北の丸公園",
+    "梅林坂"
+   ]
+  },
+  {
+   "id": "cuisine=italian",
+   "key": "cuisine",
+   "value": "italian",
+   "count": 65,
+   "role": "refine",
+   "sample_names": [
+    "RIGOLETTO WINE AND BAR Marunouchi",
+    "コリーナ・デラ・ステラ",
+    "イタリア食堂 ファリーナ"
+   ]
+  },
+  {
+   "id": "amenity=doctors",
+   "key": "amenity",
+   "value": "doctors",
+   "count": 63,
+   "role": "category",
+   "sample_names": [
+    "アツキ女性クリニック",
+    "田中まき整形外科",
+    "半蔵門胃腸クリニック"
+   ]
+  },
+  {
+   "id": "healthcare=doctor",
+   "key": "healthcare",
+   "value": "doctor",
+   "count": 63,
+   "role": "category",
+   "sample_names": [
+    "アツキ女性クリニック",
+    "田中まき整形外科",
+    "半蔵門胃腸クリニック"
+   ]
+  },
+  {
+   "id": "brand=LAWSON",
+   "key": "brand",
+   "value": "LAWSON",
+   "count": 62,
+   "role": "brand",
+   "sample_names": [
+    "ローソン"
+   ]
+  },
+  {
+   "id": "shop=books",
+   "key": "shop",
+   "value": "books",
+   "count": 61,
+   "role": "category",
+   "sample_names": [
+    "メロンブックス",
+    "東京理科大生協",
+    "魚山堂書店"
+   ]
+  },
+  {
+   "id": "amenity=drinking_water",
+   "key": "amenity",
+   "value": "drinking_water",
+   "count": 59,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "shop=supermarket",
+   "key": "shop",
+   "value": "supermarket",
+   "count": 59,
+   "role": "category",
+   "sample_names": [
+    "まいばすけっと",
+    "ピアゴ",
+    "マルエツプチ"
+   ]
+  },
+  {
+   "id": "religion=shinto",
+   "key": "religion",
+   "value": "shinto",
+   "count": 56,
+   "role": "refine",
+   "sample_names": [
+    "今村幸稲荷神社",
+    "大部芳之介氏顕彰碑;明徳稲荷神社",
+    "小網神社"
+   ]
+  },
+  {
+   "id": "amenity=police",
+   "key": "amenity",
+   "value": "police",
+   "count": 54,
+   "role": "category",
+   "sample_names": [
+    "麹町警察署千鳥ヶ淵警備派出所",
+    "麹町警察署永田町交番",
+    "丸の内警察署皇居前警備派出所"
+   ]
+  },
+  {
+   "id": "shop=gift",
+   "key": "shop",
+   "value": "gift",
+   "count": 54,
+   "role": "category",
+   "sample_names": [
+    "Ibaraki sense",
+    "日本橋とやま館",
+    "日本刀剣"
+   ]
+  },
+  {
+   "id": "brand=ドトール",
+   "key": "brand",
+   "value": "ドトール",
+   "count": 53,
+   "role": "brand",
+   "sample_names": [
+    "ドトールコーヒーショップ"
+   ]
+  },
+  {
+   "id": "brand=スターバックス",
+   "key": "brand",
+   "value": "スターバックス",
+   "count": 52,
+   "role": "brand",
+   "sample_names": [
+    "スターバックス"
+   ]
+  },
+  {
+   "id": "amenity=atm",
+   "key": "amenity",
+   "value": "atm",
+   "count": 50,
+   "role": "category",
+   "sample_names": [
+    "セブン銀行",
+    "みずほ銀行",
+    "Gaia Bitcoin ATM"
+   ]
+  },
+  {
+   "id": "parking=underground",
+   "key": "parking",
+   "value": "underground",
+   "count": 49,
+   "role": "refine",
+   "sample_names": [
+    "西銀座駐車場",
+    "駐車場出口",
+    "東京交通会館パーキング"
+   ]
+  },
+  {
+   "id": "tourism=museum",
+   "key": "tourism",
+   "value": "museum",
+   "count": 49,
+   "role": "category",
+   "sample_names": [
+    "teamLab Borderless Museum",
+    "大倉集古館",
+    "中央区立郷土資料館"
+   ]
+  },
+  {
+   "id": "vending=parking_tickets",
+   "key": "vending",
+   "value": "parking_tickets",
+   "count": 49,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "shop=bakery",
+   "key": "shop",
+   "value": "bakery",
+   "count": 47,
+   "role": "category",
+   "sample_names": [
+    "サンドウィッチパーラー まつむら",
+    "ovgo Baker Cookie Factory Shop",
+    "ovgo Baker"
+   ]
+  },
+  {
+   "id": "shop=hairdresser",
+   "key": "shop",
+   "value": "hairdresser",
+   "count": 47,
+   "role": "category",
+   "sample_names": [
+    "QBハウス",
+    "林美容院",
+    "バーバー東京"
+   ]
+  },
+  {
+   "id": "shop=confectionery",
+   "key": "shop",
+   "value": "confectionery",
+   "count": 46,
+   "role": "category",
+   "sample_names": [
+    "浅田屋",
+    "ツッカベッカライ カヤヌマ",
+    "岡埜栄泉"
+   ]
+  },
+  {
+   "id": "shop=sports",
+   "key": "shop",
+   "value": "sports",
+   "count": 44,
+   "role": "category",
+   "sample_names": [
+    "Select snowboard",
+    "switch",
+    "Victoria Golf"
+   ]
+  },
+  {
+   "id": "cuisine=soba",
+   "key": "cuisine",
+   "value": "soba",
+   "count": 43,
+   "role": "refine",
+   "sample_names": [
+    "照庵",
+    "砂場",
+    "肉そば ごん"
+   ]
+  },
+  {
+   "id": "shop=massage",
+   "key": "shop",
+   "value": "massage",
+   "count": 43,
+   "role": "category",
+   "sample_names": [
+    "健康こみち",
+    "みんなのてもみ",
+    "ストレッチ専門店　Dr.ストレッチ"
+   ]
+  },
+  {
+   "id": "cuisine=curry",
+   "key": "cuisine",
+   "value": "curry",
+   "count": 42,
+   "role": "refine",
+   "sample_names": [
+    "カリカル 新橋本店",
+    "カレーは飲み物。ニュー新橋ビル店",
+    "仙臺 (せんだい)"
+   ]
+  },
+  {
+   "id": "board_type=notice",
+   "key": "board_type",
+   "value": "notice",
+   "count": 41,
+   "role": "refine",
+   "sample_names": [
+    "三百年の松",
+    "千代田区からのお知らせ",
+    "国立国会図書館お知らせ"
+   ]
+  },
+  {
+   "id": "cuisine=indian",
+   "key": "cuisine",
+   "value": "indian",
+   "count": 37,
+   "role": "refine",
+   "sample_names": [
+    "Zeera",
+    "NDIAN RESTAURANT RUMINA",
+    "プルニワ"
+   ]
+  },
+  {
+   "id": "amenity=kindergarten",
+   "key": "amenity",
+   "value": "kindergarten",
+   "count": 36,
+   "role": "category",
+   "sample_names": [
+    "コビープリスクールはこざき",
+    "白百合学園幼稚園",
+    "暁星幼稚園"
+   ]
+  },
+  {
+   "id": "brand=タリーズコーヒー",
+   "key": "brand",
+   "value": "タリーズコーヒー",
+   "count": 35,
+   "role": "brand",
+   "sample_names": [
+    "タリーズコーヒー"
+   ]
+  },
+  {
+   "id": "cuisine=burger",
+   "key": "cuisine",
+   "value": "burger",
+   "count": 35,
+   "role": "refine",
+   "sample_names": [
+    "マクドナルド",
+    "ブラザーズ 人形町店",
+    "Made in 10"
+   ]
+  },
+  {
+   "id": "shop=mobile_phone",
+   "key": "shop",
+   "value": "mobile_phone",
+   "count": 35,
+   "role": "category",
+   "sample_names": [
+    "ドコモショップ",
+    "モバデコ",
+    "auショップ"
+   ]
+  },
+  {
+   "id": "amenity=bicycle_parking",
+   "key": "amenity",
+   "value": "bicycle_parking",
+   "count": 33,
+   "role": "category",
+   "sample_names": [
+    "秋葉原駅東側駅前広場",
+    "日比谷ステップ広場地域用駐輪場",
+    "大手町高架下自転車駐車場"
+   ]
+  },
+  {
+   "id": "tourism=attraction",
+   "key": "tourism",
+   "value": "attraction",
+   "count": 32,
+   "role": "category",
+   "sample_names": [
+    "汐留SIO-SITE",
+    "Cat face facade",
+    "勝鬨橋"
+   ]
+  },
+  {
+   "id": "shop=stationery",
+   "key": "shop",
+   "value": "stationery",
+   "count": 31,
+   "role": "category",
+   "sample_names": [
+    "はんこ卸売センター",
+    "ハンコ卸売センター",
+    "ナナ文具"
+   ]
+  },
+  {
+   "id": "amenity=waste_basket",
+   "key": "amenity",
+   "value": "waste_basket",
+   "count": 30,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "amenity=clinic",
+   "key": "amenity",
+   "value": "clinic",
+   "count": 30,
+   "role": "category",
+   "sample_names": [
+    "八重洲中央クリニック",
+    "メディカルスクエア赤坂",
+    "虎ノ門診療所"
+   ]
+  },
+  {
+   "id": "cuisine=friture",
+   "key": "cuisine",
+   "value": "friture",
+   "count": 30,
+   "role": "refine",
+   "sample_names": [
+    "とんかつ 末吉 新橋店",
+    "スープデリ SOUP DELI",
+    "とんかつ 不二"
+   ]
+  },
+  {
+   "id": "amenity=taxi",
+   "key": "amenity",
+   "value": "taxi",
+   "count": 30,
+   "role": "category",
+   "sample_names": [
+    "虎ノ門ヒルズ森タワータクシー乗り場",
+    "新橋駅烏森口タクシー乗り場",
+    "東京駅丸の内北口タクシー乗り場"
+   ]
+  },
+  {
+   "id": "brand=カフェ・ベローチェ",
+   "key": "brand",
+   "value": "カフェ・ベローチェ",
+   "count": 29,
+   "role": "brand",
+   "sample_names": [
+    "カフェ・ベローチェ"
+   ]
+  },
+  {
+   "id": "healthcare=clinic",
+   "key": "healthcare",
+   "value": "clinic",
+   "count": 29,
+   "role": "category",
+   "sample_names": [
+    "八重洲中央クリニック",
+    "メディカルスクエア赤坂",
+    "虎ノ門診療所"
+   ]
+  },
+  {
+   "id": "historic=wayside_shrine",
+   "key": "historic",
+   "value": "wayside_shrine",
+   "count": 28,
+   "role": "category",
+   "sample_names": [
+    "稲荷神社",
+    "稲荷大明神",
+    "狐塚"
+   ]
+  },
+  {
+   "id": "office=estate_agent",
+   "key": "office",
+   "value": "estate_agent",
+   "count": 28,
+   "role": "category",
+   "sample_names": [
+    "トマト不動産",
+    "松富士宅建",
+    "yuruliku"
+   ]
+  },
+  {
+   "id": "artwork_type=sculpture",
+   "key": "artwork_type",
+   "value": "sculpture",
+   "count": 27,
+   "role": "refine",
+   "sample_names": [
+    "Roots",
+    "SUNDIAL, 2018",
+    "いのち"
+   ]
+  },
+  {
+   "id": "shop=deli",
+   "key": "shop",
+   "value": "deli",
+   "count": 27,
+   "role": "category",
+   "sample_names": [
+    "つきじ丸武(まるたけ)",
+    "佃源田中屋",
+    "肉のたかさご"
+   ]
+  },
+  {
+   "id": "brand=HELLO CYCLING",
+   "key": "brand",
+   "value": "HELLO CYCLING",
+   "count": 27,
+   "role": "brand",
+   "sample_names": [
+    "アデックス一番町",
+    "三井のリパーク 西新橋２丁目第５",
+    "港区新橋６丁目第四駐車場"
+   ]
+  },
+  {
+   "id": "shop=dry_cleaning",
+   "key": "shop",
+   "value": "dry_cleaning",
+   "count": 27,
+   "role": "category",
+   "sample_names": [
+    "喜久屋",
+    "ウブカタクリーニング",
+    "ポニー"
+   ]
+  },
+  {
+   "id": "amenity=ticket_validator",
+   "key": "amenity",
+   "value": "ticket_validator",
+   "count": 26,
+   "role": "category",
+   "sample_names": [
+    "国際フォーラム口",
+    "京橋口",
+    "神保町交差点(南側)方面改札"
+   ]
+  },
+  {
+   "id": "amenity=clock",
+   "key": "amenity",
+   "value": "clock",
+   "count": 26,
+   "role": "category",
+   "sample_names": [
+    "時計塔",
+    "日テレ大時計",
+    "人形町からくり櫓"
+   ]
+  },
+  {
+   "id": "shop=toys",
+   "key": "shop",
+   "value": "toys",
+   "count": 26,
+   "role": "category",
+   "sample_names": [
+    "DRAGON BALL STORE TOKYO",
+    "タミヤ プラモデルファクトリー",
+    "カードラッシュ"
+   ]
+  },
+  {
+   "id": "cuisine=french",
+   "key": "cuisine",
+   "value": "french",
+   "count": 25,
+   "role": "refine",
+   "sample_names": [
+    "AUX BACHCHANALES",
+    "ル・ブション",
+    "シェ大竹"
+   ]
+  },
+  {
+   "id": "parking=surface",
+   "key": "parking",
+   "value": "surface",
+   "count": 25,
+   "role": "refine",
+   "sample_names": [
+    "タイムズ九段南第７",
+    "トーワパーキング",
+    "タイムズ一番町第8"
+   ]
+  },
+  {
+   "id": "brand=みずほ銀行",
+   "key": "brand",
+   "value": "みずほ銀行",
+   "count": 25,
+   "role": "brand",
+   "sample_names": [
+    "みずほ銀行"
+   ]
+  },
+  {
+   "id": "shop=alcohol",
+   "key": "shop",
+   "value": "alcohol",
+   "count": 24,
+   "role": "category",
+   "sample_names": [
+    "やまや",
+    "升本",
+    "住吉酒販"
+   ]
+  },
+  {
+   "id": "tourism=gallery",
+   "key": "tourism",
+   "value": "gallery",
+   "count": 24,
+   "role": "category",
+   "sample_names": [
+    "parabolica-bis",
+    "チーパズギャラリー",
+    "創画廊"
+   ]
+  },
+  {
+   "id": "shop=chemist",
+   "key": "shop",
+   "value": "chemist",
+   "count": 24,
+   "role": "category",
+   "sample_names": [
+    "ココカラファイン",
+    "スギ薬局",
+    "児玉薬局"
+   ]
+  },
+  {
+   "id": "amenity=studio",
+   "key": "amenity",
+   "value": "studio",
+   "count": 23,
+   "role": "category",
+   "sample_names": [
+    "グリモア",
+    "ニッポン放送",
+    "テレビ東京ミュージック"
+   ]
+  },
+  {
+   "id": "memorial=stele",
+   "key": "memorial",
+   "value": "stele",
+   "count": 23,
+   "role": "refine",
+   "sample_names": [
+    "東京駅新幹線建設記念碑",
+    "御休息所前多門",
+    "書陵部"
+   ]
+  },
+  {
+   "id": "artwork_type=statue",
+   "key": "artwork_type",
+   "value": "statue",
+   "count": 23,
+   "role": "refine",
+   "sample_names": [
+    "太田道灌像",
+    "アンティノウス",
+    "愛"
+   ]
+  },
+  {
+   "id": "amenity=theatre",
+   "key": "amenity",
+   "value": "theatre",
+   "count": 22,
+   "role": "category",
+   "sample_names": [
+    "一橋講堂",
+    "三越劇場",
+    "明治座"
+   ]
+  },
+  {
+   "id": "cuisine=beef_bowl",
+   "key": "cuisine",
+   "value": "beef_bowl",
+   "count": 22,
+   "role": "refine",
+   "sample_names": [
+    "吉野家",
+    "松屋",
+    "すき家"
+   ]
+  },
+  {
+   "id": "shop=jewelry",
+   "key": "shop",
+   "value": "jewelry",
+   "count": 22,
+   "role": "category",
+   "sample_names": [
+    "タグホイヤー",
+    "Graff",
+    "Cartier"
+   ]
+  },
+  {
+   "id": "amenity=social_facility",
+   "key": "amenity",
+   "value": "social_facility",
+   "count": 22,
+   "role": "category",
+   "sample_names": [
+    "新とみ",
+    "新川在宅介護支援センター",
+    "桜福祉会館"
+   ]
+  },
+  {
+   "id": "amenity=university",
+   "key": "amenity",
+   "value": "university",
+   "count": 21,
+   "role": "category",
+   "sample_names": [
+    "東京家政学院大学 千代田三番町キャンパス",
+    "東京理科大学経営学部",
+    "東京慈恵会医科大学（医学部）"
+   ]
+  },
+  {
+   "id": "shop=electronics",
+   "key": "shop",
+   "value": "electronics",
+   "count": 21,
+   "role": "category",
+   "sample_names": [
+    "和田電業社",
+    "柳北でんき",
+    "ビックカメラ"
+   ]
+  },
+  {
+   "id": "tourism=viewpoint",
+   "key": "tourism",
+   "value": "viewpoint",
+   "count": 20,
+   "role": "category",
+   "sample_names": [
+    "二重橋前",
+    "46階展望スペース",
+    "Tokyo Station train tracks Viewpoint 6F"
+   ]
+  },
+  {
+   "id": "cuisine=barbecue",
+   "key": "cuisine",
+   "value": "barbecue",
+   "count": 20,
+   "role": "refine",
+   "sample_names": [
+    "おくう",
+    "焼肉笑",
+    "丸武"
+   ]
+  },
+  {
+   "id": "amenity=college",
+   "key": "amenity",
+   "value": "college",
+   "count": 20,
+   "role": "category",
+   "sample_names": [
+    "法政大学（人間環境学部）",
+    "共立女子短期大学",
+    "法政大学（経済学部）"
+   ]
+  },
+  {
+   "id": "shop=florist",
+   "key": "shop",
+   "value": "florist",
+   "count": 20,
+   "role": "category",
+   "sample_names": [
+    "KIOSK",
+    "きりしまフラワー",
+    "ニコライ バーグマン フラワーズ & デザイン"
+   ]
+  },
+  {
+   "id": "brand=コカ・コーラ",
+   "key": "brand",
+   "value": "コカ・コーラ",
+   "count": 20,
+   "role": "brand",
+   "sample_names": [
+    "コカ・コーラ"
+   ]
+  },
+  {
+   "id": "shop=variety_store",
+   "key": "shop",
+   "value": "variety_store",
+   "count": 19,
+   "role": "category",
+   "sample_names": [
+    "ドン・キホーテ",
+    "無印良品",
+    "岡昌裏地ボタン店"
+   ]
+  },
+  {
+   "id": "parking=multi-storey",
+   "key": "parking",
+   "value": "multi-storey",
+   "count": 19,
+   "role": "refine",
+   "sample_names": [
+    "三越駐車場 機械式",
+    "B入口",
+    "A入口"
+   ]
+  },
+  {
+   "id": "brand=三菱UFJ銀行",
+   "key": "brand",
+   "value": "三菱UFJ銀行",
+   "count": 19,
+   "role": "brand",
+   "sample_names": [
+    "三菱UFJ銀行",
+    "三菱東京UFJ銀行"
+   ]
+  },
+  {
+   "id": "cuisine=seafood",
+   "key": "cuisine",
+   "value": "seafood",
+   "count": 18,
+   "role": "refine",
+   "sample_names": [
+    "幸村",
+    "海玄",
+    "魚まみれ"
+   ]
+  },
+  {
+   "id": "amenity=community_centre",
+   "key": "amenity",
+   "value": "community_centre",
+   "count": 18,
+   "role": "category",
+   "sample_names": [
+    "堀留町児童館",
+    "中央区立シニアセンター",
+    "築地児童館"
+   ]
+  },
+  {
+   "id": "healthcare=hospital",
+   "key": "healthcare",
+   "value": "hospital",
+   "count": 18,
+   "role": "category",
+   "sample_names": [
+    "京橋病院",
+    "港勤労者医療協会芝病院",
+    "いしせ脳神経外科クリニック"
+   ]
+  },
+  {
+   "id": "brand=NTT",
+   "key": "brand",
+   "value": "NTT",
+   "count": 18,
+   "role": "brand",
+   "sample_names": [
+    "NTT"
+   ]
+  },
+  {
+   "id": "religion=buddhist",
+   "key": "religion",
+   "value": "buddhist",
+   "count": 17,
+   "role": "refine",
+   "sample_names": [
+    "光宝寺",
+    "青松寺",
+    "鏡照院"
+   ]
+  },
+  {
+   "id": "amenity=hospital",
+   "key": "amenity",
+   "value": "hospital",
+   "count": 17,
+   "role": "category",
+   "sample_names": [
+    "京橋病院",
+    "港勤労者医療協会芝病院",
+    "いしせ脳神経外科クリニック"
+   ]
+  },
+  {
+   "id": "shop=musical_instrument",
+   "key": "shop",
+   "value": "musical_instrument",
+   "count": 17,
+   "role": "category",
+   "sample_names": [
+    "カワセ楽器店",
+    "RimShot",
+    "宮地楽器　神田店"
+   ]
+  },
+  {
+   "id": "cuisine=udon",
+   "key": "cuisine",
+   "value": "udon",
+   "count": 17,
+   "role": "refine",
+   "sample_names": [
+    "はなまるうどん",
+    "なか卯",
+    "そばよし"
+   ]
+  },
+  {
+   "id": "brand=サントリー",
+   "key": "brand",
+   "value": "サントリー",
+   "count": 17,
+   "role": "brand",
+   "sample_names": [
+    "サントリー"
+   ]
+  },
+  {
+   "id": "shop=bicycle",
+   "key": "shop",
+   "value": "bicycle",
+   "count": 16,
+   "role": "category",
+   "sample_names": [
+    "自動車修理CT",
+    "ラウラバイシクル",
+    "サイクリー銀座店"
+   ]
+  },
+  {
+   "id": "cuisine=steak_house",
+   "key": "cuisine",
+   "value": "steak_house",
+   "count": 16,
+   "role": "refine",
+   "sample_names": [
+    "いきなり！ステーキ",
+    "西洋料理 島",
+    "厨"
+   ]
+  },
+  {
+   "id": "vending=public_transport_tickets",
+   "key": "vending",
+   "value": "public_transport_tickets",
+   "count": 16,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "leisure=playground",
+   "key": "leisure",
+   "value": "playground",
+   "count": 16,
+   "role": "category",
+   "sample_names": [
+    "新宿区立若宮公園",
+    "西久保巴町児童遊園"
+   ]
+  },
+  {
+   "id": "shop=ticket",
+   "key": "shop",
+   "value": "ticket",
+   "count": 16,
+   "role": "category",
+   "sample_names": [
+    "Guided Tour Of The East Gardens Higashi -Gyoen",
+    "みどりの窓口",
+    "チケットレンジャー"
+   ]
+  },
+  {
+   "id": "brand=まいばすけっと",
+   "key": "brand",
+   "value": "まいばすけっと",
+   "count": 16,
+   "role": "brand",
+   "sample_names": [
+    "まいばすけっと"
+   ]
+  },
+  {
+   "id": "cuisine=regional",
+   "key": "cuisine",
+   "value": "regional",
+   "count": 16,
+   "role": "refine",
+   "sample_names": [
+    "吉宗",
+    "さくら家",
+    "鳥通"
+   ]
+  },
+  {
+   "id": "brand=三井住友銀行",
+   "key": "brand",
+   "value": "三井住友銀行",
+   "count": 16,
+   "role": "brand",
+   "sample_names": [
+    "三井住友銀行"
+   ]
+  },
+  {
+   "id": "shop=greengrocer",
+   "key": "shop",
+   "value": "greengrocer",
+   "count": 15,
+   "role": "category",
+   "sample_names": [
+    "八百徳商店",
+    "千疋屋",
+    "フルーツ ヤギシタ"
+   ]
+  },
+  {
+   "id": "historic=monument",
+   "key": "historic",
+   "value": "monument",
+   "count": 15,
+   "role": "category",
+   "sample_names": [
+    "楠正成像",
+    "五世川柳句碑",
+    "竹橋門跡"
+   ]
+  },
+  {
+   "id": "shop=art",
+   "key": "shop",
+   "value": "art",
+   "count": 15,
+   "role": "category",
+   "sample_names": [
+    "ギャラリー内田",
+    "parabolica-bis",
+    "ギャラリーかわまつ"
+   ]
+  },
+  {
+   "id": "leisure=picnic_table",
+   "key": "leisure",
+   "value": "picnic_table",
+   "count": 15,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "amenity=smoking_area",
+   "key": "amenity",
+   "value": "smoking_area",
+   "count": 15,
+   "role": "category",
+   "sample_names": [
+    "喫煙所"
+   ]
+  },
+  {
+   "id": "brand=カフェ・ド・クリエ",
+   "key": "brand",
+   "value": "カフェ・ド・クリエ",
+   "count": 14,
+   "role": "brand",
+   "sample_names": [
+    "カフェ・ド・クリエ"
+   ]
+  },
+  {
+   "id": "cuisine=korean",
+   "key": "cuisine",
+   "value": "korean",
+   "count": 14,
+   "role": "refine",
+   "sample_names": [
+    "ホランイ",
+    "韓ヌリ",
+    "Royal Korean Dining & Bar"
+   ]
+  },
+  {
+   "id": "brand=MINISTOP",
+   "key": "brand",
+   "value": "MINISTOP",
+   "count": 14,
+   "role": "brand",
+   "sample_names": [
+    "ミニストップ"
+   ]
+  },
+  {
+   "id": "office=diplomatic",
+   "key": "office",
+   "value": "diplomatic",
+   "count": 14,
+   "role": "category",
+   "sample_names": [
+    "アルメニア大使館",
+    "南アフリカ大使館",
+    "イタリア文化会館"
+   ]
+  },
+  {
+   "id": "memorial=plaque",
+   "key": "memorial",
+   "value": "plaque",
+   "count": 13,
+   "role": "refine",
+   "sample_names": [
+    "Embahada ng Pilipinas, Fujimi, Chiyoda-Ku, Tokyo",
+    "皇太子殿下御結婚記念碑",
+    "和田倉噴水公園"
+   ]
+  },
+  {
+   "id": "brand=伊藤園",
+   "key": "brand",
+   "value": "伊藤園",
+   "count": 13,
+   "role": "brand",
+   "sample_names": [
+    "伊藤園"
+   ]
+  },
+  {
+   "id": "amenity=fuel",
+   "key": "amenity",
+   "value": "fuel",
+   "count": 13,
+   "role": "category",
+   "sample_names": [
+    "エネオス",
+    "昭和シェル",
+    "コスモ石油"
+   ]
+  },
+  {
+   "id": "cuisine=asian",
+   "key": "cuisine",
+   "value": "asian",
+   "count": 13,
+   "role": "refine",
+   "sample_names": [
+    "ユーザーベース店】※一般不可",
+    "こまきしょくどう",
+    "くわっちー家"
+   ]
+  },
+  {
+   "id": "craft=confectionery",
+   "key": "craft",
+   "value": "confectionery",
+   "count": 13,
+   "role": "category",
+   "sample_names": [
+    "コージーコーナー",
+    "御菓子司　亀屋大和",
+    "Fairy cake Fair"
+   ]
+  },
+  {
+   "id": "leisure=fitness_centre",
+   "key": "leisure",
+   "value": "fitness_centre",
+   "count": 13,
+   "role": "category",
+   "sample_names": [
+    "Azabu",
+    "エニタイムフィットネス",
+    "ファイトフィット"
+   ]
+  },
+  {
+   "id": "shop=pastry",
+   "key": "shop",
+   "value": "pastry",
+   "count": 13,
+   "role": "category",
+   "sample_names": [
+    "パティスリー＆カフェ デリーモ",
+    "Pâtisserie Montaigne",
+    "ゴンドラ"
+   ]
+  },
+  {
+   "id": "brand=NTT docomo",
+   "key": "brand",
+   "value": "NTT docomo",
+   "count": 13,
+   "role": "brand",
+   "sample_names": [
+    "ドコモショップ"
+   ]
+  },
+  {
+   "id": "office=courier",
+   "key": "office",
+   "value": "courier",
+   "count": 12,
+   "role": "category",
+   "sample_names": [
+    "ゆうパックステーション",
+    "ヤマト運輸 宅配便センター",
+    "クロネコヤマト"
+   ]
+  },
+  {
+   "id": "shop=computer",
+   "key": "shop",
+   "value": "computer",
+   "count": 12,
+   "role": "category",
+   "sample_names": [
+    "神田装備",
+    "et al.",
+    "ワールドモバイルアキバ店"
+   ]
+  },
+  {
+   "id": "amenity=school",
+   "key": "amenity",
+   "value": "school",
+   "count": 12,
+   "role": "category",
+   "sample_names": [
+    "共立女子大学 2号館",
+    "東京ギャラクシー日本語学校",
+    "私立二松學舎大学附属高等学校"
+   ]
+  },
+  {
+   "id": "shop=optician",
+   "key": "shop",
+   "value": "optician",
+   "count": 12,
+   "role": "category",
+   "sample_names": [
+    "Zoff 西銀座店",
+    "東京メガネ",
+    "OWNDAYS OOTEMORI店"
+   ]
+  },
+  {
+   "id": "brand=吉野家",
+   "key": "brand",
+   "value": "吉野家",
+   "count": 12,
+   "role": "brand",
+   "sample_names": [
+    "吉野家"
+   ]
+  },
+  {
+   "id": "brand=マクドナルド",
+   "key": "brand",
+   "value": "マクドナルド",
+   "count": 12,
+   "role": "brand",
+   "sample_names": [
+    "マクドナルド"
+   ]
+  },
+  {
+   "id": "cuisine=noodles",
+   "key": "cuisine",
+   "value": "noodles",
+   "count": 12,
+   "role": "refine",
+   "sample_names": [
+    "立ち食いそば とんがらし",
+    "タンメンしゃきしゃき 新橋店",
+    "北京亭"
+   ]
+  },
+  {
+   "id": "cuisine=sandwich",
+   "key": "cuisine",
+   "value": "sandwich",
+   "count": 12,
+   "role": "refine",
+   "sample_names": [
+    "サブウェイ",
+    "アメリカン",
+    "Age.3 Ginza"
+   ]
+  },
+  {
+   "id": "brand=au",
+   "key": "brand",
+   "value": "au",
+   "count": 12,
+   "role": "brand",
+   "sample_names": [
+    "auショップ"
+   ]
+  },
+  {
+   "id": "cuisine=thai",
+   "key": "cuisine",
+   "value": "thai",
+   "count": 11,
+   "role": "refine",
+   "sample_names": [
+    "タジー食堂",
+    "サワディー",
+    "ジャスミン タイ テラス 赤坂"
+   ]
+  },
+  {
+   "id": "brand=サンマルクカフェ",
+   "key": "brand",
+   "value": "サンマルクカフェ",
+   "count": 11,
+   "role": "brand",
+   "sample_names": [
+    "サンマルクカフェ"
+   ]
+  },
+  {
+   "id": "social_facility=group_home",
+   "key": "social_facility",
+   "value": "group_home",
+   "count": 11,
+   "role": "refine",
+   "sample_names": [
+    "新とみ",
+    "桜福祉会館",
+    "SSS24"
+   ]
+  },
+  {
+   "id": "cuisine=western",
+   "key": "cuisine",
+   "value": "western",
+   "count": 11,
+   "role": "refine",
+   "sample_names": [
+    "デニーズ",
+    "ガスト",
+    "松榮亭"
+   ]
+  },
+  {
+   "id": "brand=マルエツ",
+   "key": "brand",
+   "value": "マルエツ",
+   "count": 11,
+   "role": "brand",
+   "sample_names": [
+    "マルエツプチ",
+    "マルエツ"
+   ]
+  },
+  {
+   "id": "cuisine=fish",
+   "key": "cuisine",
+   "value": "fish",
+   "count": 11,
+   "role": "refine",
+   "sample_names": [
+    "しらゆき",
+    "うな富士",
+    "やんも"
+   ]
+  },
+  {
+   "id": "amenity=fountain",
+   "key": "amenity",
+   "value": "fountain",
+   "count": 10,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "cuisine=pizza",
+   "key": "cuisine",
+   "value": "pizza",
+   "count": 10,
+   "role": "refine",
+   "sample_names": [
+    "Devil's Corner",
+    "Iriko",
+    "オルケストラヴィーノ"
+   ]
+  },
+  {
+   "id": "brand=ENEOS",
+   "key": "brand",
+   "value": "ENEOS",
+   "count": 10,
+   "role": "brand",
+   "sample_names": [
+    "エネオス"
+   ]
+  },
+  {
+   "id": "amenity=motorcycle_parking",
+   "key": "amenity",
+   "value": "motorcycle_parking",
+   "count": 10,
+   "role": "category",
+   "sample_names": [
+    "エコロパーク",
+    "新橋三丁目才一卜バイ専用駐車場",
+    "Ecolo Bike Parking"
+   ]
+  },
+  {
+   "id": "amenity=fire_station",
+   "key": "amenity",
+   "value": "fire_station",
+   "count": 10,
+   "role": "category",
+   "sample_names": [
+    "丸の内消防署",
+    "京橋消防署築地出張所",
+    "京橋消防署銀座出張所"
+   ]
+  },
+  {
+   "id": "vending=food",
+   "key": "vending",
+   "value": "food",
+   "count": 10,
+   "role": "refine",
+   "sample_names": [
+    "ポッカサッポロ",
+    "明治",
+    "肉の万世"
+   ]
+  },
+  {
+   "id": "shop=car",
+   "key": "shop",
+   "value": "car",
+   "count": 10,
+   "role": "category",
+   "sample_names": [
+    "ポルシェ",
+    "ダイハツ",
+    "東京トヨペット"
+   ]
+  },
+  {
+   "id": "shop=travel_agency",
+   "key": "shop",
+   "value": "travel_agency",
+   "count": 10,
+   "role": "category",
+   "sample_names": [
+    "JTB",
+    "JTB首都圏トラベルゲート有楽町",
+    "エイチ・アイ・エス"
+   ]
+  },
+  {
+   "id": "shop=shoes",
+   "key": "shop",
+   "value": "shoes",
+   "count": 10,
+   "role": "category",
+   "sample_names": [
+    "C&J Clarks",
+    "リーガルファクトリーストア",
+    "ORANGE HEAL"
+   ]
+  },
+  {
+   "id": "shop=bag",
+   "key": "shop",
+   "value": "bag",
+   "count": 10,
+   "role": "category",
+   "sample_names": [
+    "FURLA",
+    "&milano",
+    "LAMB MODE"
+   ]
+  },
+  {
+   "id": "cuisine=mexican",
+   "key": "cuisine",
+   "value": "mexican",
+   "count": 9,
+   "role": "refine",
+   "sample_names": [
+    "タコリッコ大手町ビル店",
+    "Mi Familia",
+    "Molé TAQUERIA Y BAR"
+   ]
+  },
+  {
+   "id": "shop=laundry",
+   "key": "shop",
+   "value": "laundry",
+   "count": 9,
+   "role": "category",
+   "sample_names": [
+    "湧泉舎",
+    "La Huaran",
+    "Coin Laundry"
+   ]
+  },
+  {
+   "id": "office=association",
+   "key": "office",
+   "value": "association",
+   "count": 9,
+   "role": "category",
+   "sample_names": [
+    "オーソテックスソサエティー",
+    "第二地方銀行協会",
+    "一般社団法人日本プロダクション協会"
+   ]
+  },
+  {
+   "id": "brand=タイムズ",
+   "key": "brand",
+   "value": "タイムズ",
+   "count": 9,
+   "role": "brand",
+   "sample_names": [
+    "タイムズ"
+   ]
+  },
+  {
+   "id": "brand=なか卯",
+   "key": "brand",
+   "value": "なか卯",
+   "count": 9,
+   "role": "brand",
+   "sample_names": [
+    "なか卯"
+   ]
+  },
+  {
+   "id": "brand=トモズ",
+   "key": "brand",
+   "value": "トモズ",
+   "count": 9,
+   "role": "brand",
+   "sample_names": [
+    "トモズ"
+   ]
+  },
+  {
+   "id": "amenity=gambling",
+   "key": "amenity",
+   "value": "gambling",
+   "count": 9,
+   "role": "category",
+   "sample_names": [
+    "La Pista",
+    "KO-SHIN",
+    "TUC SHOP(パチンコ換金所)"
+   ]
+  },
+  {
+   "id": "information=office",
+   "key": "information",
+   "value": "office",
+   "count": 9,
+   "role": "refine",
+   "sample_names": [
+    "宝塚歌劇インフォメーションセンター",
+    "Switzerland Tourism",
+    "台東区産業観光情報コーナー"
+   ]
+  },
+  {
+   "id": "cuisine=pasta",
+   "key": "cuisine",
+   "value": "pasta",
+   "count": 9,
+   "role": "refine",
+   "sample_names": [
+    "ジャポネ",
+    "コメダイズ",
+    "オステリア ブッビーノ"
+   ]
+  },
+  {
+   "id": "amenity=karaoke_box",
+   "key": "amenity",
+   "value": "karaoke_box",
+   "count": 9,
+   "role": "category",
+   "sample_names": [
+    "ビッグエコー",
+    "カラオケ館",
+    "カラオケ まねきねこ"
+   ]
+  },
+  {
+   "id": "shop=copyshop",
+   "key": "shop",
+   "value": "copyshop",
+   "count": 9,
+   "role": "category",
+   "sample_names": [
+    "キンコーズ",
+    "アクセア",
+    "Kinko’s"
+   ]
+  },
+  {
+   "id": "amenity=nightclub",
+   "key": "amenity",
+   "value": "nightclub",
+   "count": 9,
+   "role": "category",
+   "sample_names": [
+    "CHERRY 新橋",
+    "新橋スウィーツ",
+    "新橋平成女学園"
+   ]
+  },
+  {
+   "id": "brand=アサヒビール",
+   "key": "brand",
+   "value": "アサヒビール",
+   "count": 8,
+   "role": "brand",
+   "sample_names": [
+    "アサヒビール"
+   ]
+  },
+  {
+   "id": "amenity=bureau_de_change",
+   "key": "amenity",
+   "value": "bureau_de_change",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "東京スター銀行",
+    "銀座外貨両替コーナー",
+    "Ginza exchange"
+   ]
+  },
+  {
+   "id": "vending=cigarettes",
+   "key": "vending",
+   "value": "cigarettes",
+   "count": 8,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "amenity=prep_school",
+   "key": "amenity",
+   "value": "prep_school",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "花まる学習会",
+    "野田クルゼ",
+    "TOMAS"
+   ]
+  },
+  {
+   "id": "shop=furniture",
+   "key": "shop",
+   "value": "furniture",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "オフィスコム",
+    "ロゴバ",
+    "フクモリ"
+   ]
+  },
+  {
+   "id": "brand=ポッカサッポロ",
+   "key": "brand",
+   "value": "ポッカサッポロ",
+   "count": 8,
+   "role": "brand",
+   "sample_names": [
+    "ポッカサッポロ"
+   ]
+  },
+  {
+   "id": "shop=houseware",
+   "key": "shop",
+   "value": "houseware",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "うりきり屋",
+    "KAGAMI 銀座ショップ",
+    "白木屋傳兵衛"
+   ]
+  },
+  {
+   "id": "office=telecommunication",
+   "key": "office",
+   "value": "telecommunication",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "NTT"
+   ]
+  },
+  {
+   "id": "amenity=cinema",
+   "key": "amenity",
+   "value": "cinema",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "TOHOシネマズ",
+    "シネスイッチ銀座",
+    "丸の内TOEI"
+   ]
+  },
+  {
+   "id": "shop=mall",
+   "key": "shop",
+   "value": "mall",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "帝国ホテルプラザ東京",
+    "丸の内MY PLAZA",
+    "築地にっぽん漁港市場"
+   ]
+  },
+  {
+   "id": "shop=outdoor",
+   "key": "shop",
+   "value": "outdoor",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "モンベル",
+    "石井スポーツ",
+    "さかいやスポーツ"
+   ]
+  },
+  {
+   "id": "shop=coffee",
+   "key": "shop",
+   "value": "coffee",
+   "count": 8,
+   "role": "category",
+   "sample_names": [
+    "BONGENCOFFEE",
+    "茶風",
+    "青海咖啡"
+   ]
+  },
+  {
+   "id": "board_type=plants",
+   "key": "board_type",
+   "value": "plants",
+   "count": 7,
+   "role": "refine",
+   "sample_names": [
+    "果樹古品種園 (東)",
+    "竹林",
+    "Camellia garden"
+   ]
+  },
+  {
+   "id": "shop=photo",
+   "key": "shop",
+   "value": "photo",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "SANWA",
+    "ハローフォト",
+    "パレットプラザ"
+   ]
+  },
+  {
+   "id": "amenity=public_bath",
+   "key": "amenity",
+   "value": "public_bath",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "梅の湯",
+    "SPA大手町",
+    "於玉湯"
+   ]
+  },
+  {
+   "id": "craft=coffee_roaster",
+   "key": "craft",
+   "value": "coffee_roaster",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "Turret Coffee",
+    "Live Coffee",
+    "Cafe Pharmacy"
+   ]
+  },
+  {
+   "id": "memorial=stone",
+   "key": "memorial",
+   "value": "stone",
+   "count": 7,
+   "role": "refine",
+   "sample_names": [
+    "アーネストサトウ居宅跡",
+    "与謝野鉄幹 晶子 居住跡",
+    "御鎮座壱千年奉祝記念碑"
+   ]
+  },
+  {
+   "id": "amenity=shelter",
+   "key": "amenity",
+   "value": "shelter",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "車椅子待合所",
+    "ビューゴールドラウンジ",
+    "銀の鈴"
+   ]
+  },
+  {
+   "id": "brand=Asahi SOFT DRINKS",
+   "key": "brand",
+   "value": "Asahi SOFT DRINKS",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "アサヒ飲料"
+   ]
+  },
+  {
+   "id": "amenity=library",
+   "key": "amenity",
+   "value": "library",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "最高裁判所図書館",
+    "千代田区立四番町図書館",
+    "千代田区立日比谷図書文化館"
+   ]
+  },
+  {
+   "id": "shop=seafood",
+   "key": "shop",
+   "value": "seafood",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "丸宮商店",
+    "マルタ食品",
+    "深川"
+   ]
+  },
+  {
+   "id": "brand=ダイドー",
+   "key": "brand",
+   "value": "ダイドー",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "ダイドードリンコ"
+   ]
+  },
+  {
+   "id": "public_transport=station",
+   "key": "public_transport",
+   "value": "station",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "明石町・聖路加ガーデン前",
+    "日本橋観光桟橋",
+    "水上バス乗り場"
+   ]
+  },
+  {
+   "id": "brand=ジョナサン",
+   "key": "brand",
+   "value": "ジョナサン",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "ジョナサン"
+   ]
+  },
+  {
+   "id": "amenity=car_rental",
+   "key": "amenity",
+   "value": "car_rental",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "トヨタレンタカー",
+    "ニッポンレンタカー",
+    "Toyota Rental a Car TCAT"
+   ]
+  },
+  {
+   "id": "brand=日高屋",
+   "key": "brand",
+   "value": "日高屋",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "日高屋"
+   ]
+  },
+  {
+   "id": "office=coworking",
+   "key": "office",
+   "value": "coworking",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "BIZcomfort ザ ロイヤルパークホテル アイコニック 東京汐留",
+    "SYNQA",
+    "WAW KANDA"
+   ]
+  },
+  {
+   "id": "brand=スギ薬局",
+   "key": "brand",
+   "value": "スギ薬局",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "スギ薬局"
+   ]
+  },
+  {
+   "id": "shop=kiosk",
+   "key": "shop",
+   "value": "kiosk",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "Bellmart kiosk",
+    "キヨスク",
+    "遊就館売店"
+   ]
+  },
+  {
+   "id": "cuisine=yakitori",
+   "key": "cuisine",
+   "value": "yakitori",
+   "count": 7,
+   "role": "refine",
+   "sample_names": [
+    "とり鉄",
+    "酉玉",
+    "鳥旬・かがり火"
+   ]
+  },
+  {
+   "id": "amenity=townhall",
+   "key": "amenity",
+   "value": "townhall",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "中央区立女性センターブーケ21",
+    "中央区役所",
+    "千代田区役所"
+   ]
+  },
+  {
+   "id": "amenity=recycling",
+   "key": "amenity",
+   "value": "recycling",
+   "count": 7,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "recycling_type=container",
+   "key": "recycling_type",
+   "value": "container",
+   "count": 7,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "shop=lottery",
+   "key": "shop",
+   "value": "lottery",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "宝くじロトハウス",
+    "西銀座チャンスセンター",
+    "Numbers"
+   ]
+  },
+  {
+   "id": "shop=music",
+   "key": "shop",
+   "value": "music",
+   "count": 7,
+   "role": "category",
+   "sample_names": [
+    "ディスクユニオン",
+    "ジャニス",
+    "タクト"
+   ]
+  },
+  {
+   "id": "brand=りそな銀行",
+   "key": "brand",
+   "value": "りそな銀行",
+   "count": 7,
+   "role": "brand",
+   "sample_names": [
+    "りそな銀行"
+   ]
+  },
+  {
+   "id": "office=insurance",
+   "key": "office",
+   "value": "insurance",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "ほけんの窓口",
+    "東京海上日動",
+    "SOMPOヘルスサポート"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=dermatology",
+   "key": "healthcare:speciality",
+   "value": "dermatology",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "SAVE CLINIC AKIHABARA",
+    "神保町駅前皮膚科",
+    "日本橋浜町駅前皮ふ科"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=internal",
+   "key": "healthcare:speciality",
+   "value": "internal",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "SAVE CLINIC AKIHABARA",
+    "東銀座メディカルクリニック",
+    "トルナーレ内科外科"
+   ]
+  },
+  {
+   "id": "cuisine=american",
+   "key": "cuisine",
+   "value": "american",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "Ruth's Chris Steak House",
+    "Twelve Gardens Bar & Grill",
+    "Bills"
+   ]
+  },
+  {
+   "id": "shop=chocolate",
+   "key": "shop",
+   "value": "chocolate",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "La Maison Du Chocolat",
+    "Little Motherhouse",
+    "Godiva"
+   ]
+  },
+  {
+   "id": "amenity=courthouse",
+   "key": "amenity",
+   "value": "courthouse",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "東京簡易裁判所",
+    "東京地方裁判所",
+    "東京家庭裁判所"
+   ]
+  },
+  {
+   "id": "vending=water",
+   "key": "vending",
+   "value": "water",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "ポッカサッポロ"
+   ]
+  },
+  {
+   "id": "brand=デニーズ",
+   "key": "brand",
+   "value": "デニーズ",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "デニーズ"
+   ]
+  },
+  {
+   "id": "social_facility:for=senior",
+   "key": "social_facility:for",
+   "value": "senior",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "新川在宅介護支援センター",
+    "こもれび千桜",
+    "中央在宅介護支援センター"
+   ]
+  },
+  {
+   "id": "brand=ポニー",
+   "key": "brand",
+   "value": "ポニー",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "ポニー"
+   ]
+  },
+  {
+   "id": "sport=fitness",
+   "key": "sport",
+   "value": "fitness",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "Azabu",
+    "エニタイムフィットネス",
+    "HELSA"
+   ]
+  },
+  {
+   "id": "brand=珈琲館",
+   "key": "brand",
+   "value": "珈琲館",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "珈琲館"
+   ]
+  },
+  {
+   "id": "religion=christian",
+   "key": "religion",
+   "value": "christian",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "聖アンデレ教会",
+    "カトリック神田教会",
+    "銀座教会"
+   ]
+  },
+  {
+   "id": "memorial=hazard_memorial",
+   "key": "memorial",
+   "value": "hazard_memorial",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "工部大学校阯碑",
+    "震災記念聖観世音菩薩像",
+    "関東大震災十周年記念"
+   ]
+  },
+  {
+   "id": "tourism=apartment",
+   "key": "tourism",
+   "value": "apartment",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "Real Life Kudanshita",
+    "Monday Hotel Apart Nihonbashiningyocho",
+    "オークウッドプレミア東京"
+   ]
+  },
+  {
+   "id": "brand=キリンビール",
+   "key": "brand",
+   "value": "キリンビール",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "キリンビール"
+   ]
+  },
+  {
+   "id": "shop=tailor",
+   "key": "shop",
+   "value": "tailor",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "Talor Fields",
+    "深野羅紗店",
+    "FukuRow"
+   ]
+  },
+  {
+   "id": "brand=サブウェイ",
+   "key": "brand",
+   "value": "サブウェイ",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "サブウェイ"
+   ]
+  },
+  {
+   "id": "cuisine=chicken",
+   "key": "cuisine",
+   "value": "chicken",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "北京亭",
+    "日本橋ぼんぼり",
+    "じとっこ組合"
+   ]
+  },
+  {
+   "id": "shop=beauty",
+   "key": "shop",
+   "value": "beauty",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "ファンケル銀座スクエア",
+    "CA4LA 銀座店",
+    "神田神保町エステサロン"
+   ]
+  },
+  {
+   "id": "shop=hobby",
+   "key": "shop",
+   "value": "hobby",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "プリキュア プリティストア",
+    "ポケモンセンター",
+    "カードラボ"
+   ]
+  },
+  {
+   "id": "shop=department_store",
+   "key": "shop",
+   "value": "department_store",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "大丸東京店",
+    "コレド日本橋",
+    "日比谷シャンテ"
+   ]
+  },
+  {
+   "id": "shop=antiques",
+   "key": "shop",
+   "value": "antiques",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "Wohnzimmer Antiques (in l'Atelier Exquis)",
+    "古美術　藤島",
+    "骨董 珍凰堂"
+   ]
+  },
+  {
+   "id": "brand=SoftBank",
+   "key": "brand",
+   "value": "SoftBank",
+   "count": 6,
+   "role": "brand",
+   "sample_names": [
+    "ソフトバンクショップ"
+   ]
+  },
+  {
+   "id": "shop=anime",
+   "key": "shop",
+   "value": "anime",
+   "count": 6,
+   "role": "category",
+   "sample_names": [
+    "amiami Akihabara Figure Tower",
+    "ポケモンセンター",
+    "リバティ"
+   ]
+  },
+  {
+   "id": "vending=locker",
+   "key": "vending",
+   "value": "locker",
+   "count": 6,
+   "role": "refine",
+   "sample_names": [
+    "SPACER"
+   ]
+  },
+  {
+   "id": "brand=QBハウス",
+   "key": "brand",
+   "value": "QBハウス",
+   "count": 5,
+   "role": "brand",
+   "sample_names": [
+    "QBハウス"
+   ]
+  },
+  {
+   "id": "amenity=parking_space",
+   "key": "amenity",
+   "value": "parking_space",
+   "count": 5,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "man_made=survey_point",
+   "key": "man_made",
+   "value": "survey_point",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "標準水準点"
+   ]
+  },
+  {
+   "id": "amenity=conference_centre",
+   "key": "amenity",
+   "value": "conference_centre",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "TKP新橋カンファレンスセン",
+    "イイノホール",
+    "CROSSCOOP新橋/内幸町 セミナールーム"
+   ]
+  },
+  {
+   "id": "board_type=nature",
+   "key": "board_type",
+   "value": "nature",
+   "count": 5,
+   "role": "refine",
+   "sample_names": [
+    "東京都の木 (イチョウ)",
+    "二の丸雑木林",
+    "ホトリア広場 - 人とまちと自然をつなぐ -"
+   ]
+  },
+  {
+   "id": "shop=cosmetics",
+   "key": "shop",
+   "value": "cosmetics",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "マツモトキヨシ",
+    "資生堂",
+    "ファンケル"
+   ]
+  },
+  {
+   "id": "artwork_type=bust",
+   "key": "artwork_type",
+   "value": "bust",
+   "count": 5,
+   "role": "refine",
+   "sample_names": [
+    "さわり大黒",
+    "ヤン・ヨーステン記念像",
+    "前島密"
+   ]
+  },
+  {
+   "id": "tourism=hostel",
+   "key": "tourism",
+   "value": "hostel",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "Oak Hostel Cabin",
+    "東京隅田川ユースホステル",
+    "Anne Hostel Asakusabashi"
+   ]
+  },
+  {
+   "id": "social_facility=assisted_living",
+   "key": "social_facility",
+   "value": "assisted_living",
+   "count": 5,
+   "role": "refine",
+   "sample_names": [
+    "西神田児童・家庭支援センター",
+    "こもれび千桜",
+    "いきいきらいふデイサービスセンター馬喰町"
+   ]
+  },
+  {
+   "id": "brand=NewDays",
+   "key": "brand",
+   "value": "NewDays",
+   "count": 5,
+   "role": "brand",
+   "sample_names": [
+    "NewDays"
+   ]
+  },
+  {
+   "id": "shop=interior_decoration",
+   "key": "shop",
+   "value": "interior_decoration",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "香蘭社",
+    "Euro Casa",
+    "山形緞通"
+   ]
+  },
+  {
+   "id": "shop=camera",
+   "key": "shop",
+   "value": "camera",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "Katsumido Camera",
+    "カメラ レンズ ミヤマ商會",
+    "カメラ清水"
+   ]
+  },
+  {
+   "id": "brand=かつや",
+   "key": "brand",
+   "value": "かつや",
+   "count": 5,
+   "role": "brand",
+   "sample_names": [
+    "かつや"
+   ]
+  },
+  {
+   "id": "cuisine=fried_food",
+   "key": "cuisine",
+   "value": "fried_food",
+   "count": 5,
+   "role": "refine",
+   "sample_names": [
+    "かつや"
+   ]
+  },
+  {
+   "id": "leisure=amusement_arcade",
+   "key": "leisure",
+   "value": "amusement_arcade",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "アイドルマスターツアーズ",
+    "タイトーステーション",
+    "東京レジャーランド秋葉原"
+   ]
+  },
+  {
+   "id": "office=it",
+   "key": "office",
+   "value": "it",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "パワーハウス",
+    "LiNKX",
+    "MicroWorld株式会社"
+   ]
+  },
+  {
+   "id": "shop=wholesale",
+   "key": "shop",
+   "value": "wholesale",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "川手商店",
+    "㈱諏訪商店",
+    "オーヤカズカンパニー"
+   ]
+  },
+  {
+   "id": "amenity=shower",
+   "key": "amenity",
+   "value": "shower",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "世界湯",
+    "東湯(跡)",
+    "入船湯"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=psychiatry",
+   "key": "healthcare:speciality",
+   "value": "psychiatry",
+   "count": 5,
+   "role": "refine",
+   "sample_names": [
+    "Nihonbashi Stress Care Clinic",
+    "聖堂前クリニック",
+    "東銀座メディカルクリニック"
+   ]
+  },
+  {
+   "id": "amenity=ice_cream",
+   "key": "amenity",
+   "value": "ice_cream",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "早和",
+    "Wakan",
+    "Beillevaire"
+   ]
+  },
+  {
+   "id": "amenity=bus_station",
+   "key": "amenity",
+   "value": "bus_station",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "THEアクセス成田",
+    "東京駅JR高速バスターミナル",
+    "人形町駅"
+   ]
+  },
+  {
+   "id": "cuisine=cake",
+   "key": "cuisine",
+   "value": "cake",
+   "count": 5,
+   "role": "refine",
+   "sample_names": [
+    "Starbucks",
+    "Ovgo Baker Edo St.",
+    "スタイルズケイクス &カンパニー"
+   ]
+  },
+  {
+   "id": "brand=すき家",
+   "key": "brand",
+   "value": "すき家",
+   "count": 5,
+   "role": "brand",
+   "sample_names": [
+    "すき家"
+   ]
+  },
+  {
+   "id": "office=lawyer",
+   "key": "office",
+   "value": "lawyer",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "井出法律事務所",
+    "司法書士 大内事務所",
+    "新緑虎ノ門法律事務所"
+   ]
+  },
+  {
+   "id": "amenity=childcare",
+   "key": "amenity",
+   "value": "childcare",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "千代田区立いずみこども園",
+    "西神田保育園",
+    "小学館アカデミー神保町保育園"
+   ]
+  },
+  {
+   "id": "shop=video_games",
+   "key": "shop",
+   "value": "video_games",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "ナツゲーミュージアム",
+    "東京レジャーランド秋葉原",
+    "アーケード基板 KVClab."
+   ]
+  },
+  {
+   "id": "shop=sewing",
+   "key": "shop",
+   "value": "sewing",
+   "count": 5,
+   "role": "category",
+   "sample_names": [
+    "WEST5",
+    "BROCANTE",
+    "Takashima"
+   ]
+  },
+  {
+   "id": "brand=ほっともっと",
+   "key": "brand",
+   "value": "ほっともっと",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "ほっともっと"
+   ]
+  },
+  {
+   "id": "cuisine=turkish",
+   "key": "cuisine",
+   "value": "turkish",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "Saray",
+    "ボスボラス ハサン",
+    "ASENA"
+   ]
+  },
+  {
+   "id": "cuisine=kebab",
+   "key": "cuisine",
+   "value": "kebab",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "サライ",
+    "スターケバブ",
+    "アンテップ　ケバブ"
+   ]
+  },
+  {
+   "id": "brand=ゆうちょ銀行",
+   "key": "brand",
+   "value": "ゆうちょ銀行",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "ゆうちょ銀行"
+   ]
+  },
+  {
+   "id": "shop=butcher",
+   "key": "shop",
+   "value": "butcher",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "沢井精肉店",
+    "肉のハナマサ",
+    "オダカ"
+   ]
+  },
+  {
+   "id": "brand=大戸屋",
+   "key": "brand",
+   "value": "大戸屋",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "大戸屋"
+   ]
+  },
+  {
+   "id": "waste=trash",
+   "key": "waste",
+   "value": "trash",
+   "count": 4,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "amenity=ferry_terminal",
+   "key": "amenity",
+   "value": "ferry_terminal",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "明石町・聖路加ガーデン前",
+    "日本橋観光桟橋",
+    "水上バス乗り場"
+   ]
+  },
+  {
+   "id": "cuisine=spanish",
+   "key": "cuisine",
+   "value": "spanish",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "月島スペインクラブ",
+    "La viña, 月島 ラヴィーニャ",
+    "スペイン居酒屋 El Chateo del Puente"
+   ]
+  },
+  {
+   "id": "brand=松屋",
+   "key": "brand",
+   "value": "松屋",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "松屋"
+   ]
+  },
+  {
+   "id": "social_facility=outreach",
+   "key": "social_facility",
+   "value": "outreach",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "新川在宅介護支援センター",
+    "中央在宅介護支援センター",
+    "千代田区障害者よろず相談 Light"
+   ]
+  },
+  {
+   "id": "office=foundation",
+   "key": "office",
+   "value": "foundation",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "日本生産性本部",
+    "日本医食同源研究所",
+    "公益財団法人 明るい選挙推進協会"
+   ]
+  },
+  {
+   "id": "office=consulting",
+   "key": "office",
+   "value": "consulting",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "McKinsey & Company",
+    "TD Consulting",
+    "JP Morgan"
+   ]
+  },
+  {
+   "id": "cuisine=taiwanese",
+   "key": "cuisine",
+   "value": "taiwanese",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "小星星",
+    "Din Tai Fung",
+    "東京豆花工房"
+   ]
+  },
+  {
+   "id": "craft=caterer",
+   "key": "craft",
+   "value": "caterer",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "稲香屋",
+    "海苔弁いちのや 靖国通り本店",
+    "笹野屋"
+   ]
+  },
+  {
+   "id": "brand=ガスト",
+   "key": "brand",
+   "value": "ガスト",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "ガスト"
+   ]
+  },
+  {
+   "id": "amenity=photo_booth",
+   "key": "amenity",
+   "value": "photo_booth",
+   "count": 4,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "shop=video",
+   "key": "shop",
+   "value": "video",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "文化堂",
+    "明治書店",
+    "花太郎"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=ophthalmology",
+   "key": "healthcare:speciality",
+   "value": "ophthalmology",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "品川近視クリニック",
+    "済安堂井上眼科病院",
+    "アイ・ローズ クリニック"
+   ]
+  },
+  {
+   "id": "brand=セブン銀行",
+   "key": "brand",
+   "value": "セブン銀行",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "セブン銀行"
+   ]
+  },
+  {
+   "id": "amenity=food_court",
+   "key": "amenity",
+   "value": "food_court",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "八重仲ダイニング",
+    "Commissary Nihonbashi",
+    "有楽コンコース"
+   ]
+  },
+  {
+   "id": "shop=hifi",
+   "key": "shop",
+   "value": "hifi",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "テレオン第3店",
+    "テレオン",
+    "ダイナミックオーディオ フォーファイブ"
+   ]
+  },
+  {
+   "id": "brand=ビッグエコー",
+   "key": "brand",
+   "value": "ビッグエコー",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "ビッグエコー"
+   ]
+  },
+  {
+   "id": "shop=hardware",
+   "key": "shop",
+   "value": "hardware",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "松永金物店",
+    "北浦通夫商店",
+    "ロケット アマチュア無線本館"
+   ]
+  },
+  {
+   "id": "shop=second_hand",
+   "key": "shop",
+   "value": "second_hand",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "ありがとう屋",
+    "リサイクルハウスかざぐるま箱崎町",
+    "ホビーランドぽち"
+   ]
+  },
+  {
+   "id": "shop=erotic",
+   "key": "shop",
+   "value": "erotic",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "大人のデパート エムズ 秋葉原店",
+    "マンガネットダーツ銀座店",
+    "ソフネット"
+   ]
+  },
+  {
+   "id": "brand=Daily YAMAZAKI",
+   "key": "brand",
+   "value": "Daily YAMAZAKI",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "デイリーヤマザキ"
+   ]
+  },
+  {
+   "id": "brand=サイゼリヤ",
+   "key": "brand",
+   "value": "サイゼリヤ",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "サイゼリヤ"
+   ]
+  },
+  {
+   "id": "brand=CoCo壱番屋",
+   "key": "brand",
+   "value": "CoCo壱番屋",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "CoCo壱番屋"
+   ]
+  },
+  {
+   "id": "shop=tea",
+   "key": "shop",
+   "value": "tea",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "森乃園 自家焙煎ほうじ茶の店",
+    "TWG Tea",
+    "ほ里つ"
+   ]
+  },
+  {
+   "id": "shop=knives",
+   "key": "shop",
+   "value": "knives",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "東源正久",
+    "包丁正本",
+    "築地有次"
+   ]
+  },
+  {
+   "id": "leisure=adult_gaming_centre",
+   "key": "leisure",
+   "value": "adult_gaming_centre",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "換金所",
+    "エスタディオ",
+    "ビッグアップル 秋葉原店"
+   ]
+  },
+  {
+   "id": "shop=general",
+   "key": "shop",
+   "value": "general",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "宝くじ売り場",
+    "八木長",
+    "山本海苔店"
+   ]
+  },
+  {
+   "id": "shop=watches",
+   "key": "shop",
+   "value": "watches",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "センチュリー銀座ブティック",
+    "Seiko",
+    "GINZA NJ TIME"
+   ]
+  },
+  {
+   "id": "cuisine=tea",
+   "key": "cuisine",
+   "value": "tea",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "Starbucks",
+    "Tsuruya Yoshinobu",
+    "Japan Rail Café"
+   ]
+  },
+  {
+   "id": "amenity=internet_cafe",
+   "key": "amenity",
+   "value": "internet_cafe",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "宝島",
+    "CUSTOMA CAFE",
+    "自遊空間"
+   ]
+  },
+  {
+   "id": "leisure=sports_centre",
+   "key": "leisure",
+   "value": "sports_centre",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "財団法人無外流本部道場",
+    "Akiba卓球スタイル",
+    "B-PUMP"
+   ]
+  },
+  {
+   "id": "sport=golf",
+   "key": "sport",
+   "value": "golf",
+   "count": 4,
+   "role": "refine",
+   "sample_names": [
+    "ゴルフ・ドゥ",
+    "ゴルフパートナー",
+    "Victoria Golf"
+   ]
+  },
+  {
+   "id": "brand=バーガーキング",
+   "key": "brand",
+   "value": "バーガーキング",
+   "count": 4,
+   "role": "brand",
+   "sample_names": [
+    "バーガーキング"
+   ]
+  },
+  {
+   "id": "craft=key_cutter",
+   "key": "craft",
+   "value": "key_cutter",
+   "count": 4,
+   "role": "category",
+   "sample_names": [
+    "ミスターミニット",
+    "佐久間金庫店",
+    "ウィンリペア"
+   ]
+  },
+  {
+   "id": "amenity=fixme",
+   "key": "amenity",
+   "value": "fixme",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "吹田商店",
+    "つるやゴルフ",
+    "Entry To Caretta Shiodome And Viewpoint"
+   ]
+  },
+  {
+   "id": "brand=キリンビバレッジ",
+   "key": "brand",
+   "value": "キリンビバレッジ",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "キリンビバレッジ"
+   ]
+  },
+  {
+   "id": "amenity=events_venue",
+   "key": "amenity",
+   "value": "events_venue",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "東京會舘",
+    "プラザマーム",
+    "ステーションコンファレンス東京"
+   ]
+  },
+  {
+   "id": "bicycle_parking=informal",
+   "key": "bicycle_parking",
+   "value": "informal",
+   "count": 3,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "brand=はなまるうどん",
+   "key": "brand",
+   "value": "はなまるうどん",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "はなまるうどん"
+   ]
+  },
+  {
+   "id": "amenity=car_sharing",
+   "key": "amenity",
+   "value": "car_sharing",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "タイムズカーシェア",
+    "タイムズカープラス"
+   ]
+  },
+  {
+   "id": "cuisine=pancake",
+   "key": "cuisine",
+   "value": "pancake",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "ポキボウルクラブトウキョウ",
+    "コメダイズ",
+    "もんじゃまぐろ家本店"
+   ]
+  },
+  {
+   "id": "leisure=park",
+   "key": "leisure",
+   "value": "park",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "虎ノ門3丁目児童遊園",
+    "手まり坂緑地"
+   ]
+  },
+  {
+   "id": "memorial=sculpture",
+   "key": "memorial",
+   "value": "sculpture",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "御製",
+    "平和の鐘"
+   ]
+  },
+  {
+   "id": "railway=train_station_entrance",
+   "key": "railway",
+   "value": "train_station_entrance",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "国際フォーラム口",
+    "京橋口",
+    "中央西口"
+   ]
+  },
+  {
+   "id": "leisure=garden",
+   "key": "leisure",
+   "value": "garden",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "The Edible Park OTEMACHI by grow",
+    "屋上庭園"
+   ]
+  },
+  {
+   "id": "bicycle_parking=wall_loops",
+   "key": "bicycle_parking",
+   "value": "wall_loops",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "大手町第2自転車駐車場"
+   ]
+  },
+  {
+   "id": "brand=東横イン",
+   "key": "brand",
+   "value": "東横イン",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "東横イン 溜池山王駅官邸南",
+    "東横イン"
+   ]
+  },
+  {
+   "id": "historic=archaeological_site",
+   "key": "historic",
+   "value": "archaeological_site",
+   "count": 3,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "office=ngo",
+   "key": "office",
+   "value": "ngo",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "駐留軍等労働者労務管理機構",
+    "日本貿易振興機構"
+   ]
+  },
+  {
+   "id": "brand=ニッポンレンタカー",
+   "key": "brand",
+   "value": "ニッポンレンタカー",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "ニッポンレンタカー"
+   ]
+  },
+  {
+   "id": "amenity=arts_centre",
+   "key": "amenity",
+   "value": "arts_centre",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "みちくさアートラボ",
+    "柴田悦子画廊"
+   ]
+  },
+  {
+   "id": "cuisine=international",
+   "key": "cuisine",
+   "value": "international",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "Loving Hut",
+    "コメダイズ",
+    "Soieil Hibiya Okuroji"
+   ]
+  },
+  {
+   "id": "cuisine=takoyaki",
+   "key": "cuisine",
+   "value": "takoyaki",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "築地銀だこ"
+   ]
+  },
+  {
+   "id": "office=employment_agency",
+   "key": "office",
+   "value": "employment_agency",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "SMBCヒューマン・キャリア",
+    "SMBCスタッフサービス",
+    "内定ブリッジ"
+   ]
+  },
+  {
+   "id": "shop=car_repair",
+   "key": "shop",
+   "value": "car_repair",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "福井自動車",
+    "Mercedes-Benz",
+    "The Toy's Box Kawakita Garage"
+   ]
+  },
+  {
+   "id": "highway=street_lamp",
+   "key": "highway",
+   "value": "street_lamp",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "千代田区内路上喫煙禁止",
+    "大門通り"
+   ]
+  },
+  {
+   "id": "brand=三井のリパーク",
+   "key": "brand",
+   "value": "三井のリパーク",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "三井のリパーク"
+   ]
+  },
+  {
+   "id": "clothes=men",
+   "key": "clothes",
+   "value": "men",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "アオキ",
+    "Abercrombie & Fitch"
+   ]
+  },
+  {
+   "id": "brand=やよい軒",
+   "key": "brand",
+   "value": "やよい軒",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "やよい軒"
+   ]
+  },
+  {
+   "id": "office=political_party",
+   "key": "office",
+   "value": "political_party",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "社会民主党全国連合",
+    "立憲民主党",
+    "日本共産党千代田地区委員会"
+   ]
+  },
+  {
+   "id": "shop=motorcycle",
+   "key": "shop",
+   "value": "motorcycle",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "BMW",
+    "BELL WOOD"
+   ]
+  },
+  {
+   "id": "shop=religion",
+   "key": "shop",
+   "value": "religion",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "安田松慶堂"
+   ]
+  },
+  {
+   "id": "amenity=coworking_space",
+   "key": "amenity",
+   "value": "coworking_space",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "My Basic Office",
+    "ZXY Shin-Ochanomizu",
+    "Biz Circle and Comfort"
+   ]
+  },
+  {
+   "id": "craft=watchmaker",
+   "key": "craft",
+   "value": "watchmaker",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "ROREX",
+    "Horloge",
+    "RICHARD MILLE"
+   ]
+  },
+  {
+   "id": "brand=ダイソー",
+   "key": "brand",
+   "value": "ダイソー",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "ダイソー"
+   ]
+  },
+  {
+   "id": "shop=pawnbroker",
+   "key": "shop",
+   "value": "pawnbroker",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "買取センター有楽町店",
+    "なんぼや",
+    "大黒屋"
+   ]
+  },
+  {
+   "id": "cuisine=local",
+   "key": "cuisine",
+   "value": "local",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "ミルクワンタン 鳥藤",
+    "富士㐂（ふじき） 人形町店"
+   ]
+  },
+  {
+   "id": "brand=ファミリーマート",
+   "key": "brand",
+   "value": "ファミリーマート",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "ファミリーマート"
+   ]
+  },
+  {
+   "id": "amenity=biergarten",
+   "key": "amenity",
+   "value": "biergarten",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "ライオン銀座",
+    "ランチョン",
+    "Craft Beer Market"
+   ]
+  },
+  {
+   "id": "leisure=sauna",
+   "key": "leisure",
+   "value": "sauna",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "SaunaLab Kanda",
+    "湊湯",
+    "十思湯"
+   ]
+  },
+  {
+   "id": "office=research",
+   "key": "office",
+   "value": "research",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "国立情報学研究所",
+    "科学技術・学術政策研究所",
+    "国立教育政策研究所"
+   ]
+  },
+  {
+   "id": "amenity=vacant",
+   "key": "amenity",
+   "value": "vacant",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "香港料理 順星苑",
+    "たいよう軒",
+    "磯丸水産"
+   ]
+  },
+  {
+   "id": "shop=tobacco",
+   "key": "shop",
+   "value": "tobacco",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "野々村商店",
+    "ミマツたばこ"
+   ]
+  },
+  {
+   "id": "brand=Boss",
+   "key": "brand",
+   "value": "Boss",
+   "count": 3,
+   "role": "brand",
+   "sample_names": []
+  },
+  {
+   "id": "brand=モスバーガー",
+   "key": "brand",
+   "value": "モスバーガー",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "モスバーガー"
+   ]
+  },
+  {
+   "id": "leisure=fitness_station",
+   "key": "leisure",
+   "value": "fitness_station",
+   "count": 3,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "shelter_type=public_transport",
+   "key": "shelter_type",
+   "value": "public_transport",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "車椅子待合所",
+    "ビューゴールドラウンジ",
+    "銀の鈴"
+   ]
+  },
+  {
+   "id": "amenity=language_school",
+   "key": "amenity",
+   "value": "language_school",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "ベルリッツ",
+    "ハナ外語学校",
+    "TLS"
+   ]
+  },
+  {
+   "id": "brand=マツモトキヨシ",
+   "key": "brand",
+   "value": "マツモトキヨシ",
+   "count": 3,
+   "role": "brand",
+   "sample_names": [
+    "マツモトキヨシ"
+   ]
+  },
+  {
+   "id": "cuisine=vietnamese",
+   "key": "cuisine",
+   "value": "vietnamese",
+   "count": 3,
+   "role": "refine",
+   "sample_names": [
+    "ベト屋",
+    "333 ベトナム料理",
+    "メコン"
+   ]
+  },
+  {
+   "id": "office=tax_advisor",
+   "key": "office",
+   "value": "tax_advisor",
+   "count": 3,
+   "role": "category",
+   "sample_names": [
+    "飯塚税理士事務所",
+    "秋田税理士事務所",
+    "井上監査法人"
+   ]
+  },
+  {
+   "id": "man_made=water_tap",
+   "key": "man_made",
+   "value": "water_tap",
+   "count": 2,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "shop=fabric",
+   "key": "shop",
+   "value": "fabric",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "アンドレザー",
+    "竺仙"
+   ]
+  },
+  {
+   "id": "memorial=statue",
+   "key": "memorial",
+   "value": "statue",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "大村益次郎銅像",
+    "吉田茂像"
+   ]
+  },
+  {
+   "id": "historic=ruins",
+   "key": "historic",
+   "value": "ruins",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "御文庫附属庫",
+    "大奥跡"
+   ]
+  },
+  {
+   "id": "brand=ドン・キホーテ",
+   "key": "brand",
+   "value": "ドン・キホーテ",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ドン・キホーテ"
+   ]
+  },
+  {
+   "id": "parking=street_side",
+   "key": "parking",
+   "value": "street_side",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "ちゃおちゃおコインパーキング"
+   ]
+  },
+  {
+   "id": "brand=はま寿司",
+   "key": "brand",
+   "value": "はま寿司",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "はま寿司"
+   ]
+  },
+  {
+   "id": "brand=ユニクロ",
+   "key": "brand",
+   "value": "ユニクロ",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ユニクロ"
+   ]
+  },
+  {
+   "id": "brand=KIRIN",
+   "key": "brand",
+   "value": "KIRIN",
+   "count": 2,
+   "role": "brand",
+   "sample_names": []
+  },
+  {
+   "id": "cuisine=breakfast",
+   "key": "cuisine",
+   "value": "breakfast",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "ポキボウルクラブトウキョウ",
+    "Bouquet"
+   ]
+  },
+  {
+   "id": "leisure=golf_course",
+   "key": "leisure",
+   "value": "golf_course",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "GOLFERS24　日本橋馬喰町店",
+    "GOLFERS24 大手町店"
+   ]
+  },
+  {
+   "id": "brand=セブン-イレブン",
+   "key": "brand",
+   "value": "セブン-イレブン",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "セブン-イレブン"
+   ]
+  },
+  {
+   "id": "office=property_management",
+   "key": "office",
+   "value": "property_management",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "南桜公園管理",
+    "Borderless House Tokyo"
+   ]
+  },
+  {
+   "id": "waste=paper",
+   "key": "waste",
+   "value": "paper",
+   "count": 2,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "healthcare:speciality=cardiology",
+   "key": "healthcare:speciality",
+   "value": "cardiology",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "さいとう内科・循環器クリニック",
+    "東京心臓血管・内科クリニック"
+   ]
+  },
+  {
+   "id": "amenity=veterinary",
+   "key": "amenity",
+   "value": "veterinary",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "つきしま動物病院",
+    "虎ノ門どうぶつ病院"
+   ]
+  },
+  {
+   "id": "historic=building",
+   "key": "historic",
+   "value": "building",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "石川島灯台",
+    "斎藤月岑居宅跡"
+   ]
+  },
+  {
+   "id": "cuisine=gyoza",
+   "key": "cuisine",
+   "value": "gyoza",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "天鴻餃子房 日本橋浜町店",
+    "餃子の王将"
+   ]
+  },
+  {
+   "id": "cuisine=juice",
+   "key": "cuisine",
+   "value": "juice",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "Tokyo Juice",
+    "パウえる"
+   ]
+  },
+  {
+   "id": "historic=cannon",
+   "key": "historic",
+   "value": "cannon",
+   "count": 2,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "memorial=war_memorial",
+   "key": "memorial",
+   "value": "war_memorial",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "常陸丸殉難記念碑",
+    "濠北方面戦没者慰霊碑"
+   ]
+  },
+  {
+   "id": "historic=statue",
+   "key": "historic",
+   "value": "statue",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "アンティノウス"
+   ]
+  },
+  {
+   "id": "shop=vacant",
+   "key": "shop",
+   "value": "vacant",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "ファミリーマート",
+    "タリーズコーヒー"
+   ]
+  },
+  {
+   "id": "brand=TSUTAYA",
+   "key": "brand",
+   "value": "TSUTAYA",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "TSUTAYA"
+   ]
+  },
+  {
+   "id": "brand=ロイヤルホスト",
+   "key": "brand",
+   "value": "ロイヤルホスト",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ロイヤルホスト"
+   ]
+  },
+  {
+   "id": "artwork_type=installation",
+   "key": "artwork_type",
+   "value": "installation",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "日テレ大時計"
+   ]
+  },
+  {
+   "id": "brand=H&M",
+   "key": "brand",
+   "value": "H&M",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "H&M"
+   ]
+  },
+  {
+   "id": "brand=Cartier",
+   "key": "brand",
+   "value": "Cartier",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "Cartier"
+   ]
+  },
+  {
+   "id": "brand=無印良品",
+   "key": "brand",
+   "value": "無印良品",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "無印良品"
+   ]
+  },
+  {
+   "id": "craft=electrician",
+   "key": "craft",
+   "value": "electrician",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "河名電機商会",
+    "大清水電気"
+   ]
+  },
+  {
+   "id": "office=accountant",
+   "key": "office",
+   "value": "accountant",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "市川社会保険労務士事務所",
+    "松下公認会計士事務所"
+   ]
+  },
+  {
+   "id": "brand=コメダ珈琲店",
+   "key": "brand",
+   "value": "コメダ珈琲店",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "コメダ珈琲店"
+   ]
+  },
+  {
+   "id": "brand=ドトールコーヒーショップ",
+   "key": "brand",
+   "value": "ドトールコーヒーショップ",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ドトールコーヒーショップ"
+   ]
+  },
+  {
+   "id": "brand=AOKI",
+   "key": "brand",
+   "value": "AOKI",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "アオキ"
+   ]
+  },
+  {
+   "id": "bicycle_parking=front_wheel",
+   "key": "bicycle_parking",
+   "value": "front_wheel",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "秋葉原駅東側駅前広場"
+   ]
+  },
+  {
+   "id": "brand=エニタイムフィットネス",
+   "key": "brand",
+   "value": "エニタイムフィットネス",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "エニタイムフィットネス"
+   ]
+  },
+  {
+   "id": "brand=Mercedes-Benz",
+   "key": "brand",
+   "value": "Mercedes-Benz",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "Mercedes-Benz",
+    "Mercedes-Benz Chuo"
+   ]
+  },
+  {
+   "id": "cuisine=italian_pizza",
+   "key": "cuisine",
+   "value": "italian_pizza",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "Hub"
+   ]
+  },
+  {
+   "id": "amenity=library_dropoff",
+   "key": "amenity",
+   "value": "library_dropoff",
+   "count": 2,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "office=notary",
+   "key": "office",
+   "value": "notary",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "司法書士小野事務所",
+    "銀座公証役場"
+   ]
+  },
+  {
+   "id": "office=architect",
+   "key": "office",
+   "value": "architect",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "Atelier H&M Arch & Design",
+    "OHKI ARCHI DESIGN OFFICE"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=otolaryngology",
+   "key": "healthcare:speciality",
+   "value": "otolaryngology",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "人形町耳鼻咽喉科めまいクリニック",
+    "日本橋浜町耳鼻咽喉科"
+   ]
+  },
+  {
+   "id": "office=engineer",
+   "key": "office",
+   "value": "engineer",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "Jacobs",
+    "Packcity"
+   ]
+  },
+  {
+   "id": "shop=pet",
+   "key": "shop",
+   "value": "pet",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "パウパウアクアガーデン",
+    "しゃるる"
+   ]
+  },
+  {
+   "id": "shop=storage_rental",
+   "key": "shop",
+   "value": "storage_rental",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "神輿倉",
+    "ハローストレージ"
+   ]
+  },
+  {
+   "id": "shop=repair",
+   "key": "shop",
+   "value": "repair",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "キートップ",
+    "スマホ修理屋"
+   ]
+  },
+  {
+   "id": "building=public",
+   "key": "building",
+   "value": "public",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "京橋社会保険事務所",
+    "麹町社会保険事務所"
+   ]
+  },
+  {
+   "id": "clothes=women",
+   "key": "clothes",
+   "value": "women",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "Abercrombie & Fitch",
+    "Max Mara"
+   ]
+  },
+  {
+   "id": "cuisine=salad",
+   "key": "cuisine",
+   "value": "salad",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "クリスプサラダワークス",
+    "Ome Farm Kitchen"
+   ]
+  },
+  {
+   "id": "brand=Tiffany & Company",
+   "key": "brand",
+   "value": "Tiffany & Company",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "Tiffany & Company"
+   ]
+  },
+  {
+   "id": "brand=GU",
+   "key": "brand",
+   "value": "GU",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ジーユー"
+   ]
+  },
+  {
+   "id": "brand=Louis Vuitton",
+   "key": "brand",
+   "value": "Louis Vuitton",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "Louis Vuitton"
+   ]
+  },
+  {
+   "id": "brand=ドミノ",
+   "key": "brand",
+   "value": "ドミノ",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ドミノ・ピザ"
+   ]
+  },
+  {
+   "id": "brand=くすりの福太郎",
+   "key": "brand",
+   "value": "くすりの福太郎",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "くすりの福太郎"
+   ]
+  },
+  {
+   "id": "brand=welcia",
+   "key": "brand",
+   "value": "welcia",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ウエルシア薬局"
+   ]
+  },
+  {
+   "id": "cuisine=teahouse",
+   "key": "cuisine",
+   "value": "teahouse",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "Tsuruya Yoshinobu",
+    "未来食堂"
+   ]
+  },
+  {
+   "id": "shop=fashion_accessories",
+   "key": "shop",
+   "value": "fashion_accessories",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "伊場仙",
+    "塩谷商店"
+   ]
+  },
+  {
+   "id": "leisure=outdoor_seating",
+   "key": "leisure",
+   "value": "outdoor_seating",
+   "count": 2,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "brand=ピザハット",
+   "key": "brand",
+   "value": "ピザハット",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ピザハット"
+   ]
+  },
+  {
+   "id": "cuisine=moroccan",
+   "key": "cuisine",
+   "value": "moroccan",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "ダリア食堂",
+    "RESTAURANT MOROCCO TOKYO"
+   ]
+  },
+  {
+   "id": "amenity=bicycle_repair_station",
+   "key": "amenity",
+   "value": "bicycle_repair_station",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "Sone"
+   ]
+  },
+  {
+   "id": "shop=appliance",
+   "key": "shop",
+   "value": "appliance",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "WiNK",
+    "OutletPlaza"
+   ]
+  },
+  {
+   "id": "brand=鳥貴族",
+   "key": "brand",
+   "value": "鳥貴族",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "鳥貴族"
+   ]
+  },
+  {
+   "id": "brand=シェル",
+   "key": "brand",
+   "value": "シェル",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "昭和シェル"
+   ]
+  },
+  {
+   "id": "office=financial",
+   "key": "office",
+   "value": "financial",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "岡安証券",
+    "BofA証券"
+   ]
+  },
+  {
+   "id": "craft=handicraft",
+   "key": "craft",
+   "value": "handicraft",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "漆芸中島",
+    "ゆう工房"
+   ]
+  },
+  {
+   "id": "craft=photographer",
+   "key": "craft",
+   "value": "photographer",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "たまひよの写真スタジオ",
+    "pixi AKIHABARA STUDIO"
+   ]
+  },
+  {
+   "id": "bicycle_parking=stands",
+   "key": "bicycle_parking",
+   "value": "stands",
+   "count": 2,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "shop=collector",
+   "key": "shop",
+   "value": "collector",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "一番くじ公式ショップ",
+    "TAMASHII NATIONS STORE TOKYO"
+   ]
+  },
+  {
+   "id": "amenity=luggage_locker",
+   "key": "amenity",
+   "value": "luggage_locker",
+   "count": 2,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "memorial=bust",
+   "key": "memorial",
+   "value": "bust",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "法政大学発祥の地碑",
+    "シーボルト"
+   ]
+  },
+  {
+   "id": "amenity=parcel_locker",
+   "key": "amenity",
+   "value": "parcel_locker",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "PUDOステーション",
+    "Amazon Hub ロッカー"
+   ]
+  },
+  {
+   "id": "shop=craft",
+   "key": "shop",
+   "value": "craft",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "草土舎　神田本店",
+    "Parts Club"
+   ]
+  },
+  {
+   "id": "cuisine=tex-mex",
+   "key": "cuisine",
+   "value": "tex-mex",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "フリホーレス大手町ファーストスクエア店",
+    "Taco Bell"
+   ]
+  },
+  {
+   "id": "shop=frame",
+   "key": "shop",
+   "value": "frame",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "清泉堂",
+    "額縁工房"
+   ]
+  },
+  {
+   "id": "brand=ココカラファイン",
+   "key": "brand",
+   "value": "ココカラファイン",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ココカラファイン"
+   ]
+  },
+  {
+   "id": "office=publisher",
+   "key": "office",
+   "value": "publisher",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "晋遊舎",
+    "ネクストパブリッシング"
+   ]
+  },
+  {
+   "id": "office=politician",
+   "key": "office",
+   "value": "politician",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "小渕優子　東京事務所",
+    "西村康稔 国会事務所"
+   ]
+  },
+  {
+   "id": "cuisine=bento",
+   "key": "cuisine",
+   "value": "bento",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "笹野屋",
+    "縁楽"
+   ]
+  },
+  {
+   "id": "brand=ケンタッキーフライドチキン",
+   "key": "brand",
+   "value": "ケンタッキーフライドチキン",
+   "count": 2,
+   "role": "brand",
+   "sample_names": [
+    "ケンタッキーフライドチキン"
+   ]
+  },
+  {
+   "id": "cuisine=savory_pancakes",
+   "key": "cuisine",
+   "value": "savory_pancakes",
+   "count": 2,
+   "role": "refine",
+   "sample_names": [
+    "ぷれじでんと千房",
+    "Big Pig"
+   ]
+  },
+  {
+   "id": "shop=food",
+   "key": "shop",
+   "value": "food",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "美珍香",
+    "油屋.com"
+   ]
+  },
+  {
+   "id": "shop=rice",
+   "key": "shop",
+   "value": "rice",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "長谷部精米店",
+    "吉田屋"
+   ]
+  },
+  {
+   "id": "shop=doityourself",
+   "key": "shop",
+   "value": "doityourself",
+   "count": 2,
+   "role": "category",
+   "sample_names": [
+    "小沼電機",
+    "千石電商 秋葉原本店"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=orthopaedics",
+   "key": "healthcare:speciality",
+   "value": "orthopaedics",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "田中まき整形外科"
+   ]
+  },
+  {
+   "id": "man_made=tower",
+   "key": "man_made",
+   "value": "tower",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "時計塔"
+   ]
+  },
+  {
+   "id": "tourism=chalet",
+   "key": "tourism",
+   "value": "chalet",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "ユニバーサル企業株式会社"
+   ]
+  },
+  {
+   "id": "shop=funeral_directors",
+   "key": "shop",
+   "value": "funeral_directors",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "三谷葬儀社"
+   ]
+  },
+  {
+   "id": "shelter_type=picnic_shelter",
+   "key": "shelter_type",
+   "value": "picnic_shelter",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "shop=wedding",
+   "key": "shop",
+   "value": "wedding",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Cordy Bridal Salon"
+   ]
+  },
+  {
+   "id": "amenity=charging_station",
+   "key": "amenity",
+   "value": "charging_station",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "information=tactile_map",
+   "key": "information",
+   "value": "tactile_map",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "エリア触知図案内板"
+   ]
+  },
+  {
+   "id": "shop=bookmaker",
+   "key": "shop",
+   "value": "bookmaker",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "ウインズ汐留"
+   ]
+  },
+  {
+   "id": "amenity=exhibition_centre",
+   "key": "amenity",
+   "value": "exhibition_centre",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Space"
+   ]
+  },
+  {
+   "id": "brand=Adidas",
+   "key": "brand",
+   "value": "Adidas",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Adidas"
+   ]
+  },
+  {
+   "id": "shop=carpet",
+   "key": "shop",
+   "value": "carpet",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Persian Plaza"
+   ]
+  },
+  {
+   "id": "parking=rooftop",
+   "key": "parking",
+   "value": "rooftop",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "leisure=dance",
+   "key": "leisure",
+   "value": "dance",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Studio JBA"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=emergency",
+   "key": "healthcare:speciality",
+   "value": "emergency",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "日本橋休日応急診療所"
+   ]
+  },
+  {
+   "id": "brand=ダイハツ",
+   "key": "brand",
+   "value": "ダイハツ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ダイハツ"
+   ]
+  },
+  {
+   "id": "historic=anchor",
+   "key": "historic",
+   "value": "anchor",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "man_made=ceremonial_gate",
+   "key": "man_made",
+   "value": "ceremonial_gate",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "銅鳥居"
+   ]
+  },
+  {
+   "id": "craft=shoemaker",
+   "key": "craft",
+   "value": "shoemaker",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "靴専科"
+   ]
+  },
+  {
+   "id": "cuisine=brazilian",
+   "key": "cuisine",
+   "value": "brazilian",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Alegria"
+   ]
+  },
+  {
+   "id": "denomination=anglican",
+   "key": "denomination",
+   "value": "anglican",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "聖アンデレ教会"
+   ]
+  },
+  {
+   "id": "archaeological_site=bigstone",
+   "key": "archaeological_site",
+   "value": "bigstone",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "shop=garden_centre",
+   "key": "shop",
+   "value": "garden_centre",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "恵泉園芸センター"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=general",
+   "key": "healthcare:speciality",
+   "value": "general",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "虎の門病院"
+   ]
+  },
+  {
+   "id": "brand=7 ELEVEN",
+   "key": "brand",
+   "value": "7 ELEVEN",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "セブン-イレブン"
+   ]
+  },
+  {
+   "id": "brand=トヨタレンタカー",
+   "key": "brand",
+   "value": "トヨタレンタカー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "トヨタレンタカー"
+   ]
+  },
+  {
+   "id": "craft=glaziery",
+   "key": "craft",
+   "value": "glaziery",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "三交硝子"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=dentist",
+   "key": "healthcare:speciality",
+   "value": "dentist",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Rodin Dental Office Tokyo"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=cosmetic",
+   "key": "healthcare:speciality",
+   "value": "cosmetic",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Rodin Dental Office Tokyo"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=dental_oral_maxillo_facial_surgery",
+   "key": "healthcare:speciality",
+   "value": "dental_oral_maxillo_facial_surgery",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Rodin Dental Office Tokyo"
+   ]
+  },
+  {
+   "id": "cuisine=deli",
+   "key": "cuisine",
+   "value": "deli",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "スープデリ SOUP DELI"
+   ]
+  },
+  {
+   "id": "historic:civilization=medieval",
+   "key": "historic:civilization",
+   "value": "medieval",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "大奥跡"
+   ]
+  },
+  {
+   "id": "historic=citywalls",
+   "key": "historic",
+   "value": "citywalls",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "denomination=catholic",
+   "key": "denomination",
+   "value": "catholic",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "カトリック神田教会"
+   ]
+  },
+  {
+   "id": "brand=さくら薬局",
+   "key": "brand",
+   "value": "さくら薬局",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "さくら薬局"
+   ]
+  },
+  {
+   "id": "clothes=fashion",
+   "key": "clothes",
+   "value": "fashion",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Issey Miyake Maranouchi"
+   ]
+  },
+  {
+   "id": "brand=Dior",
+   "key": "brand",
+   "value": "Dior",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Dior"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=dentistry",
+   "key": "healthcare:speciality",
+   "value": "dentistry",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "日本大学歯学部付属歯科病院"
+   ]
+  },
+  {
+   "id": "brand=魚民",
+   "key": "brand",
+   "value": "魚民",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "魚民"
+   ]
+  },
+  {
+   "id": "archaeological_site=petroglyph",
+   "key": "archaeological_site",
+   "value": "petroglyph",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "waste=plastic",
+   "key": "waste",
+   "value": "plastic",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "clothes=underwear",
+   "key": "clothes",
+   "value": "underwear",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "大野屋"
+   ]
+  },
+  {
+   "id": "brand=洋服の青山",
+   "key": "brand",
+   "value": "洋服の青山",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "洋服の青山"
+   ]
+  },
+  {
+   "id": "brand=BOC",
+   "key": "brand",
+   "value": "BOC",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "中國銀行"
+   ]
+  },
+  {
+   "id": "brand=Mercure",
+   "key": "brand",
+   "value": "Mercure",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "メルキュール東京銀座"
+   ]
+  },
+  {
+   "id": "building=hotel",
+   "key": "building",
+   "value": "hotel",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "ザ・スクエアホテル銀座"
+   ]
+  },
+  {
+   "id": "office=bank",
+   "key": "office",
+   "value": "bank",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "信金中央金庫"
+   ]
+  },
+  {
+   "id": "cuisine=okonomiyaki",
+   "key": "cuisine",
+   "value": "okonomiyaki",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "松浪"
+   ]
+  },
+  {
+   "id": "brand=キャンドゥ",
+   "key": "brand",
+   "value": "キャンドゥ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "キャンドゥ"
+   ]
+  },
+  {
+   "id": "brand=BMW",
+   "key": "brand",
+   "value": "BMW",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "BMW"
+   ]
+  },
+  {
+   "id": "brand=餃子の王将",
+   "key": "brand",
+   "value": "餃子の王将",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "餃子の王将"
+   ]
+  },
+  {
+   "id": "shop=spices",
+   "key": "shop",
+   "value": "spices",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "㈱北島商店"
+   ]
+  },
+  {
+   "id": "cuisine=fries",
+   "key": "cuisine",
+   "value": "fries",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "てんや"
+   ]
+  },
+  {
+   "id": "cuisine=dessert",
+   "key": "cuisine",
+   "value": "dessert",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Balenciaga"
+   ]
+  },
+  {
+   "id": "brand=Abercrombie & Fitch",
+   "key": "brand",
+   "value": "Abercrombie & Fitch",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Abercrombie & Fitch"
+   ]
+  },
+  {
+   "id": "cuisine=yakiniku",
+   "key": "cuisine",
+   "value": "yakiniku",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "肉のコトブキ"
+   ]
+  },
+  {
+   "id": "brand=セリア",
+   "key": "brand",
+   "value": "セリア",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "セリア"
+   ]
+  },
+  {
+   "id": "brand=New Balance",
+   "key": "brand",
+   "value": "New Balance",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "New Balance"
+   ]
+  },
+  {
+   "id": "board_type=board",
+   "key": "board_type",
+   "value": "board",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "healthcare:speciality=plastic_surgery",
+   "key": "healthcare:speciality",
+   "value": "plastic_surgery",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Zetith Beauty Clinic"
+   ]
+  },
+  {
+   "id": "brand=Chanel",
+   "key": "brand",
+   "value": "Chanel",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Chanel"
+   ]
+  },
+  {
+   "id": "brand=Max Mara",
+   "key": "brand",
+   "value": "Max Mara",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Max Mara"
+   ]
+  },
+  {
+   "id": "brand=Gucci",
+   "key": "brand",
+   "value": "Gucci",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Gucci"
+   ]
+  },
+  {
+   "id": "brand=Lush",
+   "key": "brand",
+   "value": "Lush",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Lush"
+   ]
+  },
+  {
+   "id": "brand=Lacoste",
+   "key": "brand",
+   "value": "Lacoste",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Lacoste"
+   ]
+  },
+  {
+   "id": "brand=IQOS",
+   "key": "brand",
+   "value": "IQOS",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "IQOS"
+   ]
+  },
+  {
+   "id": "shop=e-cigarette",
+   "key": "shop",
+   "value": "e-cigarette",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "IQOS"
+   ]
+  },
+  {
+   "id": "brand=アイン薬局",
+   "key": "brand",
+   "value": "アイン薬局",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "アイン薬局"
+   ]
+  },
+  {
+   "id": "brand=Specialized",
+   "key": "brand",
+   "value": "Specialized",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Specialized"
+   ]
+  },
+  {
+   "id": "brand=ほっかほっか亭",
+   "key": "brand",
+   "value": "ほっかほっか亭",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ほっかほっか亭"
+   ]
+  },
+  {
+   "id": "brand=Shake Shack",
+   "key": "brand",
+   "value": "Shake Shack",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Shake Shack"
+   ]
+  },
+  {
+   "id": "cuisine=malaysian",
+   "key": "cuisine",
+   "value": "malaysian",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "ヤクンカヤトースト"
+   ]
+  },
+  {
+   "id": "craft=blacksmith",
+   "key": "craft",
+   "value": "blacksmith",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "西勘刀 本店"
+   ]
+  },
+  {
+   "id": "shop=grocery",
+   "key": "shop",
+   "value": "grocery",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "さとゆめ"
+   ]
+  },
+  {
+   "id": "brand=オリックスレンタカー",
+   "key": "brand",
+   "value": "オリックスレンタカー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "オリックスレンタカー"
+   ]
+  },
+  {
+   "id": "place=square",
+   "key": "place",
+   "value": "square",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "動輪の広場(C62形蒸気機関車)"
+   ]
+  },
+  {
+   "id": "shop=honey",
+   "key": "shop",
+   "value": "honey",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "L'ABEILLE 新丸の内ビルディング"
+   ]
+  },
+  {
+   "id": "board_type=public_transport",
+   "key": "board_type",
+   "value": "public_transport",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "都営バス　みんくる案内板"
+   ]
+  },
+  {
+   "id": "brand=WeWork",
+   "key": "brand",
+   "value": "WeWork",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "WeWork"
+   ]
+  },
+  {
+   "id": "highway=milestone",
+   "key": "highway",
+   "value": "milestone",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "東京市道路元標"
+   ]
+  },
+  {
+   "id": "bicycle_parking=shed",
+   "key": "bicycle_parking",
+   "value": "shed",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "大手町高架下自転車駐車場"
+   ]
+  },
+  {
+   "id": "brand=クリエイトSD",
+   "key": "brand",
+   "value": "クリエイトSD",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "クリエイトSD"
+   ]
+  },
+  {
+   "id": "sport=running",
+   "key": "sport",
+   "value": "running",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Re Ra Ku"
+   ]
+  },
+  {
+   "id": "brand=タイムズカー",
+   "key": "brand",
+   "value": "タイムズカー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "タイムズカーシェア"
+   ]
+  },
+  {
+   "id": "brand=Patagonia",
+   "key": "brand",
+   "value": "Patagonia",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Patagonia"
+   ]
+  },
+  {
+   "id": "clothes=outdoor",
+   "key": "clothes",
+   "value": "outdoor",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Patagonia"
+   ]
+  },
+  {
+   "id": "social_facility:for=underprivileged",
+   "key": "social_facility:for",
+   "value": "underprivileged",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "千代田区営東松下町住宅"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=endocrinology",
+   "key": "healthcare:speciality",
+   "value": "endocrinology",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "あたまと体のヘルスケアクリニック神田"
+   ]
+  },
+  {
+   "id": "denomination=salvation_army",
+   "key": "denomination",
+   "value": "salvation_army",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "救世軍日本本営"
+   ]
+  },
+  {
+   "id": "cuisine=health_food",
+   "key": "cuisine",
+   "value": "health_food",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Ome Farm Kitchen"
+   ]
+  },
+  {
+   "id": "craft=embroiderer",
+   "key": "craft",
+   "value": "embroiderer",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "館刺繍工芸"
+   ]
+  },
+  {
+   "id": "cuisine=african",
+   "key": "cuisine",
+   "value": "african",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "アモアコ食堂"
+   ]
+  },
+  {
+   "id": "office=educational_institution",
+   "key": "office",
+   "value": "educational_institution",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "日本橋社会教育会館"
+   ]
+  },
+  {
+   "id": "shelter_type=gazebo",
+   "key": "shelter_type",
+   "value": "gazebo",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "craft=print_shop",
+   "key": "craft",
+   "value": "print_shop",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "印刷"
+   ]
+  },
+  {
+   "id": "amenity=nursing_home",
+   "key": "amenity",
+   "value": "nursing_home",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "相生の里"
+   ]
+  },
+  {
+   "id": "sport=table_tennis",
+   "key": "sport",
+   "value": "table_tennis",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Akiba卓球スタイル"
+   ]
+  },
+  {
+   "id": "tourism=motel",
+   "key": "tourism",
+   "value": "motel",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "숙소"
+   ]
+  },
+  {
+   "id": "brand=イオン",
+   "key": "brand",
+   "value": "イオン",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "まいばすけった（イオン）"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=allergology",
+   "key": "healthcare:speciality",
+   "value": "allergology",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "大塩医院"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=gastroenterology",
+   "key": "healthcare:speciality",
+   "value": "gastroenterology",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "大塩医院"
+   ]
+  },
+  {
+   "id": "shop=games",
+   "key": "shop",
+   "value": "games",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "奥野かるた店"
+   ]
+  },
+  {
+   "id": "brand=Tesla",
+   "key": "brand",
+   "value": "Tesla",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Tesla"
+   ]
+  },
+  {
+   "id": "historic=milestone",
+   "key": "historic",
+   "value": "milestone",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "雁木坂"
+   ]
+  },
+  {
+   "id": "bicycle_parking=anchors",
+   "key": "bicycle_parking",
+   "value": "anchors",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "memorial=obelisk",
+   "key": "memorial",
+   "value": "obelisk",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "東京音楽大学発祥の地"
+   ]
+  },
+  {
+   "id": "brand=プドー",
+   "key": "brand",
+   "value": "プドー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "PUDOステーション"
+   ]
+  },
+  {
+   "id": "shop=security",
+   "key": "shop",
+   "value": "security",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "護身商店"
+   ]
+  },
+  {
+   "id": "sport=climbing",
+   "key": "sport",
+   "value": "climbing",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "B-PUMP"
+   ]
+  },
+  {
+   "id": "brand=ABCマート",
+   "key": "brand",
+   "value": "ABCマート",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ABCマート"
+   ]
+  },
+  {
+   "id": "brand=リンガーハット",
+   "key": "brand",
+   "value": "リンガーハット",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "リンガーハット"
+   ]
+  },
+  {
+   "id": "brand=Apple Store",
+   "key": "brand",
+   "value": "Apple Store",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Apple 丸の内"
+   ]
+  },
+  {
+   "id": "brand=不二家",
+   "key": "brand",
+   "value": "不二家",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "不二家"
+   ]
+  },
+  {
+   "id": "craft=musical_instrument",
+   "key": "craft",
+   "value": "musical_instrument",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "アトリエ・シモーラ弦楽器修理工房"
+   ]
+  },
+  {
+   "id": "brand=丸亀製麺",
+   "key": "brand",
+   "value": "丸亀製麺",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "丸亀製麺"
+   ]
+  },
+  {
+   "id": "brand=カラオケ まねきねこ",
+   "key": "brand",
+   "value": "カラオケ まねきねこ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "カラオケ まねきねこ"
+   ]
+  },
+  {
+   "id": "cuisine=russian",
+   "key": "cuisine",
+   "value": "russian",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "サラファン"
+   ]
+  },
+  {
+   "id": "cuisine=grill",
+   "key": "cuisine",
+   "value": "grill",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "レストランカロリー"
+   ]
+  },
+  {
+   "id": "bicycle_parking=floor",
+   "key": "bicycle_parking",
+   "value": "floor",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "amenity=water_point",
+   "key": "amenity",
+   "value": "water_point",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "cuisine=singaporean",
+   "key": "cuisine",
+   "value": "singaporean",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "天鶏"
+   ]
+  },
+  {
+   "id": "shop=beverages",
+   "key": "shop",
+   "value": "beverages",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "APPLE POMME"
+   ]
+  },
+  {
+   "id": "brand=Taco Bell",
+   "key": "brand",
+   "value": "Taco Bell",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Taco Bell"
+   ]
+  },
+  {
+   "id": "office=newspaper",
+   "key": "office",
+   "value": "newspaper",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "毎日新聞社東京本社"
+   ]
+  },
+  {
+   "id": "social_facility:for=disabled",
+   "key": "social_facility:for",
+   "value": "disabled",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "千代田区障害者よろず相談 Light"
+   ]
+  },
+  {
+   "id": "office=union",
+   "key": "office",
+   "value": "union",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "日本タイ協会"
+   ]
+  },
+  {
+   "id": "social_facility=nursing_home",
+   "key": "social_facility",
+   "value": "nursing_home",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "ケアリッツお茶の水"
+   ]
+  },
+  {
+   "id": "cuisine=sichuan",
+   "key": "cuisine",
+   "value": "sichuan",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Xi'an"
+   ]
+  },
+  {
+   "id": "amenity=training",
+   "key": "amenity",
+   "value": "training",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "CTCテクノロジー・ラーニングセンター"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=orthodontics",
+   "key": "healthcare:speciality",
+   "value": "orthodontics",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "半蔵門スマイルライン矯正歯科"
+   ]
+  },
+  {
+   "id": "sport=athletics",
+   "key": "sport",
+   "value": "athletics",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Adidas Runbase"
+   ]
+  },
+  {
+   "id": "craft=bookbinder",
+   "key": "craft",
+   "value": "bookbinder",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "kinko’s"
+   ]
+  },
+  {
+   "id": "leisure=swimming_pool",
+   "key": "leisure",
+   "value": "swimming_pool",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "麹町プール"
+   ]
+  },
+  {
+   "id": "cuisine=indonesian",
+   "key": "cuisine",
+   "value": "indonesian",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "アルケミー"
+   ]
+  },
+  {
+   "id": "amenity=planetarium",
+   "key": "amenity",
+   "value": "planetarium",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "cuisine=south_indian",
+   "key": "cuisine",
+   "value": "south_indian",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Nirvanam Kamiyacho"
+   ]
+  },
+  {
+   "id": "cuisine=buffet",
+   "key": "cuisine",
+   "value": "buffet",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Nirvanam Kamiyacho"
+   ]
+  },
+  {
+   "id": "board_type=geology",
+   "key": "board_type",
+   "value": "geology",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "愛宕山"
+   ]
+  },
+  {
+   "id": "cuisine=european",
+   "key": "cuisine",
+   "value": "european",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "The Tavern - Grill and Lounge"
+   ]
+  },
+  {
+   "id": "brand=サンドラッグ",
+   "key": "brand",
+   "value": "サンドラッグ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "サンドラッグ"
+   ]
+  },
+  {
+   "id": "brand=コスモ",
+   "key": "brand",
+   "value": "コスモ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "コスモ石油"
+   ]
+  },
+  {
+   "id": "highway=crossing",
+   "key": "highway",
+   "value": "crossing",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "りそな銀行"
+   ]
+  },
+  {
+   "id": "waste=recycling",
+   "key": "waste",
+   "value": "recycling",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "brand=ミスタードーナツ",
+   "key": "brand",
+   "value": "ミスタードーナツ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ミスタードーナツ"
+   ]
+  },
+  {
+   "id": "cuisine=donut",
+   "key": "cuisine",
+   "value": "donut",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "ミスタードーナツ"
+   ]
+  },
+  {
+   "id": "brand=Hooters",
+   "key": "brand",
+   "value": "Hooters",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Hooters"
+   ]
+  },
+  {
+   "id": "brand=Swarovski",
+   "key": "brand",
+   "value": "Swarovski",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Swarovski"
+   ]
+  },
+  {
+   "id": "shop=wine",
+   "key": "shop",
+   "value": "wine",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Vinos and Yamazaki"
+   ]
+  },
+  {
+   "id": "cuisine=fine_dining",
+   "key": "cuisine",
+   "value": "fine_dining",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "brand=Zara",
+   "key": "brand",
+   "value": "Zara",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Zara"
+   ]
+  },
+  {
+   "id": "clothes=luxury",
+   "key": "clothes",
+   "value": "luxury",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Celine"
+   ]
+  },
+  {
+   "id": "shop=boutique",
+   "key": "shop",
+   "value": "boutique",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Fendi"
+   ]
+  },
+  {
+   "id": "brand=やまや",
+   "key": "brand",
+   "value": "やまや",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "やまや"
+   ]
+  },
+  {
+   "id": "brand=Prada",
+   "key": "brand",
+   "value": "Prada",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Prada"
+   ]
+  },
+  {
+   "id": "brand=日産",
+   "key": "brand",
+   "value": "日産",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "日産"
+   ]
+  },
+  {
+   "id": "brand=オリジン弁当",
+   "key": "brand",
+   "value": "オリジン弁当",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "オリジン弁当"
+   ]
+  },
+  {
+   "id": "shop=bbq",
+   "key": "shop",
+   "value": "bbq",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "WAGYU SUSHI and SANDWICH 築地ワインスタンド88"
+   ]
+  },
+  {
+   "id": "historic=tomb",
+   "key": "historic",
+   "value": "tomb",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "brand=Calvin Klein",
+   "key": "brand",
+   "value": "Calvin Klein",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Calvin Klein"
+   ]
+  },
+  {
+   "id": "brand=Audi",
+   "key": "brand",
+   "value": "Audi",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Audi Kyobashi"
+   ]
+  },
+  {
+   "id": "cuisine=meat",
+   "key": "cuisine",
+   "value": "meat",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "京都 瓢喜"
+   ]
+  },
+  {
+   "id": "brand=牛角",
+   "key": "brand",
+   "value": "牛角",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "牛角"
+   ]
+  },
+  {
+   "id": "brand=Mazda",
+   "key": "brand",
+   "value": "Mazda",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Mazda"
+   ]
+  },
+  {
+   "id": "amenity=bell",
+   "key": "amenity",
+   "value": "bell",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "平和の鐘"
+   ]
+  },
+  {
+   "id": "shop=bed",
+   "key": "shop",
+   "value": "bed",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "dream Bed"
+   ]
+  },
+  {
+   "id": "brand=Costa",
+   "key": "brand",
+   "value": "Costa",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Costa"
+   ]
+  },
+  {
+   "id": "brand=Nespresso",
+   "key": "brand",
+   "value": "Nespresso",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Nespresso"
+   ]
+  },
+  {
+   "id": "brand=ヤマダデンキ",
+   "key": "brand",
+   "value": "ヤマダデンキ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ヤマダデンキ"
+   ]
+  },
+  {
+   "id": "shop=rental",
+   "key": "shop",
+   "value": "rental",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "APEX RENTALS"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=gynaecology",
+   "key": "healthcare:speciality",
+   "value": "gynaecology",
+   "count": 1,
+   "role": "refine",
+   "sample_names": []
+  },
+  {
+   "id": "shop=pottery",
+   "key": "shop",
+   "value": "pottery",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "伊勢龍"
+   ]
+  },
+  {
+   "id": "brand=交通银行",
+   "key": "brand",
+   "value": "交通银行",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "交通銀行東京支店"
+   ]
+  },
+  {
+   "id": "public_transport=stop_position",
+   "key": "public_transport",
+   "value": "stop_position",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "人形町駅"
+   ]
+  },
+  {
+   "id": "cuisine=ice_cream",
+   "key": "cuisine",
+   "value": "ice_cream",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "イシヤ日本橋"
+   ]
+  },
+  {
+   "id": "craft=brewery",
+   "key": "craft",
+   "value": "brewery",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Nihonbashi Brewery"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=anaesthetics",
+   "key": "healthcare:speciality",
+   "value": "anaesthetics",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "第一電建ビル 内科・外科・麻酔科"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=surgery",
+   "key": "healthcare:speciality",
+   "value": "surgery",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "第一電建ビル 内科・外科・麻酔科"
+   ]
+  },
+  {
+   "id": "brand=Amazon Hub ロッカー",
+   "key": "brand",
+   "value": "Amazon Hub ロッカー",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Amazon Hub ロッカー"
+   ]
+  },
+  {
+   "id": "amenity=music_school",
+   "key": "amenity",
+   "value": "music_school",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "イル・テアトロ音楽院"
+   ]
+  },
+  {
+   "id": "cuisine=fish_and_chips",
+   "key": "cuisine",
+   "value": "fish_and_chips",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Hub"
+   ]
+  },
+  {
+   "id": "cuisine=hotdog",
+   "key": "cuisine",
+   "value": "hotdog",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Hub"
+   ]
+  },
+  {
+   "id": "sport=skateboard",
+   "key": "sport",
+   "value": "skateboard",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Prime Skateboard Store"
+   ]
+  },
+  {
+   "id": "shop=paint",
+   "key": "shop",
+   "value": "paint",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "Palette Bldg Colorworks"
+   ]
+  },
+  {
+   "id": "brand=大阪王将",
+   "key": "brand",
+   "value": "大阪王将",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "大阪王将"
+   ]
+  },
+  {
+   "id": "brand=ピタットハウス",
+   "key": "brand",
+   "value": "ピタットハウス",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ピタットハウス"
+   ]
+  },
+  {
+   "id": "brand=ブックオフ",
+   "key": "brand",
+   "value": "ブックオフ",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "ブックオフ"
+   ]
+  },
+  {
+   "id": "sport=yoga",
+   "key": "sport",
+   "value": "yoga",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Makoto"
+   ]
+  },
+  {
+   "id": "brand=エディオン",
+   "key": "brand",
+   "value": "エディオン",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "エディオン"
+   ]
+  },
+  {
+   "id": "brand=幸楽苑",
+   "key": "brand",
+   "value": "幸楽苑",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "幸楽苑"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=paediatrics",
+   "key": "healthcare:speciality",
+   "value": "paediatrics",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "浅草橋総合内科"
+   ]
+  },
+  {
+   "id": "shop=radiotechnics",
+   "key": "shop",
+   "value": "radiotechnics",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "海神無線"
+   ]
+  },
+  {
+   "id": "brand=Pepper Lunch",
+   "key": "brand",
+   "value": "Pepper Lunch",
+   "count": 1,
+   "role": "brand",
+   "sample_names": [
+    "Pepper Lunch"
+   ]
+  },
+  {
+   "id": "cuisine=teppanyaki",
+   "key": "cuisine",
+   "value": "teppanyaki",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "Pepper Lunch"
+   ]
+  },
+  {
+   "id": "amenity=grit_bin",
+   "key": "amenity",
+   "value": "grit_bin",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  },
+  {
+   "id": "bicycle_parking=rack",
+   "key": "bicycle_parking",
+   "value": "rack",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "秋葉原駅西側歩道橋下自転車駐車場"
+   ]
+  },
+  {
+   "id": "healthcare=physiotherapist",
+   "key": "healthcare",
+   "value": "physiotherapist",
+   "count": 1,
+   "role": "category",
+   "sample_names": [
+    "ベストリハ"
+   ]
+  },
+  {
+   "id": "healthcare:speciality=rehabilitation",
+   "key": "healthcare:speciality",
+   "value": "rehabilitation",
+   "count": 1,
+   "role": "refine",
+   "sample_names": [
+    "ベストリハ"
+   ]
+  },
+  {
+   "id": "amenity=bbq",
+   "key": "amenity",
+   "value": "bbq",
+   "count": 1,
+   "role": "category",
+   "sample_names": []
+  }
+ ],
+ "dropped_top": [
+  [
+   "office=yes",
+   38
+  ],
+  [
+   "shop=yes",
+   26
+  ],
+  [
+   "brand=NATURAL LAWSON",
+   14
+  ],
+  [
+   "brand=PRONTO",
+   13
+  ],
+  [
+   "brand=エクセルシオール カフェ",
+   12
+  ],
+  [
+   "cuisine=monja",
+   7
+  ],
+  [
+   "brand=ゆで太郎",
+   7
+  ],
+  [
+   "historic=yes",
+   7
+  ],
+  [
+   "brand=アパホテル",
+   7
+  ],
+  [
+   "brand=ルノアール",
+   7
+  ],
+  [
+   "brand=上島珈琲店",
+   7
+  ],
+  [
+   "brand=富士そば",
+   6
+  ],
+  [
+   "brand=成城石井",
+   5
+  ],
+  [
+   "brand=すしざんまい",
+   5
+  ],
+  [
+   "brand=いきなり！ステーキ",
+   4
+  ],
+  [
+   "memorial=yes",
+   4
+  ],
+  [
+   "leisure=karaoke",
+   4
+  ],
+  [
+   "brand=クロサワ楽器店",
+   4
+  ],
+  [
+   "brand=日本調剤",
+   3
+  ],
+  [
+   "brand=JTB",
+   3
+  ],
+  [
+   "brand=TOHOシネマズ",
+   3
+  ],
+  [
+   "brand=築地銀だこ",
+   3
+  ],
+  [
+   "brand=ビックカメラ",
+   3
+  ],
+  [
+   "brand=みどりの窓口",
+   3
+  ],
+  [
+   "cuisine=tempura",
+   3
+  ],
+  [
+   "brand=丸善",
+   3
+  ],
+  [
+   "brand=カクヤス",
+   3
+  ],
+  [
+   "brand=Sotetsu Fresa Inn",
+   3
+  ],
+  [
+   "amenity=baby_care",
+   3
+  ],
+  [
+   "denomination=inari",
+   3
+  ],
+  [
+   "information=yes",
+   3
+  ],
+  [
+   "brand=はなの舞",
+   3
+  ],
+  [
+   "brand=メロンブックス",
+   2
+  ],
+  [
+   "brand=ハナマサ",
+   2
+  ],
+  [
+   "religion=統一教会",
+   2
+  ],
+  [
+   "brand=東京メガネ",
+   2
+  ],
+  [
+   "brand=エイチ・アイ・エス",
+   2
+  ],
+  [
+   "brand=リトルマーメイド",
+   2
+  ],
+  [
+   "brand=Din Tai Fung",
+   2
+  ],
+  [
+   "amenity=food_truck_locatio",
+   2
+  ]
+ ]
+}

@@ -9,3 +9,5 @@ dist/
 .env.*
 .DS_Store
 .wrangler/
+experiments/*/results/
+experiments/*/fetch.log

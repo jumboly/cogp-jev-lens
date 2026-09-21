@@ -1,0 +1,7 @@
+[
+  { "id": "kids", "text": "子供が楽しめそう" },
+  { "id": "tourist", "text": "観光客が興味を持ちそう" },
+  { "id": "quiet", "text": "静かに過ごせそう" },
+  { "id": "stroll", "text": "散歩で立ち寄りたくなる" },
+  { "id": "local-not-tourist", "text": "観光客向けではない、地元の人の日常の場所", "negative": true }
+]
