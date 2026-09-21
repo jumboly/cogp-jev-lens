@@ -17,5 +17,5 @@ labels: design, infra, decision-needed
 - API 設計: リクエスト = `{ lens, tags[], schemaVersion }`、レスポンス = タグごとの評価 + キャッシュヒット情報、でよいか
 - レート制限・悪用対策（公開デモにするなら必要）
 
-## 結論
-（議論後に記載）
+## 結論（2026-09-22、一部）
+- JEV への到達経路は **Vercel AI Gateway** に決定（$5 無料枠。実験と BFF で経路を揃える）。BFF の実行基盤（Workers か否か）は未決

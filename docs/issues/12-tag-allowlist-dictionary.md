@@ -16,5 +16,7 @@ labels: design, data
 - 静的 JSON として配布するか、BFF 側で持つか
 - OSM wiki の説明文を機械的に取れるか（Taginfo API）
 
-## 結論
-（#2 の議論後に記載）
+## 結論（2026-09-22、一部）
+- 許可リスト方式を採用。閾値は世界で 100 回以上（#2 の議論で決定）
+- 対象キーは `docs/tag-policy.md` の分類キー・細分キー + `brand`
+- 生成は `scripts/build_allowlist.py`。配布形態（静的 JSON / BFF 側）と説明文の付与は未決
