@@ -1,4 +1,4 @@
-# cogp-ai-lens
+# cogp-jev-lens
 
 **Cloud Optimized GeoParquet（COGP）× JEV** で、「AI で検索する」のではなく
 **「AI という Lens を通して同じ地図を見る」** ことを試す実験的 Web GIS。
