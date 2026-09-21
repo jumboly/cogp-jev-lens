@@ -145,14 +145,20 @@ for (const lens of lenses) {
           if (i === 0) console.log(JSON.stringify({ state, questions: Object.fromEntries(Object.entries(questions).slice(0, 2)) }, null, 2))
           continue
         }
-        const r = await callJev(state, questions)
+        // Gateway 経由では 429（上流の混雑）と 503（一時利用不可）が散発する。
+        // 欠けたバッチはそのまま欠測になるので、指数バックオフで最大 6 回までやり直す。
+        let r = await callJev(state, questions)
+        for (let attempt = 1; attempt <= 6 && [429, 503, 529].includes(r.status); attempt++) {
+          const wait = 2000 * 2 ** (attempt - 1)
+          console.error(`  ${lens.id}/${repr}/${primitive} batch ${i / BATCH}: HTTP ${r.status} → ${wait / 1000}s 後に再試行 (${attempt}/6)`)
+          await new Promise((res) => setTimeout(res, wait))
+          r = await callJev(state, questions)
+        }
         const body = r.json as { answers?: Record<string, unknown>; usage?: { inputTokens?: number }; model?: string }
         usage += body?.usage?.inputTokens ?? 0
         lines.push(JSON.stringify({ lens: lens.id, repr, primitive, batch: i / BATCH, status: r.status, latencyMs: Math.round(r.latencyMs), model: body?.model, request: { state, questions }, response: r.json }))
-        if (r.status !== 200) {
-          console.error(`  ${lens.id}/${repr}/${primitive} batch ${i / BATCH}: HTTP ${r.status}`, JSON.stringify(r.json).slice(0, 300))
-          if (r.status === 429 || r.status === 529) { await new Promise((res) => setTimeout(res, 5000)); i -= BATCH; continue }
-        }
+        if (r.status !== 200) console.error(`  ${lens.id}/${repr}/${primitive} batch ${i / BATCH}: HTTP ${r.status} で断念`, JSON.stringify(r.json).slice(0, 200))
+        await new Promise((res) => setTimeout(res, 300)) // 連投を避ける
       }
       if (!dry) {
         writeFileSync(file, lines.join('\n') + '\n')
