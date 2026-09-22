@@ -32,7 +32,12 @@ for f in sorted(RES.glob("*.jsonl")):
         r = json.loads(line)
         if r["status"] != 200:
             continue
-        key = (r["lens"], r["repr"], r["primitive"])
+        prim = r["primitive"]
+        if r.get("noulVariant") and r["noulVariant"] != "relevance":
+            prim += f"-{r['noulVariant']}"
+        if r.get("choiceVariant") and r["choiceVariant"] != "v1":
+            prim += f"-{r['choiceVariant']}"
+        key = (r["lens"], r["repr"], prim)
         u = usage[key]
         u["req"] += 1
         u["in"] += r["response"].get("usage", {}).get("inputTokens", 0)
@@ -43,7 +48,7 @@ for f in sorted(RES.glob("*.jsonl")):
 
 
 def val(a: dict, primitive: str):
-    if primitive == "noul":
+    if primitive.startswith("noul"):
         return a.get("probability", a.get("noul"))
     if primitive == "score":
         return a.get("score")
@@ -79,7 +84,7 @@ P("## 1. 値の分布\n")
 P("Noul は 0〜1（関係あり確率）、Score は 0〜4（0 沈める / 2 変化なし / 4 最も浮かせる）。10 区間のヒストグラム。\n")
 P("```")
 for lens in lenses:
-    for primitive, lo, hi in (("noul", 0, 1), ("score", 0, 4)):
+    for primitive, lo, hi in (("noul", 0, 1), ("noul-confidence", 0, 1), ("noul-fit", 0, 1), ("score", 0, 4)):
         for repr_ in ("token", "described"):
             vs = [val(a, primitive) for a in answers[(lens, repr_, primitive)].values() if val(a, primitive) is not None]
             if not vs:
@@ -167,4 +172,74 @@ for lens in lenses:
         high = [abs(s - 2) for n, s in pairs if n >= 0.7]
         P(f"| {lens} | {repr_} | {len(pairs)} | {r:.2f} | {st.mean(low):.2f} (n={len(low)}) | {st.mean(high) if high else float('nan'):.2f} (n={len(high)}) |")
 P("")
+
+# --- Noul バリアント ---
+P("## 6. Noul の意味を変えた再実験（トークンのみ）\n")
+P("relevance = 判断材料として関係あるか（初回） / confidence = このタグだけで扱いが決まるか / fit = Lens に沿う側か。\n")
+P("| Lens | 変種 | n | 平均 ± SD | r(値, \\|Score−2\\|) | r(値, Score) | 値≥0.8 の割合 | 値≤0.2 の割合 |")
+P("| --- | --- | --- | --- | --- | --- | --- | --- |")
+for lens in lenses:
+    a_s = answers[(lens, "token", "score")]
+    for variant in ("noul", "noul-confidence", "noul-fit"):
+        a_n = answers[(lens, "token", variant)]
+        pairs = [(val(a_n[t], variant), val(a_s[t], "score")) for t in a_n if t in a_s and val(a_n[t], variant) is not None and val(a_s[t], "score") is not None]
+        if len(pairs) < 3:
+            continue
+        xs = [p[0] for p in pairs]
+        r_abs = st.correlation(xs, [abs(p[1] - 2) for p in pairs]) if st.pstdev(xs) > 0 else float("nan")
+        r_sgn = st.correlation(xs, [p[1] for p in pairs]) if st.pstdev(xs) > 0 else float("nan")
+        P(f"| {lens} | {variant.replace('noul-', '') if variant != 'noul' else 'relevance'} | {len(pairs)} | {st.mean(xs):.2f} ± {st.pstdev(xs):.2f} | {r_abs:.2f} | {r_sgn:.2f} | {sum(1 for x in xs if x >= 0.8) / len(xs):.0%} | {sum(1 for x in xs if x <= 0.2) / len(xs):.0%} |")
+P("")
+P("### confidence が高い / 低いタグの例（静か Lens）\n")
+a_c = answers[("quiet", "token", "noul-confidence")]
+a_s = answers[("quiet", "token", "score")]
+if a_c:
+    rows = sorted(((t, val(a, "noul-confidence"), val(a_s.get(t, {}), "score")) for t, a in a_c.items() if val(a, "noul-confidence") is not None), key=lambda x: -x[1])
+    P("| | タグ | confidence | Score |")
+    P("| --- | --- | --- | --- |")
+    for label, part in (("高い", rows[:12]), ("低い", rows[-12:])):
+        for t, c, sc in part:
+            P(f"| {label} | `{t}` | {c:.2f} | {sc if sc is None else f'{sc:.2f}'} |")
+    P("")
+
+# --- Choice v2 ---
+P("## 7. Choice の選択肢を言い換えた再実験（v2: 主役 / 脇役 / 背景 / 妨げ / 無関係、トークンのみ）\n")
+cats2 = ["主役", "脇役", "背景", "妨げ", "無関係"]
+P("| Lens | " + " | ".join(cats2) + " | 平均確信度 |")
+P("| --- | " + " | ".join("---" for _ in cats2) + " | --- |")
+for lens in lenses:
+    ans = answers[(lens, "token", "choice-v2")]
+    if not ans:
+        continue
+    cnt = defaultdict(int)
+    conf = []
+    for a in ans.values():
+        cnt[a.get("choice")] += 1
+        probs = a.get("probabilities") or {}
+        if probs:
+            conf.append(max(probs.values()))
+    P(f"| {lens} | " + " | ".join(str(cnt.get(c, 0)) for c in cats2) + f" | {st.mean(conf):.2f} |")
+P("")
+P("### v1 → v2 の対応（全 Lens 合算）。行 = v1、列 = v2\n")
+cross = defaultdict(lambda: defaultdict(int))
+for lens in lenses:
+    a1 = answers[(lens, "token", "choice")]
+    a2 = answers[(lens, "token", "choice-v2")]
+    for t in a1:
+        if t in a2:
+            cross[a1[t].get("choice")][a2[t].get("choice")] += 1
+if cross:
+    P("| v1 \\ v2 | " + " | ".join(cats2) + " |")
+    P("| --- | " + " | ".join("---" for _ in cats2) + " |")
+    for c1 in cats:
+        P(f"| {c1} | " + " | ".join(str(cross[c1].get(c2, 0)) for c2 in cats2) + " |")
+    P("")
+P("### v2 で各カテゴリに入ったタグの例（静か Lens、Score 併記）\n")
+a2 = answers[("quiet", "token", "choice-v2")]
+a_s = answers[("quiet", "token", "score")]
+if a2:
+    for c in cats2:
+        members = sorted(((t, (a.get("probabilities") or {}).get(c, 0)) for t, a in a2.items() if a.get("choice") == c), key=lambda x: -x[1])[:8]
+        P(f"- **{c}** ({sum(1 for a in a2.values() if a.get('choice') == c)}): " + ", ".join(f"`{t}` {val(a_s.get(t, {}), 'score') or 0:.1f}" for t, _ in members))
+    P("")
 print("\n".join(out))

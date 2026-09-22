@@ -31,6 +31,21 @@ const primitives: Primitive[] = args.has('primitive') ? [args.get('primitive') a
 const reprs: Repr[] = args.has('repr') ? [args.get('repr') as Repr] : ['token', 'described']
 const limit = args.has('limit') ? Number(args.get('limit')) : Infinity
 const dry = args.get('dry') === 'true'
+/**
+ * Noul の意味のバリエーション。最初の実験で「関係あり（どちら向きでも）」は Score と重複したため、
+ * 意味をずらした問いを追加で試す。
+ *  - relevance : 判断材料として関係があるか（初回の問い）
+ *  - confidence: このタグだけで扱いが迷いなく決まるか（決定的なタグか）
+ *  - fit       : Lens に沿う側の場所か（検索的な問い）
+ */
+type NoulVariant = 'relevance' | 'confidence' | 'fit'
+const noulVariant = (args.get('noul-variant') as NoulVariant | undefined) ?? 'relevance'
+/**
+ * Choice の選択肢セット。v1（目的地 / 立ち寄り先 / 雰囲気 / 妨げ / 無関係）は「散歩で立ち寄りたくなる」のように
+ * Lens の文言に選択肢の語が含まれると、そこに判定が吸われた。v2 は行為の語を避け、関係の種類だけを表す語にする。
+ */
+type ChoiceVariant = 'v1' | 'v2'
+const choiceVariant = (args.get('choice-variant') as ChoiceVariant | undefined) ?? 'v1'
 
 const apiKey = process.env.AI_GATEWAY_API_KEY
 if (!apiKey && !dry) throw new Error('AI_GATEWAY_API_KEY が未設定です。.env に置いて node --env-file=.env で実行してください。')
@@ -72,6 +87,26 @@ function buildQuestion(tag: Tag, repr: Repr, primitive: Primitive): Record<strin
   const t = represent(tag, repr)
   switch (primitive) {
     case 'noul':
+      if (noulVariant === 'confidence') {
+        return {
+          type: 'boolean',
+          instructions: `タグ「${t}」だけを手がかりに、それを持つ場所をこの Lens でどう扱うか（浮かせる・沈める・変えない）を迷いなく判断できるか。`,
+          criteria: {
+            true: 'このタグは決定的で、他のタグや名前を見なくても扱いが決まる。',
+            false: 'このタグだけでは判断できない。他のタグや名前など追加の情報が必要。',
+          },
+        }
+      }
+      if (noulVariant === 'fit') {
+        return {
+          type: 'boolean',
+          instructions: `タグ「${t}」を持つ場所は、この Lens に沿う場所か。`,
+          criteria: {
+            true: 'Lens に沿う場所。地図上で浮かせる側。',
+            false: 'Lens に沿わない場所（反する、または無関係）。浮かせない。',
+          },
+        }
+      }
       return {
         type: 'boolean',
         instructions: `タグ「${t}」を持つ場所について、この Lens で地図を見るときに、このタグは判断材料として関係があるか。`,
@@ -93,6 +128,19 @@ function buildQuestion(tag: Tag, repr: Repr, primitive: Primitive): Record<strin
         ],
       }
     case 'choice':
+      if (choiceVariant === 'v2') {
+        return {
+          type: 'choice',
+          instructions: `タグ「${t}」を持つ場所は、この Lens に対してどういう意味で関わるか。最も当てはまるものを選ぶ。`,
+          criteria: {
+            主役: 'その場所自体が Lens の対象であり、Lens が指す性質をそのまま持っている。',
+            脇役: 'Lens の対象そのものではないが、Lens が指す性質を支えたり補ったりする。',
+            背景: 'Lens の対象ではないが、周囲の雰囲気や景観として Lens の性質に寄与する。',
+            妨げ: 'Lens が指す性質を損なう、または反する。',
+            無関係: 'Lens とは関係がない。',
+          },
+        }
+      }
       return {
         type: 'choice',
         instructions: `タグ「${t}」を持つ場所は、この Lens に対してどういう意味で関わるか。最も当てはまるものを選ぶ。`,
@@ -133,7 +181,8 @@ const stamp = new Date().toISOString().replace(/[:.]/g, '-')
 for (const lens of lenses) {
   for (const repr of reprs) {
     for (const primitive of primitives) {
-      const file = join(outDir, `${lens.id}.${repr}.${primitive}.jsonl`)
+      const suffix = primitive === 'noul' && noulVariant !== 'relevance' ? `-${noulVariant}` : primitive === 'choice' && choiceVariant !== 'v1' ? `-${choiceVariant}` : ''
+      const file = join(outDir, `${lens.id}.${repr}.${primitive}${suffix}.jsonl`)
       const lines: string[] = []
       let usage = 0
       const state = buildState(lens)
@@ -156,13 +205,13 @@ for (const lens of lenses) {
         }
         const body = r.json as { answers?: Record<string, unknown>; usage?: { inputTokens?: number }; model?: string }
         usage += body?.usage?.inputTokens ?? 0
-        lines.push(JSON.stringify({ lens: lens.id, repr, primitive, batch: i / BATCH, status: r.status, latencyMs: Math.round(r.latencyMs), model: body?.model, request: { state, questions }, response: r.json }))
+        lines.push(JSON.stringify({ lens: lens.id, repr, primitive, noulVariant: primitive === 'noul' ? noulVariant : undefined, choiceVariant: primitive === 'choice' ? choiceVariant : undefined, batch: i / BATCH, status: r.status, latencyMs: Math.round(r.latencyMs), model: body?.model, request: { state, questions }, response: r.json }))
         if (r.status !== 200) console.error(`  ${lens.id}/${repr}/${primitive} batch ${i / BATCH}: HTTP ${r.status} で断念`, JSON.stringify(r.json).slice(0, 200))
         await new Promise((res) => setTimeout(res, 300)) // 連投を避ける
       }
       if (!dry) {
         writeFileSync(file, lines.join('\n') + '\n')
-        console.log(`${lens.id.padEnd(18)} ${repr.padEnd(9)} ${primitive.padEnd(6)} ${tags.length} tags / ${lines.length} req / ${usage.toLocaleString()} input tokens  -> ${file.replace(DIR, '')}`)
+        console.log(`${lens.id.padEnd(18)} ${repr.padEnd(9)} ${(primitive + suffix).padEnd(17)} ${tags.length} tags / ${lines.length} req / ${usage.toLocaleString()} input tokens  -> ${file.replace(DIR, '')}`)
       }
     }
   }

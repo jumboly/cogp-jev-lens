@@ -75,11 +75,27 @@ JEV は OSM のトークンをそのまま読めている。**説明文の付与
 - `social_facility=nursing_home`（介護施設）が否定形 Lens で Score 3.30 なのに Choice は無関係。Score と Choice が食い違う例
 - `brand=Amazon Hub ロッカー`、`brand=ドン・キホーテ`、`brand=Louis Vuitton` など、ブランド名は説明なしで適切に読まれている
 
-## 結論（提案）
+## 追加実験: Noul の意味を変える（2026-09-22）
 
-1. **Noul は v1 では使わない。** Score の |Score−2| を relevance、符号を方向として使う
-2. **説明文は付与しない。** トークンのまま渡す
-3. **Choice は semantic role（色）として使うが、選択肢セットは要調整。** Lens の文言に依存しない語（例: 目的地 / 寄り道 / 背景 / 妨げ / 無関係）に直し、「雰囲気」の扱いを見直す
+初回の Noul（判断材料として関係あるか）が Score と重複したため、意味を変えた 2 通りを追加で回した（トークンのみ、5 Lens）。
+
+| 意味 | 問い | 平均 ± SD | r(値, \|Score−2\|) | r(値, Score) | 判定 |
+| --- | --- | --- | --- | --- | --- |
+| relevance（初回） | 判断材料として関係があるか | 0.50〜0.71 ± 0.11〜0.15 | 0.29〜0.50 | — | Score と重複 |
+| **confidence** | このタグだけで扱いが迷いなく決まるか | 0.22〜0.32 ± 0.08〜0.11 | **0.51〜0.78** | — | 独立した情報。採用 |
+| fit | Lens に沿う側の場所か | 0.27〜0.45 ± 0.13〜0.20 | — | **0.89〜0.98** | Score の符号と同じ |
+
+confidence の中身（静か Lens）: 高いのは `amenity=nightclub` 0.76 / `amenity=gambling` 0.60 / `leisure=karaoke` 0.53（沈める側で決定的）、
+低いのは `brand=サントリー` 0.09 / `brand=Panasonic` 0.10 / `brand=NTT` 0.10（ブランド名だけでは決まらない）。
+補助的なタグ（ブランド・細分）を自然に弱める重みとして筋が通る。値は全体に低い（最大 0.76、0.8 以上は 0%）ので相対値で使う。
+
+Score 自身の確率分布の尖り（最大確率）は confidence と r=0.25〜0.64 で、部分的な代用にしかならない（子供 Lens では r≒0）。
+
+## 結論（2026-09-22 決定）
+
+1. **Noul は「確信度」（このタグだけで扱いが決まるか）の意味で採用し、POI 集約の重みに使う。** 相対値（正規化）で扱う
+2. **説明文は付与しない。** トークンのまま渡す（決定）
+3. **Choice は semantic role（色）として使う。選択肢は v2（主役 / 脇役 / 背景 / 妨げ / 無関係）で再実験**（下記）
 4. POI 集約は「分類タグより細分タグを優先」が候補（`tourism=information` 問題）
 
 ## 再現
@@ -88,5 +104,8 @@ JEV は OSM のトークンをそのまま読めている。**説明文の付与
 uv run scripts/extract_viewport_tags.py 139.74 35.66 139.79 35.70 13 experiments/01-jev-tag-eval/tags-tokyo-z14.json
 uv run scripts/fetch_tag_descriptions.py experiments/01-jev-tag-eval/tags-tokyo-z14.json experiments/01-jev-tag-eval/descriptions.json
 node --env-file=.env experiments/01-jev-tag-eval/run.ts            # 全 30 ラン
+node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive noul --repr token --noul-variant confidence
+node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive noul --repr token --noul-variant fit
+node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive choice --repr token --choice-variant v2
 uv run experiments/01-jev-tag-eval/analyze.py > experiments/01-jev-tag-eval/RESULTS.md
 ```
