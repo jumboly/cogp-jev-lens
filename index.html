@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cogp-jev-lens</title>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <div class="panel">
+      <h1>cogp-jev-lens</h1>
+
+      <label class="row">
+        <span>背景地図</span>
+        <select id="basemap">
+          <option value="gsi">地理院地図 Vector</option>
+          <option value="osm">OpenFreeMap</option>
+        </select>
+      </label>
+
+      <div class="row">
+        <span>LOD</span>
+        <div class="stepper">
+          <button id="lod-down" type="button" title="1 段粗く">−</button>
+          <output id="lod-value">L–</output>
+          <button id="lod-up" type="button" title="1 段細かく">＋</button>
+        </div>
+      </div>
+
+      <p id="status" class="status">COGP を開いています…</p>
+      <p id="warning" class="warning" hidden></p>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

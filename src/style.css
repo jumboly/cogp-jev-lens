@@ -1,0 +1,121 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+}
+
+.panel {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  width: 260px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.94);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.18);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.panel h1 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.row > span {
+  color: #555;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper button {
+  width: 26px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.stepper button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.stepper button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.stepper output {
+  min-width: 34px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  margin: 10px 0 0;
+  color: #555;
+  font-variant-numeric: tabular-nums;
+}
+
+.warning {
+  margin: 6px 0 0;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #fdf3d8;
+  color: #6b5200;
+}
+
+.popup dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1px 10px;
+  margin: 0;
+  font-size: 12px;
+}
+
+.popup dt {
+  color: #666;
+  white-space: nowrap;
+}
+
+.popup dd {
+  margin: 0;
+  word-break: break-word;
+}
+
+.popup h2 {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.maplibregl-popup-content {
+  max-height: 320px;
+  overflow-y: auto;
+}

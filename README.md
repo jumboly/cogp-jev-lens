@@ -92,8 +92,8 @@ POI 評価
 | 3 | **全件タグプロファイリング** | ✅ → [`reports/tag-profile/REPORT.md`](reports/tag-profile/REPORT.md) |
 | 4 | タグ方針（JEV 評価対象 / 条件付き / 除外）の決定 | ✅ → [`docs/tag-policy.md`](docs/tag-policy.md) |
 | 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ✅ → [`experiments/01-jev-tag-eval/`](experiments/01-jev-tag-eval/README.md) |
-| 6 | COGP + MapLibre による POI 表示 | 🔄 着手 |
-| 7 | JEV BFF（`POST /api/evaluate-tags`） | ⏳ |
+| 6 | COGP + MapLibre による POI 表示 | ✅ |
+| 7 | JEV BFF（`POST /api/evaluate-tags`） | 🔄 次 |
 | 8 | AI Lens 可視化 | ⏳ |
 | 9 | キャッシュ・性能改善 | ⏳ |
 
@@ -123,6 +123,27 @@ uv run scripts/profile_tags.py            # data/pois.cogp.parquet → reports/t
 
 8 GB RAM の Mac で数分。2 パス構成で、キー単位の集計を先に取り、
 値の展開はカーディナリティの低いキーに絞っている（理由はスクリプト冒頭のコメント）。
+
+### フロントエンド（POI 表示）
+
+```bash
+npm install
+npm run dev            # http://localhost:5173
+```
+
+`data/pois.cogp.parquet` を dev サーバーが HTTP Range で配信し、Web Worker 上の
+COGP リーダーが表示範囲の POI を読む。初期表示は東京駅周辺 z14。
+
+| できること | |
+| --- | --- |
+| POI 表示 | 全 POI を一律の小さな点。Lens はまだ載っていない |
+| Popup | 点を押すと名前と OSM タグの一覧 |
+| 背景地図 | 地理院地図 Vector（既定）と OpenFreeMap を切り替え |
+| LOD | 自動で L = z − 1。開発用に手動 ±1 |
+| 状態表示 | 件数 / ズーム / レベル / 読み取り時間。上限 20,000 件に当たると警告 |
+
+COGP リーダーは npm 未公開のため `src/vendor/cogp/` にタグ固定で取り込んでいる。
+更新は `scripts/vendor_cogp.sh v1.0.0` を叩き直す。
 
 ## ライセンスと出典
 
