@@ -40,6 +40,7 @@ const MAX_ROWS = 30_000;
 // ---- DOM ----
 
 const statusEl = must<HTMLParagraphElement>('status');
+const tagsEl = must<HTMLParagraphElement>('tags');
 const warningEl = must<HTMLParagraphElement>('warning');
 const basemapEl = must<HTMLSelectElement>('basemap');
 const lodValueEl = must<HTMLOutputElement>('lod-value');
@@ -183,6 +184,7 @@ async function refresh(): Promise<void> {
     currentLevel = result.level;
     renderLod();
     statusEl.textContent = `${result.count.toLocaleString()} 件 / z${map.getZoom().toFixed(1)} / L${result.level} / ${Math.round(result.elapsedMs)} ms`;
+    tagsEl.textContent = `評価対象タグ ${result.tags.length.toLocaleString()} 種 / 対象外 ${result.droppedTagKinds.toLocaleString()} 種`;
 
     if (!result.truncated) {
       setWarning('');

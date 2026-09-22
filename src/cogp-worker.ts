@@ -1,5 +1,6 @@
 /// <reference lib="webworker" />
 import { CogpReader } from './vendor/cogp/index.js';
+import { countTags, loadAllowlist, normalizePoiTags, type Allowlist } from './tags.js';
 import type {
   CountResult,
   ViewportQuery,
@@ -32,9 +33,13 @@ const RESOLUTION_MARGIN = 0.999;
 const MAX_COUNT_ROWS = 2_000_000;
 
 let reader: CogpReader | null = null;
+let allowlist: Allowlist | null = null;
 
 async function open(url: string): Promise<null> {
-  reader = await CogpReader.open(url);
+  // 許可リストは COGP と独立なので並行で取る。
+  const [r, a] = await Promise.all([CogpReader.open(url), loadAllowlist()]);
+  reader = r;
+  allowlist = a;
   return null;
 }
 
@@ -56,10 +61,15 @@ async function readViewport(q: ViewportQuery): Promise<ViewportResult> {
   });
 
   const features: GeoJSON.Feature[] = [];
+  const perPoi: string[][] = [];
+  const dropped = new Set<string>();
   for (const row of rows) {
     const geometry = row[geomColumn] as GeoJSON.Geometry | null | undefined;
     if (!geometry) continue;
     const tags = toTagRecord(row['tags']);
+    // 評価対象タグは POI ごとに持たせる。JEV の結果を POI へ配り直すときに使う（#7）。
+    const tagIds = allowlist ? normalizePoiTags(tags, allowlist, dropped) : [];
+    perPoi.push(tagIds);
     features.push({
       type: 'Feature',
       geometry,
@@ -69,6 +79,7 @@ async function readViewport(q: ViewportQuery): Promise<ViewportResult> {
         // なぜ文字列か: MapLibre は GeoJSON の properties を JSON.stringify で
         // worker に渡すため、入れ子のオブジェクトは扱いにくい。Popup で parse する。
         tags: JSON.stringify(tags),
+        tagIds: JSON.stringify(tagIds),
       },
     });
   }
@@ -76,6 +87,8 @@ async function readViewport(q: ViewportQuery): Promise<ViewportResult> {
   return {
     geojson: { type: 'FeatureCollection', features },
     count: features.length,
+    tags: countTags(perPoi),
+    droppedTagKinds: dropped.size,
     level,
     truncated: rows.length >= MAX_ROWS,
     elapsedMs: performance.now() - startedAt,

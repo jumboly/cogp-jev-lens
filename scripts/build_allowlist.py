@@ -97,6 +97,9 @@ total_by_key = dict(total)
 
 entries = {}
 by_key: dict[str, dict] = {}
+# 出現数が同じペアの並びは SQL では決まらない。再生成のたびに差分が出ないよう、
+# 出現数の降順 → key=value の昇順で並びを固定する。
+rows = sorted(rows, key=lambda r: (-r[2], f"{r[0]}={r[1]}"))
 for key, value, n, n_jp in rows:
     entries[f"{key}={value}"] = {"key": key, "value": value, "count": n, "count_jp": n_jp}
     bk = by_key.setdefault(key, {"pairs": 0, "covered": 0})
@@ -133,6 +136,21 @@ doc = {
     "entries": entries,
 }
 OUT.write_text(json.dumps(doc, ensure_ascii=False, indent=1))
+
+# ブラウザに配る版。絞り込みに要るのは「キーの役割」と「通す key=value の集合」だけで、
+# 出現回数や国別集計は要らない。落とすと 1/6 以下になり初回読み込みが軽くなる（#12）。
+SLIM = OUT.with_suffix(".slim.json")
+slim = {
+    "schema": "cogp-jev-lens/tag-allowlist-slim",
+    "version": doc["version"],
+    "source": OUT.name,
+    # 正規化: 値を ";" で分割して trim、role が brand のキー以外は小文字化する
+    "normalization": doc["normalization"],
+    "roles": {k: m["role"] for k, m in keys_meta.items()},
+    "entries": sorted(entries),
+}
+SLIM.write_text(json.dumps(slim, ensure_ascii=False, separators=(",", ":")))
+print(f"wrote {SLIM}  entries={len(slim['entries']):,}  size={SLIM.stat().st_size/1024:.0f} KiB")
 
 jp_only = sum(1 for e in entries.values() if e["count"] < MIN_COUNT)
 print(f"wrote {OUT}  entries={len(entries):,} (うち日本基準のみで残った {jp_only:,})  size={OUT.stat().st_size/1024:.0f} KiB")

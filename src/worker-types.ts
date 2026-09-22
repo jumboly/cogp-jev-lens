@@ -1,5 +1,9 @@
 /** main と worker で共有するメッセージ型。 */
 
+import type { TagCount } from './tags.js';
+
+export type { TagCount };
+
 export interface ViewportBbox {
   xmin: number;
   ymin: number;
@@ -24,6 +28,10 @@ export type WorkerRequest =
 export interface ViewportResult {
   geojson: GeoJSON.FeatureCollection;
   count: number;
+  /** JEV に投げるユニークタグ。出現数の多い順。 */
+  tags: TagCount[];
+  /** 許可リストを通らなかったタグの種類数。 */
+  droppedTagKinds: number;
   /** 実際に読んだレベル（手動 ±1 を反映した後）。 */
   level: number;
   /** maxRows に当たって表示範囲の一部しか読めていない。 */
