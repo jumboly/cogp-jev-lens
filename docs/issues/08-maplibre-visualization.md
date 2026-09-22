@@ -18,7 +18,7 @@ labels: design, frontend
 
 ## 決定（2026-09-22、着手前の構成）
 - フロントエンド: **Vite + TypeScript（フレームワークなし）**。MapLibre と COGP リーダーが主役で UI は小さいため
-- 背景地図: **地理院地図 Vector**。日本域の品質を優先。日本以外は下地が空になるが、利用想定が日本域のため許容。世界データの POI は下地なしで点だけ載る
+- 背景地図: **地理院地図 Vector と OSM（OpenFreeMap）を UI で切り替え可能、既定は地理院地図 Vector**。日本域では地理院の品質を活かし、日本以外や OSM 由来 POI との突き合わせが要るときは OpenFreeMap に切り替える（2026-09-22 修正）
 - JEV 呼び出し（当面）: **Vite dev サーバーに `POST /api/evaluate-tags` を仮実装**し、`.env` のキーで Vercel AI Gateway を呼ぶ。本番 BFF（#4）と同じ API 形にして後で移す
 - 色は Choice v3 の確率分布を混ぜる（最頻値ではなく）。Score は 2 を「変化なし」のアンカーにし、|Score−2| を強さ、符号を浮沈に使う（#7）
 
