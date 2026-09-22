@@ -93,8 +93,8 @@ POI 評価
 | 4 | タグ方針（JEV 評価対象 / 条件付き / 除外）の決定 | ✅ → [`docs/tag-policy.md`](docs/tag-policy.md) |
 | 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ✅ → [`experiments/01-jev-tag-eval/`](experiments/01-jev-tag-eval/README.md) |
 | 6 | COGP + MapLibre による POI 表示 | ✅ |
-| 7 | JEV BFF（`POST /api/evaluate-tags`） | 🔄 次 |
-| 8 | AI Lens 可視化 | ⏳ |
+| 7 | JEV BFF（`POST /api/evaluate-tags`） | ✅ |
+| 8 | AI Lens 可視化 | 🔄 次 |
 | 9 | キャッシュ・性能改善 | ⏳ |
 
 課題・未決事項・改善案は [GitHub Issues](../../issues) に「なぜ検討が必要か / 現在わかっていること / 未決事項」の形で記録する。
@@ -145,6 +145,37 @@ COGP リーダーが表示範囲の POI を読む。初期表示は東京駅周�
 
 COGP リーダーは npm 未公開のため `src/vendor/cogp/` にタグ固定で取り込んでいる。
 更新は `scripts/vendor_cogp.sh v1.0.0` を叩き直す。
+
+### JEV BFF（`POST /api/evaluate-tags`）
+
+`.env` に `AI_GATEWAY_API_KEY` を置くと dev サーバーが受け付ける。
+本番の実行基盤は未決なので、中身は Vite に依存しない `src/server/` に分けてある。
+
+```bash
+curl -N -X POST localhost:5173/api/evaluate-tags \
+  -H 'Content-Type: application/json' \
+  -d '{"lens":"子供が楽しめそう","tags":["amenity=cafe","tourism=museum"]}'
+```
+
+応答は **NDJSON**（1 行 = 1 個の JSON）。タグを 90 個ずつのバッチに分け、
+終わったバッチから順に流す。全部揃うのを待たせない。
+
+```
+{"type":"start","lens":"子供が楽しめそう","tags":2,"batches":3,"schemaVersion":1}
+{"type":"result","primitive":"noul","batch":0,"answers":{…},"model":"typesafe-ai/jev",…}
+{"type":"error","primitive":"score","batch":1,"kind":"server","status":503,…}
+{"type":"done","ok":8,"failed":1,"tally":{"server":1},"elapsedMs":4900}
+```
+
+JEV は公開直後でサービス側の一時障害が通常運用でも起こる。実測でも失敗はすべて
+`503`（`service_unavailable_error`）で `429` は 1 件も出ていない。そのため
+**失敗の原因を種別（`rate_limit` / `overloaded` / `server` / `timeout` / `network` /
+`invalid` / `auth`）に分けて観測でき、一時障害だけを自動で再試行する**作りにしている。
+再試行は指数バックオフ + ジッタで、`Retry-After` があればそちらを優先する。
+入力不正と認証エラーは再試行しない。
+
+全リクエストの記録は `logs/jev.ndjson` に残る（git には入れない）。
+Gateway の `generationId` も残すので、問い合わせるときの手がかりになる。
 
 ## ライセンスと出典
 

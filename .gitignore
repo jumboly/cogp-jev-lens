@@ -11,3 +11,6 @@ dist/
 .wrangler/
 experiments/*/results/
 experiments/*/fetch.log
+
+# JEV 呼び出しの生ログ（調査用。鍵は含まないが request body の要約が入る）
+logs/

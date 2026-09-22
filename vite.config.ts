@@ -1,6 +1,8 @@
-import { createReadStream, statSync } from 'node:fs';
+import { appendFileSync, createReadStream, mkdirSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
+
+import { RequestError, evaluateTags } from './src/server/evaluate-tags.js';
 
 const DATA_ROUTE = '/data/pois.cogp.parquet';
 const DATA_FILE = resolve(import.meta.dirname, 'data/pois.cogp.parquet');
@@ -64,11 +66,77 @@ function serveCogp(): Plugin {
   };
 }
 
-export default defineConfig({
-  plugins: [serveCogp()],
+/**
+ * `POST /api/evaluate-tags` の仮 BFF（#4 / #8）。
+ * 本番の実行基盤は未決なので、当面は dev サーバーに同じ API 形で置く。
+ * 中身は Vite に依存しない `src/server/` に分けてあり、そのまま移せる。
+ */
+function evaluateTagsApi(apiKey: string): Plugin {
+  const logPath = resolve(import.meta.dirname, 'logs/jev.ndjson');
+  mkdirSync(resolve(import.meta.dirname, 'logs'), { recursive: true });
+
+  return {
+    name: 'evaluate-tags-api',
+    configureServer(server) {
+      server.middlewares.use('/api/evaluate-tags', async (req, res) => {
+        if (req.method !== 'POST') {
+          res.statusCode = 405;
+          res.end('POST のみ');
+          return;
+        }
+        if (!apiKey) {
+          res.statusCode = 500;
+          res.end('AI_GATEWAY_API_KEY が .env にない');
+          return;
+        }
+
+        const chunks: Buffer[] = [];
+        for await (const c of req) chunks.push(c as Buffer);
+        let body: unknown;
+        try {
+          body = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+        } catch {
+          res.statusCode = 400;
+          res.end('JSON として読めない');
+          return;
+        }
+
+        // NDJSON は 1 行ずつ届けたいので、圧縮もバッファリングも挟ませない。
+        res.setHeader('Content-Type', 'application/x-ndjson; charset=utf-8');
+        res.setHeader('Cache-Control', 'no-store');
+        res.setHeader('X-Accel-Buffering', 'no');
+
+        try {
+          for await (const event of evaluateTags(body, {
+            apiKey,
+            // 全リクエストの生ログを残す。何が原因で失敗したかを後から追えるようにする。
+            onLog: (entry) => appendFileSync(logPath, `${JSON.stringify(entry)}\n`),
+          })) {
+            res.write(`${JSON.stringify(event)}\n`);
+          }
+        } catch (err) {
+          if (err instanceof RequestError) {
+            // ヘッダは送信済みなので、本文の中で伝える。
+            res.write(`${JSON.stringify({ type: 'error', kind: 'invalid', message: err.message })}\n`);
+          } else {
+            res.write(`${JSON.stringify({ type: 'error', kind: 'server', message: (err as Error).message })}\n`);
+          }
+        }
+        res.end();
+      });
+    },
+  };
+}
+
+export default defineConfig(({ mode }) => {
+  // 第 3 引数を空にすると VITE_ 接頭辞のない変数も読める。鍵はサーバー側にしか渡さない。
+  const env = loadEnv(mode, import.meta.dirname, '');
+  return {
+  plugins: [serveCogp(), evaluateTagsApi(env['AI_GATEWAY_API_KEY'] ?? '')],
   optimizeDeps: {
     // MapLibre は自前の worker を同梱しており、依存最適化に通すと
     // maplibre-gl-worker.mjs が出力されず地図が起動しない。
     exclude: ['maplibre-gl'],
   },
+  };
 });
