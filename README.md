@@ -45,20 +45,21 @@ bbox 統計で絞って **HTTP Range** で取る。タイル化の前処理も�
 
 | プリミティブ | 返るもの | このプロジェクトでの仮の役割 |
 | --- | --- | --- |
-| **Noul**（bool） | 記述が真である確率 0〜1 | そのタグが Lens の判断材料として **関係あるか**（relevance） |
-| **Score** | 順序付きレベルの確率加重値 | そのタグが Lens を **どのくらい** 支持するか（strength） |
-| **Choice** | N 択の選択と確率分布 | そのタグが **どういう意味で** Lens に関わるか（semantic category） |
+| **Noul**（bool） | 記述が真である確率 0〜1 | **このタグだけで扱いが決まるか**（確信度）→ POI 集約の重み |
+| **Score** | 順序付きレベルの確率加重値 | この Lens で **どう扱うか**（0 沈める〜2 変化なし〜4 最も浮かせる） |
+| **Choice** | N 択の選択と確率分布 | **どういう意味で** Lens に関わるか（主役 / 脇役 / 背景 / 妨げ / 無関係）→ 色 |
 
 ```text
-Noul   = 関係ある？
-Score  = どのくらい？
-Choice = どういう意味で？
+Noul   = このタグだけで決まる？（確信度）
+Score  = どう扱う？（沈める〜浮かせる）
+Choice = どういう意味で？（主役 / 脇役 / 背景 / 妨げ / 無関係）
 ```
 
 1 リクエストに複数の質問を並べると同じ `state` に対して独立・並列に評価されるため、
 「1 タグ = 1 質問」で束ねて投げる構成に向く。
 
-**この役割分担は現時点では仮説**で、実データを JEV に投入して結果を見た上で見直す。
+当初仮説（Noul = 関係あるか）は [実験 01](experiments/01-jev-tag-eval/README.md) で Score と重複すると分かり、
+「このタグだけで決まるか」に読み替えた。上表は実験で確定した役割。
 
 ## AI Lens のコンセプト
 
@@ -90,8 +91,8 @@ POI 評価
 | 2 | POI COGP のローカル取得 | ✅ |
 | 3 | **全件タグプロファイリング** | ✅ → [`reports/tag-profile/REPORT.md`](reports/tag-profile/REPORT.md) |
 | 4 | タグ方針（JEV 評価対象 / 条件付き / 除外）の決定 | ✅ → [`docs/tag-policy.md`](docs/tag-policy.md) |
-| 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ✅ → [`experiments/01-jev-tag-eval/`](experiments/01-jev-tag-eval/README.md)、役割の再設計は 🔄 議論中 |
-| 6 | COGP + MapLibre による POI 表示 | ⏳ |
+| 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ✅ → [`experiments/01-jev-tag-eval/`](experiments/01-jev-tag-eval/README.md) |
+| 6 | COGP + MapLibre による POI 表示 | 🔄 着手 |
 | 7 | JEV BFF（`POST /api/evaluate-tags`） | ⏳ |
 | 8 | AI Lens 可視化 | ⏳ |
 | 9 | キャッシュ・性能改善 | ⏳ |
