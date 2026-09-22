@@ -7,6 +7,8 @@ node_modules/
 dist/
 .env
 .env.*
+# 雛形は追跡する（鍵は入れない）
+!.env.example
 .DS_Store
 .wrangler/
 experiments/*/results/

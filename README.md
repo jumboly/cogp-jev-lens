@@ -100,40 +100,55 @@ POI 評価
 
 課題・未決事項・改善案は [GitHub Issues](../../issues) に「なぜ検討が必要か / 現在わかっていること / 未決事項」の形で記録する。
 
-## セットアップ
+## ローカルで動かす
 
-### 必要なもの
+クローンしてから要るのは **POI データの取得**と **`.env` の 1 行**だけ。
+タグの許可リストは `data-dist/` に入れてあるので生成は要らない。
 
-- [uv](https://docs.astral.sh/uv/)（プロファイリングスクリプト用。DuckDB を含む依存はスクリプト冒頭のメタデータから自動解決）
-- Node.js 20+（フロントエンド。段階 6 以降）
+### 1. 依存を入れる
 
-### POI データの取得
+Node.js 20 以降（`package.json` の `engines`）。
 
-`data/` は git に含めない（2.1 GiB）。公式サンプルをそのまま置く。
+```bash
+npm ci
+```
+
+### 2. POI データを取る（2.1 GiB）
+
+`data/` は git に含めない。公式サンプルをそのまま置く。
 
 ```bash
 mkdir -p data
-curl -L -o data/pois.cogp.parquet https://cogp-demo.spatialty.io/v1.0.0/pois.cogp.parquet
+curl -L -C - -o data/pois.cogp.parquet https://cogp-demo.spatialty.io/v1.0.0/pois.cogp.parquet
 ```
 
-### 全件タグプロファイリング
+途中で切れたら同じコマンドを叩き直す（`-C -` で続きから取る）。
+**`2244348968` バイトになっていれば完了**。欠けたまま起動すると、footer は読めても
+row group の途中で失敗する。
 
 ```bash
-uv run scripts/profile_tags.py            # data/pois.cogp.parquet → reports/tag-profile/*.csv, summary.json
+ls -l data/pois.cogp.parquet
 ```
 
-8 GB RAM の Mac で数分。2 パス構成で、キー単位の集計を先に取り、
-値の展開はカーディナリティの低いキーに絞っている（理由はスクリプト冒頭のコメント）。
-
-### フロントエンド（POI 表示）
+### 3. JEV の鍵を置く（AI Lens を使うなら）
 
 ```bash
-npm install
+cp .env.example .env    # AI_GATEWAY_API_KEY= に鍵を入れる
+```
+
+鍵が無くても **POI 表示・地図操作・タグ抽出までは動く**。Lens を入れたときだけ
+BFF が 500（`AI_GATEWAY_API_KEY が .env にない`）を返す。
+
+### 4. 起動
+
+```bash
 npm run dev            # http://localhost:5173
 ```
 
 `data/pois.cogp.parquet` を dev サーバーが HTTP Range で配信し、Web Worker 上の
 COGP リーダーが表示範囲の POI を読む。初期表示は東京駅周辺 z14。
+
+### 画面でできること
 
 | できること | |
 | --- | --- |
@@ -149,6 +164,42 @@ COGP リーダーが表示範囲の POI を読む。初期表示は東京駅周�
 
 COGP リーダーは npm 未公開のため `src/vendor/cogp/` にタグ固定で取り込んでいる。
 更新は `scripts/vendor_cogp.sh v1.0.0` を叩き直す。
+
+### 動いているかの確認
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' localhost:5173/data-dist/tag-allowlist.v1.slim.json   # 200
+curl -s -r 0-99 -o /dev/null -w '%{http_code}\n' localhost:5173/data/pois.cogp.parquet         # 206
+curl -sN -X POST localhost:5173/api/evaluate-tags -H 'Content-Type: application/json' \
+  -d '{"lens":"子供が楽しめそう","tags":["amenity=cafe"],"primitives":["noul"]}'
+```
+
+COGP は Range 必須で配信している。Range なしで取ると **416** が返るのが正しい
+（2.1 GiB を丸ごと返しても誰も待てないので、誤用を早く気づかせる）。
+
+### ローカルと本番の対応
+
+| | ローカル | 本番（予定） |
+| --- | --- | --- |
+| フロント | Vite の dev サーバー | GitHub Pages（`www.jumboly.jp`） |
+| COGP | dev サーバーが `data/` を Range 配信 | R2（CORS は `www.jumboly.jp` と localhost） |
+| BFF | dev サーバーのミドルウェア | Cloudflare Workers |
+| JEV | Vercel AI Gateway | 同じ |
+
+本番向けに COGP と BFF の URL を差し替え可能にする作業は**まだ入っていない**
+（いまは `src/main.ts` の `COGP_URL` と `src/lens/client.ts` の `ENDPOINT` に直書き）。
+
+### 全件タグプロファイリング（任意）
+
+許可リストを作り直すときだけ。[uv](https://docs.astral.sh/uv/) が要る
+（DuckDB を含む依存はスクリプト冒頭のメタデータから自動解決）。
+
+```bash
+uv run scripts/profile_tags.py            # data/pois.cogp.parquet → reports/tag-profile/*.csv, summary.json
+```
+
+8 GB RAM の Mac で数分。2 パス構成で、キー単位の集計を先に取り、
+値の展開はカーディナリティの低いキーに絞っている（理由はスクリプト冒頭のコメント）。
 
 ### AI Lens の見え方
 
