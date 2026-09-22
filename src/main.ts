@@ -10,6 +10,8 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import './style.css';
 
 import type {
+  CountResult,
+  ViewportQuery,
   ViewportResult,
   WorkerEnvelope,
   WorkerRequest,
@@ -31,6 +33,9 @@ const BASEMAPS = {
 } as const;
 
 const EMPTY: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: [] };
+
+/** worker の読み取り上限と揃える（docs/issues/13）。 */
+const MAX_ROWS = 20_000;
 
 // ---- DOM ----
 
@@ -162,14 +167,14 @@ async function refresh(): Promise<void> {
   if (!opened) return;
   const token = ++latestToken;
   const b = map.getBounds();
+  const query: ViewportQuery = {
+    bbox: { xmin: b.getWest(), ymin: b.getSouth(), xmax: b.getEast(), ymax: b.getNorth() },
+    degPerPx: degPerPx(),
+    levelOffset,
+  };
 
   try {
-    const result = await ask<ViewportResult>({
-      type: 'viewport',
-      bbox: { xmin: b.getWest(), ymin: b.getSouth(), xmax: b.getEast(), ymax: b.getNorth() },
-      degPerPx: degPerPx(),
-      levelOffset,
-    });
+    const result = await ask<ViewportResult>({ type: 'viewport', ...query });
     if (token !== latestToken) return;
 
     lastData = result.geojson;
@@ -178,10 +183,21 @@ async function refresh(): Promise<void> {
     currentLevel = result.level;
     renderLod();
     statusEl.textContent = `${result.count.toLocaleString()} 件 / z${map.getZoom().toFixed(1)} / L${result.level} / ${Math.round(result.elapsedMs)} ms`;
+
+    if (!result.truncated) {
+      setWarning('');
+      return;
+    }
+    // 地図はもう描けているので、実件数は待たせず後追いで出す。
+    setWarning(`上限 ${MAX_ROWS.toLocaleString()} 件で打ち切りました。実件数を数えています…`);
+    const counted = await ask<CountResult>({ type: 'count', ...query });
+    if (token !== latestToken) return;
+    // 数える側も上限に当たったときは実数が確定しないので、割合は出さない。
+    const ratio = Math.round((result.count / counted.total) * 100);
     setWarning(
-      result.truncated
-        ? '読み取り上限（20,000 件）に達しました。表示範囲の一部しか読めていません。'
-        : '',
+      counted.capped
+        ? `表示範囲には ${counted.total.toLocaleString()} 件以上あり、上限の ${MAX_ROWS.toLocaleString()} 件だけ読んでいます。`
+        : `表示範囲には ${counted.total.toLocaleString()} 件あり、上限の ${MAX_ROWS.toLocaleString()} 件（約 ${ratio}%）だけ読んでいます。`,
     );
   } catch (err) {
     if (token !== latestToken) return;

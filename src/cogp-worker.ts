@@ -1,7 +1,8 @@
 /// <reference lib="webworker" />
 import { CogpReader } from './vendor/cogp/index.js';
 import type {
-  ViewportBbox,
+  CountResult,
+  ViewportQuery,
   ViewportResult,
   WorkerEnvelope,
   WorkerResponse,
@@ -21,6 +22,12 @@ const MAX_ROWS = 20_000;
  */
 const RESOLUTION_MARGIN = 0.999;
 
+/**
+ * 実件数を数えるときの上限。数える読み取りは bbox 列しか触らないが、
+ * 低ズームでは候補が数百万行になるため青天井にはしない。
+ */
+const MAX_COUNT_ROWS = 2_000_000;
+
 let reader: CogpReader | null = null;
 
 async function open(url: string): Promise<null> {
@@ -28,18 +35,19 @@ async function open(url: string): Promise<null> {
   return null;
 }
 
-async function readViewport(
-  bbox: ViewportBbox,
-  degPerPx: number,
-  levelOffset: number,
-): Promise<ViewportResult> {
+/** 画面の解像度と手動 ±1 から、読むレベルを決める。 */
+function resolveLevel(r: CogpReader, degPerPx: number, levelOffset: number): number {
+  const lastLevel = r.geo.lod.levels.length - 1;
+  return clamp(r.selectLevel(degPerPx * RESOLUTION_MARGIN) + levelOffset, 0, lastLevel);
+}
+
+async function readViewport(q: ViewportQuery): Promise<ViewportResult> {
   if (!reader) throw new Error('COGP が未オープン');
   const startedAt = performance.now();
   const geomColumn = reader.primaryGeometryColumn;
-  const lastLevel = reader.geo.lod.levels.length - 1;
-  const level = clamp(reader.selectLevel(degPerPx * RESOLUTION_MARGIN) + levelOffset, 0, lastLevel);
+  const level = resolveLevel(reader, q.degPerPx, q.levelOffset);
   const rows = await reader.readRows({
-    bbox: [bbox.xmin, bbox.ymin, bbox.xmax, bbox.ymax],
+    bbox: [q.bbox.xmin, q.bbox.ymin, q.bbox.xmax, q.bbox.ymax],
     maxLevel: level,
     maxRows: MAX_ROWS,
   });
@@ -67,6 +75,29 @@ async function readViewport(
     count: features.length,
     level,
     truncated: rows.length >= MAX_ROWS,
+    elapsedMs: performance.now() - startedAt,
+  };
+}
+
+/**
+ * 表示範囲の実件数を数える。
+ * なぜ別の読み取りか: 転送量の 9 割は `tags` なので、bbox 列だけを指定して
+ * 読み直せば「上限で切った件数」ではなく実数を出せる。リーダーは bbox 絞り込みに
+ * この列を使うため、列指定を最小にするとほぼ絞り込みの分だけで済む。
+ */
+async function countViewport(q: ViewportQuery): Promise<CountResult> {
+  if (!reader) throw new Error('COGP が未オープン');
+  const startedAt = performance.now();
+  const bboxColumn = reader.geo.columns[reader.primaryGeometryColumn]?.covering?.bbox?.xmin?.[0];
+  const rows = await reader.readRows({
+    bbox: [q.bbox.xmin, q.bbox.ymin, q.bbox.xmax, q.bbox.ymax],
+    maxLevel: resolveLevel(reader, q.degPerPx, q.levelOffset),
+    columns: bboxColumn ? [bboxColumn] : undefined,
+    maxRows: MAX_COUNT_ROWS,
+  });
+  return {
+    total: rows.length,
+    capped: rows.length >= MAX_COUNT_ROWS,
     elapsedMs: performance.now() - startedAt,
   };
 }
@@ -105,7 +136,9 @@ self.onmessage = async (e: MessageEvent<WorkerEnvelope>) => {
     const result =
       payload.type === 'open'
         ? await open(payload.url)
-        : await readViewport(payload.bbox, payload.degPerPx, payload.levelOffset);
+        : payload.type === 'count'
+          ? await countViewport(payload)
+          : await readViewport(payload);
     self.postMessage({ id, ok: true, result } satisfies WorkerResponse);
   } catch (err) {
     self.postMessage({ id, ok: false, error: (err as Error).message } satisfies WorkerResponse);
