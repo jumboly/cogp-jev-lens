@@ -26,7 +26,13 @@ import type {
   WorkerResponse,
 } from './worker-types.js';
 
-const COGP_URL = '/data/pois.cogp.parquet';
+/**
+ * POI COGP の場所。既定は dev サーバーが `data/` を Range 配信する経路。
+ * 本番は R2 を指す（`VITE_COGP_URL`）。別オリジンになるので、R2 側で
+ * **HEAD と GET、`Range` リクエストヘッダ**を許可する CORS が要る
+ * （リーダーはまず HEAD でファイル長を取る）。
+ */
+const COGP_URL = import.meta.env.VITE_COGP_URL ?? '/data/pois.cogp.parquet';
 const SOURCE_ID = 'pois';
 const LAYER_ID = 'poi-dots';
 

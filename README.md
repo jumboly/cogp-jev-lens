@@ -186,8 +186,27 @@ COGP は Range 必須で配信している。Range なしで取ると **416** �
 | BFF | dev サーバーのミドルウェア | Cloudflare Workers |
 | JEV | Vercel AI Gateway | 同じ |
 
-本番向けに COGP と BFF の URL を差し替え可能にする作業は**まだ入っていない**
-（いまは `src/main.ts` の `COGP_URL` と `src/lens/client.ts` の `ENDPOINT` に直書き）。
+URL は 2 つとも環境変数で差し替える。未設定ならローカルの経路を使うので、
+開発では触らなくてよい。本番は dev サーバーが居ないのでビルド時に渡す。
+
+```bash
+VITE_COGP_URL=https://cogp.example.jp/pois.cogp.parquet \
+VITE_BFF_ENDPOINT=https://api.example.jp/api/evaluate-tags \
+npm run build
+```
+
+どちらも**別オリジンになるので CORS が要る**。COGP リーダーは
+**まず HEAD でファイル長を取ってから Range GET する**ので、R2 側には次が要る。
+
+| | 値 |
+| --- | --- |
+| 許可オリジン | `https://www.jumboly.jp` と `http://localhost:5173` |
+| 許可メソッド | `GET` と **`HEAD`** |
+| 許可リクエストヘッダ | `range` |
+| 公開レスポンスヘッダ | `content-length` / `content-range` / `accept-ranges` / `etag` |
+
+BFF（Worker）側にも CORS が要る（`POST` と、`Content-Type: application/json` を
+送るので preflight も通す）。Worker の実装と R2 の設定は**まだ入っていない**。
 
 ### 全件タグプロファイリング（任意）
 

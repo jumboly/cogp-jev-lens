@@ -19,7 +19,12 @@ import { CHOICE_OPTIONS, PRIMITIVES, normalizeLens } from '../server/questions.j
 import type { TagEval } from './aggregate.js';
 import { EvalCache, type CacheStats } from './store.js';
 
-const ENDPOINT = '/api/evaluate-tags';
+/**
+ * JEV BFF の場所。既定は dev サーバーのミドルウェア。
+ * 本番は Cloudflare Workers を指す（`VITE_BFF_ENDPOINT`）。別オリジンになるので、
+ * Worker 側に CORS（POST の preflight を含む）が要る。
+ */
+const ENDPOINT = import.meta.env.VITE_BFF_ENDPOINT ?? '/api/evaluate-tags';
 
 export interface LensProgress {
   /** 正規化済みの Lens。空文字なら Lens なし。 */
