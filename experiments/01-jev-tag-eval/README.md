@@ -110,12 +110,28 @@ v2（主役 / 脇役 / 背景 / 妨げ / 無関係）で 5 Lens を回した（�
 - **背景 は静か・散歩でしか使われない**（子供・否定形は 0）。v1 の雰囲気と同じ傾向
 - 平均確信度は 5 Lens 中 4 つで下がった（0.52〜0.63）
 
+### v3: 「脇役」を「実際に役立つ」に締め、「無関係」を「近くにある・害がないだけ」に広げる
+
+| Lens | 主役 | 脇役 | 背景 | 妨げ | 無関係 | 確信度（v1 / v2 / **v3**） |
+| --- | --- | --- | --- | --- | --- | --- |
+| 子供 | 45 | 60 | 0 | 25 | 614 | 0.68 / 0.60 / **0.71** |
+| 観光客 | 99 | 427 | 0 | 4 | 214 | 0.64 / 0.58 / **0.64** |
+| 静か | 12 | 13 | 33 | 397 | 289 | 0.65 / 0.63 / **0.67** |
+| 散歩 | 33 | 390 | 29 | 25 | 267 | 0.71 / 0.52 / **0.61** |
+| 否定形 | 164 | 48 | 0 | 419 | 113 | 0.52 / 0.61 / **0.59** |
+
+- 確信度は 3 版の中で最も高い水準に戻った（子供 0.71、静か 0.67）
+- 脇役の受け皿化が解消: v2 の脇役 1,102 のうち 312 が無関係へ。子供 Lens の脇役は 158 → 60、静か Lens は 51 → 13（ベンチ・給水・茶）
+- Score との整合が取れている: 妨げの 93% が Score < 1.5、主役の Score 平均 2.71、脇役 2.28、脇役で Score < 1.5 は 4% のみ
+- 「迷ったら無関係」を入れた結果、v2 で妨げだった 147 が無関係へ（軽く沈む側の Score 1.0〜1.5 のタグ）。沈める表現は Score が担うので色分け上は問題ない
+- 背景は引き続き静か・散歩のみ（33 / 29）。城壁・遺構・彫像・記念碑
+
 ## 結論（2026-09-22 決定）
 
 1. **Noul は「確信度」（このタグだけで扱いが決まるか）の意味で採用し、POI 集約の重みに使う。** 相対値（正規化）で扱う
 2. **説明文は付与しない。** トークンのまま渡す（決定）
-3. **Choice は semantic role（色）として使う。選択肢は v2（主役 / 脇役 / 背景 / 妨げ / 無関係）で再実験**（下記）
-4. POI 集約は「分類タグより細分タグを優先」が候補（`tourism=information` 問題）
+3. **Choice は v3（主役 / 脇役 / 背景 / 妨げ / 無関係、脇役を「実際に役立つ」に限定）を採用**し、semantic role（色）として使う。可視化では最頻値でなく確率分布を混ぜて境界の揺れを吸収する
+4. POI 集約は確信度 Noul で重み付けした平均を基本形にする（Issue 7）。`tourism=information` 問題は地図で見て「細分タグ優先」規則の追加を判断
 
 ## 再現
 
@@ -126,5 +142,6 @@ node --env-file=.env experiments/01-jev-tag-eval/run.ts            # 全 30 ラ�
 node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive noul --repr token --noul-variant confidence
 node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive noul --repr token --noul-variant fit
 node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive choice --repr token --choice-variant v2
+node --env-file=.env experiments/01-jev-tag-eval/run.ts --primitive choice --repr token --choice-variant v3
 uv run experiments/01-jev-tag-eval/analyze.py > experiments/01-jev-tag-eval/RESULTS.md
 ```

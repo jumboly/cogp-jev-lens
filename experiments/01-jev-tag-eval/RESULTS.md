@@ -11,6 +11,7 @@
 | kids | described | score | 19 | 156,036 | 13,525 | 561 |
 | kids | token | choice | 19 | 204,175 | 51,575 | 548 |
 | kids | token | choice-v2 | 19 | 204,919 | 46,935 | 555 |
+| kids | token | choice-v3 | 19 | 261,463 | 46,941 | 601 |
 | kids | token | noul | 19 | 126,055 | 15,757 | 520 |
 | kids | token | noul-confidence | 19 | 121,591 | 15,757 | 519 |
 | kids | token | noul-fit | 19 | 81,415 | 15,757 | 459 |
@@ -20,6 +21,7 @@
 | local-not-tourist | described | score | 19 | 156,264 | 13,525 | 615 |
 | local-not-tourist | token | choice | 19 | 204,403 | 51,761 | 563 |
 | local-not-tourist | token | choice-v2 | 19 | 205,147 | 46,754 | 538 |
+| local-not-tourist | token | choice-v3 | 19 | 261,691 | 46,822 | 687 |
 | local-not-tourist | token | noul | 19 | 126,283 | 15,757 | 502 |
 | local-not-tourist | token | noul-confidence | 19 | 121,819 | 15,757 | 484 |
 | local-not-tourist | token | noul-fit | 19 | 81,643 | 15,757 | 463 |
@@ -29,6 +31,7 @@
 | quiet | described | score | 19 | 156,036 | 13,525 | 593 |
 | quiet | token | choice | 19 | 204,175 | 51,534 | 573 |
 | quiet | token | choice-v2 | 19 | 204,919 | 46,897 | 530 |
+| quiet | token | choice-v3 | 19 | 261,463 | 46,908 | 587 |
 | quiet | token | noul | 19 | 126,055 | 15,757 | 523 |
 | quiet | token | noul-confidence | 19 | 121,591 | 15,757 | 480 |
 | quiet | token | noul-fit | 19 | 81,415 | 15,757 | 366 |
@@ -38,6 +41,7 @@
 | stroll | described | score | 19 | 156,093 | 13,525 | 549 |
 | stroll | token | choice | 19 | 204,232 | 52,555 | 573 |
 | stroll | token | choice-v2 | 19 | 204,976 | 46,858 | 511 |
+| stroll | token | choice-v3 | 19 | 261,520 | 46,895 | 557 |
 | stroll | token | noul | 19 | 126,112 | 15,757 | 532 |
 | stroll | token | noul-confidence | 19 | 121,648 | 15,757 | 506 |
 | stroll | token | noul-fit | 19 | 81,472 | 15,757 | 494 |
@@ -47,12 +51,13 @@
 | tourist | described | score | 19 | 156,093 | 13,525 | 577 |
 | tourist | token | choice | 19 | 204,232 | 52,149 | 554 |
 | tourist | token | choice-v2 | 19 | 204,976 | 46,788 | 475 |
+| tourist | token | choice-v3 | 19 | 261,520 | 46,887 | 577 |
 | tourist | token | noul | 19 | 126,112 | 15,757 | 506 |
 | tourist | token | noul-confidence | 19 | 121,648 | 15,757 | 531 |
 | tourist | token | noul-fit | 19 | 81,472 | 15,757 | 453 |
 | tourist | token | score | 19 | 143,968 | 13,525 | 583 |
 
-合計: 入力 6,965,988 / 出力 1,203,608 トークン
+合計: 入力 8,273,645 / 出力 1,438,061 トークン
 
 ## 1. 値の分布
 
@@ -385,6 +390,16 @@ relevance = 判断材料として関係あるか（初回） / confidence = こ�
 | 妨げ | 6 | 7 | 0 | 844 | 5 |
 | 無関係 | 58 | 226 | 4 | 96 | 942 |
 
+### v2 各カテゴリの Score 平均（全 Lens 合算）
+
+| カテゴリ | n | Score 平均 | Score<1.5 の割合 |
+| --- | --- | --- | --- |
+| 主役 | 580 | 2.63 | 2% |
+| 脇役 | 1102 | 2.12 | 6% |
+| 背景 | 59 | 2.04 | 8% |
+| 妨げ | 989 | 0.99 | 91% |
+| 無関係 | 990 | 1.58 | 43% |
+
 ### v2 で各カテゴリに入ったタグの例（静か Lens、Score 併記）
 
 - **主役** (27): `cuisine=teahouse` 3.5, `leisure=park` 3.4, `leisure=garden` 3.4, `sport=yoga` 3.3, `amenity=library` 3.4, `shelter_type=gazebo` 3.1, `shop=massage` 3.0, `amenity=place_of_worship` 3.1
@@ -392,4 +407,52 @@ relevance = 判断材料として関係あるか（初回） / confidence = こ�
 - **背景** (31): `artwork_type=sculpture` 2.1, `artwork_type=statue` 2.0, `historic=citywalls` 2.2, `historic=building` 2.1, `historic=statue` 2.1, `historic=monument` 2.2, `artwork_type=bust` 2.0, `board_type=plants` 2.5
 - **妨げ** (481): `amenity=fast_food` 0.6, `amenity=gambling` 0.2, `amenity=karaoke_box` 0.2, `amenity=nightclub` 0.0, `shop=mall` 0.3, `leisure=amusement_arcade` 0.2, `amenity=food_court` 0.6, `leisure=karaoke` 0.3
 - **無関係** (154): `amenity=fixme` 1.8, `brand=Panasonic` 1.8, `brand=サミット` 1.8, `brand=オーケー` 1.4, `clothes=underwear` 1.5, `brand=Lacoste` 1.3, `brand=ポニー` 1.6, `brand=NTT` 1.5
+
+## 7. Choice の選択肢を言い換えた再実験（v3: v2 の語で「脇役」を「実際に役立つ」に締め、「無関係」を広げる、トークンのみ）
+
+| Lens | 主役 | 脇役 | 背景 | 妨げ | 無関係 | 平均確信度 |
+| --- | --- | --- | --- | --- | --- | --- |
+| kids | 45 | 60 | 0 | 25 | 614 | 0.71 |
+| tourist | 99 | 427 | 0 | 4 | 214 | 0.64 |
+| quiet | 12 | 13 | 33 | 397 | 289 | 0.67 |
+| stroll | 33 | 390 | 29 | 25 | 267 | 0.61 |
+| local-not-tourist | 164 | 48 | 0 | 419 | 113 | 0.59 |
+
+### v1 → v3 の対応（全 Lens 合算）。行 = v1、列 = v3
+
+| v1 \ v3 | 主役 | 脇役 | 背景 | 妨げ | 無関係 |
+| --- | --- | --- | --- | --- | --- |
+| 目的地 | 227 | 67 | 0 | 10 | 20 |
+| 立ち寄り先 | 92 | 798 | 23 | 37 | 166 |
+| 雰囲気 | 3 | 2 | 39 | 10 | 38 |
+| 妨げ | 1 | 1 | 0 | 783 | 77 |
+| 無関係 | 30 | 70 | 0 | 30 | 1196 |
+
+### v2 → v3 の対応（全 Lens 合算）。行 = v2、列 = v3
+
+| v2 \ v3 | 主役 | 脇役 | 背景 | 妨げ | 無関係 |
+| --- | --- | --- | --- | --- | --- |
+| 主役 | 332 | 169 | 13 | 24 | 42 |
+| 脇役 | 19 | 745 | 20 | 6 | 312 |
+| 背景 | 0 | 1 | 29 | 0 | 29 |
+| 妨げ | 2 | 2 | 0 | 838 | 147 |
+| 無関係 | 0 | 21 | 0 | 2 | 967 |
+
+### v3 各カテゴリの Score 平均（全 Lens 合算）
+
+| カテゴリ | n | Score 平均 | Score<1.5 の割合 |
+| --- | --- | --- | --- |
+| 主役 | 353 | 2.71 | 1% |
+| 脇役 | 938 | 2.28 | 4% |
+| 背景 | 62 | 2.45 | 0% |
+| 妨げ | 870 | 0.96 | 93% |
+| 無関係 | 1497 | 1.64 | 38% |
+
+### v3 で各カテゴリに入ったタグの例（静か Lens、Score 併記）
+
+- **主役** (12): `leisure=park` 3.4, `leisure=garden` 3.4, `cuisine=teahouse` 3.5, `sport=yoga` 3.3, `amenity=library` 3.4, `amenity=place_of_worship` 3.1, `shelter_type=gazebo` 3.1, `historic=wayside_shrine` 3.1
+- **脇役** (13): `amenity=bench` 3.1, `amenity=shelter` 2.4, `cuisine=tea` 3.0, `shelter_type=picnic_shelter` 2.5, `amenity=drinking_water` 2.1, `shop=tea` 2.7, `brand=三省堂書店` 2.3, `brand=珈琲館` 2.3
+- **背景** (33): `historic=citywalls` 2.2, `memorial=sculpture` 2.7, `historic=ruins` 2.6, `memorial=statue` 2.6, `memorial=plaque` 2.8, `memorial=bust` 2.6, `artwork_type=sculpture` 2.1, `board_type=plants` 2.5
+- **妨げ** (397): `amenity=karaoke_box` 0.2, `amenity=nightclub` 0.0, `leisure=amusement_arcade` 0.2, `leisure=karaoke` 0.3, `brand=カラオケ館` 0.1, `amenity=fast_food` 0.6, `amenity=gambling` 0.2, `shop=mall` 0.3
+- **無関係** (289): `brand=Panasonic` 1.8, `amenity=fixme` 1.8, `man_made=survey_point` 2.2, `shop=frame` 1.6, `brand=サミット` 1.8, `shop=carpet` 1.5, `cuisine=regional` 1.8, `brand=ポニー` 1.6
 
