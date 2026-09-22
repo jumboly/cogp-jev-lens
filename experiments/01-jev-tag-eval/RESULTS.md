@@ -10,34 +10,49 @@
 | kids | described | noul | 19 | 138,180 | 15,757 | 415 |
 | kids | described | score | 19 | 156,036 | 13,525 | 561 |
 | kids | token | choice | 19 | 204,175 | 51,575 | 548 |
+| kids | token | choice-v2 | 19 | 204,919 | 46,935 | 555 |
 | kids | token | noul | 19 | 126,055 | 15,757 | 520 |
+| kids | token | noul-confidence | 19 | 121,591 | 15,757 | 519 |
+| kids | token | noul-fit | 19 | 81,415 | 15,757 | 459 |
 | kids | token | score | 19 | 143,911 | 13,525 | 590 |
 | local-not-tourist | described | choice | 19 | 216,528 | 51,715 | 565 |
 | local-not-tourist | described | noul | 19 | 138,408 | 15,757 | 510 |
 | local-not-tourist | described | score | 19 | 156,264 | 13,525 | 615 |
 | local-not-tourist | token | choice | 19 | 204,403 | 51,761 | 563 |
+| local-not-tourist | token | choice-v2 | 19 | 205,147 | 46,754 | 538 |
 | local-not-tourist | token | noul | 19 | 126,283 | 15,757 | 502 |
+| local-not-tourist | token | noul-confidence | 19 | 121,819 | 15,757 | 484 |
+| local-not-tourist | token | noul-fit | 19 | 81,643 | 15,757 | 463 |
 | local-not-tourist | token | score | 19 | 144,139 | 13,525 | 526 |
 | quiet | described | choice | 19 | 216,300 | 51,538 | 556 |
 | quiet | described | noul | 19 | 138,180 | 15,757 | 427 |
 | quiet | described | score | 19 | 156,036 | 13,525 | 593 |
 | quiet | token | choice | 19 | 204,175 | 51,534 | 573 |
+| quiet | token | choice-v2 | 19 | 204,919 | 46,897 | 530 |
 | quiet | token | noul | 19 | 126,055 | 15,757 | 523 |
+| quiet | token | noul-confidence | 19 | 121,591 | 15,757 | 480 |
+| quiet | token | noul-fit | 19 | 81,415 | 15,757 | 366 |
 | quiet | token | score | 19 | 143,911 | 13,525 | 563 |
 | stroll | described | choice | 19 | 216,357 | 52,514 | 547 |
 | stroll | described | noul | 19 | 138,237 | 15,757 | 529 |
 | stroll | described | score | 19 | 156,093 | 13,525 | 549 |
 | stroll | token | choice | 19 | 204,232 | 52,555 | 573 |
+| stroll | token | choice-v2 | 19 | 204,976 | 46,858 | 511 |
 | stroll | token | noul | 19 | 126,112 | 15,757 | 532 |
+| stroll | token | noul-confidence | 19 | 121,648 | 15,757 | 506 |
+| stroll | token | noul-fit | 19 | 81,472 | 15,757 | 494 |
 | stroll | token | score | 19 | 143,968 | 13,525 | 577 |
 | tourist | described | choice | 19 | 216,357 | 52,086 | 526 |
 | tourist | described | noul | 19 | 138,237 | 15,757 | 503 |
 | tourist | described | score | 19 | 156,093 | 13,525 | 577 |
 | tourist | token | choice | 19 | 204,232 | 52,149 | 554 |
+| tourist | token | choice-v2 | 19 | 204,976 | 46,788 | 475 |
 | tourist | token | noul | 19 | 126,112 | 15,757 | 506 |
+| tourist | token | noul-confidence | 19 | 121,648 | 15,757 | 531 |
+| tourist | token | noul-fit | 19 | 81,472 | 15,757 | 453 |
 | tourist | token | score | 19 | 143,968 | 13,525 | 583 |
 
-合計: 入力 4,925,337 / 出力 811,806 トークン
+合計: 入力 6,965,988 / 出力 1,203,608 トークン
 
 ## 1. 値の分布
 
@@ -46,22 +61,32 @@ Noul は 0〜1（関係あり確率）、Score は 0〜4（0 沈める / 2 変�
 ```
 kids               noul   token     n=744  mean=0.50 sd=0.15    0   4  71 124 193 163 104  55  26   4   ▁▁▃▆█▇▅▃▂▁
 kids               noul   described n=744  mean=0.48 sd=0.17    0   5  95 153 154 152 100  50  28   7   ▁▁▅███▆▃▂▁
+kids               noul-confidence token     n=744  mean=0.25 sd=0.11    0 283 300  87  40  20   8   4   2   0   ▁██▃▂▁▁▁▁▁
+kids               noul-fit token     n=744  mean=0.28 sd=0.16   16 252 231 109  59  41  16  10   7   3   ▁██▄▂▂▁▁▁▁
 kids               score  token     n=744  mean=1.82 sd=0.51    6  13  40 175 260 172  50  18   7   3   ▁▁▂▆█▆▂▁▁▁
 kids               score  described n=744  mean=1.80 sd=0.52    8  12  60 176 246 168  45  20   7   2   ▁▁▂▆█▆▂▁▁▁
 tourist            noul   token     n=744  mean=0.61 sd=0.15    0   0   2  69 124 170 135 154  82   8   ▁▁▁▄▆█▇█▄▁
 tourist            noul   described n=744  mean=0.60 sd=0.16    0   0  12  73 149 160 113 122 101  14   ▁▁▁▄██▆▇▆▁
+tourist            noul-confidence token     n=744  mean=0.32 sd=0.11    0 107 230 233 127  30  13   3   1   0   ▁▄██▅▂▁▁▁▁
+tourist            noul-fit token     n=744  mean=0.45 sd=0.20    0  68 168 112  95  91  94  90  21   5   ▁▄█▆▅▅▅▅▁▁
 tourist            score  token     n=744  mean=2.11 sd=0.62    0   0  15 193 150 127 125 110  20   4   ▁▁▁█▇▆▆▅▁▁
 tourist            score  described n=744  mean=2.10 sd=0.64    0   0  23 203 144 128 106 107  25   8   ▁▁▁█▆▆▅▅▁▁
 quiet              noul   token     n=744  mean=0.56 sd=0.15    0   0  16  95 126 196 161 106  42   2   ▁▁▁▄▆█▇▅▂▁
 quiet              noul   described n=744  mean=0.55 sd=0.16    0   1  34 104 127 183 142 100  49   4   ▁▁▂▅▆█▇▅▃▁
+quiet              noul-confidence token     n=744  mean=0.22 sd=0.08    2 326 330  63  15   4   3   1   0   0   ▁██▂▁▁▁▁▁▁
+quiet              noul-fit token     n=744  mean=0.27 sd=0.13    6 180 363  94  38  29  20  10   4   0   ▁▄█▃▁▁▁▁▁▁
 quiet              score  token     n=744  mean=1.36 sd=0.56   11  83 225 233  99  49  27  12   5   0   ▁▃██▄▂▁▁▁▁
 quiet              score  described n=744  mean=1.37 sd=0.55   15  69 223 229 113  56  26   9   3   1   ▁▃██▄▂▁▁▁▁
 stroll             noul   token     n=744  mean=0.62 sd=0.12    0   0   1  37  90 161 221 189  44   1   ▁▁▁▂▄▆█▇▂▁
 stroll             noul   described n=744  mean=0.62 sd=0.13    0   0   5  40 117 167 179 173  60   3   ▁▁▁▂▆███▃▁
+stroll             noul-confidence token     n=744  mean=0.26 sd=0.08    1 166 345 176  49   6   1   0   0   0   ▁▄█▅▂▁▁▁▁▁
+stroll             noul-fit token     n=744  mean=0.43 sd=0.17    0  47 169 128 107 129 117  41   6   0   ▁▃█▇▆▇▆▂▁▁
 stroll             score  token     n=744  mean=1.99 sd=0.58    0   3  51 160 179 135 149  55  11   1   ▁▁▃██▇▇▃▁▁
 stroll             score  described n=744  mean=1.97 sd=0.60    0   3  61 174 165 135 139  56  10   1   ▁▁▃██▇▇▃▁▁
 local-not-tourist  noul   token     n=744  mean=0.71 sd=0.11    0   1   0   6  24  82 177 300 141  13   ▁▁▁▁▁▃▅█▄▁
 local-not-tourist  noul   described n=744  mean=0.70 sd=0.12    0   0   2   5  48  96 144 290 141  18   ▁▁▁▁▂▃▄█▄▁
+local-not-tourist  noul-confidence token     n=744  mean=0.26 sd=0.10    0 197 338 145  40  15   8   1   0   0   ▁▅█▄▁▁▁▁▁▁
+local-not-tourist  noul-fit token     n=744  mean=0.45 sd=0.19   12  75 112 101 134 118  99  80  13   0   ▁▅▇▇██▆▅▁▁
 local-not-tourist  score  token     n=744  mean=1.50 sd=0.81   62 106 121 139  97  90  82  39   8   0   ▄▇▇█▆▆▅▃▁▁
 local-not-tourist  score  described n=744  mean=1.58 sd=0.84   55  89 128 133 113  78  70  60  17   1   ▄▆██▇▅▅▄▂▁
 ```
@@ -288,4 +313,83 @@ Noul が「関係あり」を返すタグは Score が中央（2）から離れ�
 | stroll | described | 744 | 0.31 | 1.45 (n=45) | 0.64 (n=236) |
 | local-not-tourist | token | 744 | 0.50 | 1.95 (n=7) | 0.96 (n=454) |
 | local-not-tourist | described | 744 | 0.42 | 1.83 (n=7) | 0.92 (n=449) |
+
+## 6. Noul の意味を変えた再実験（トークンのみ）
+
+relevance = 判断材料として関係あるか（初回） / confidence = このタグだけで扱いが決まるか / fit = Lens に沿う側か。
+
+| Lens | 変種 | n | 平均 ± SD | r(値, \|Score−2\|) | r(値, Score) | 値≥0.8 の割合 | 値≤0.2 の割合 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| kids | relevance | 744 | 0.50 ± 0.15 | 0.44 | 0.30 | 4% | 1% |
+| kids | confidence | 744 | 0.25 ± 0.11 | 0.78 | -0.28 | 0% | 45% |
+| kids | fit | 744 | 0.28 ± 0.16 | 0.03 | 0.89 | 1% | 39% |
+| tourist | relevance | 744 | 0.61 ± 0.15 | 0.47 | 0.88 | 12% | 0% |
+| tourist | confidence | 744 | 0.32 ± 0.11 | 0.65 | 0.26 | 0% | 16% |
+| tourist | fit | 744 | 0.45 ± 0.20 | 0.47 | 0.98 | 3% | 11% |
+| quiet | relevance | 744 | 0.56 ± 0.15 | 0.50 | -0.17 | 6% | 0% |
+| quiet | confidence | 744 | 0.22 ± 0.08 | 0.55 | -0.29 | 0% | 52% |
+| quiet | fit | 744 | 0.27 ± 0.13 | -0.48 | 0.92 | 1% | 31% |
+| stroll | relevance | 744 | 0.62 ± 0.12 | 0.29 | 0.66 | 6% | 0% |
+| stroll | confidence | 744 | 0.26 ± 0.08 | 0.51 | -0.06 | 0% | 26% |
+| stroll | fit | 744 | 0.43 ± 0.17 | 0.10 | 0.96 | 1% | 9% |
+| local-not-tourist | relevance | 744 | 0.71 ± 0.11 | 0.50 | -0.24 | 21% | 0% |
+| local-not-tourist | confidence | 744 | 0.26 ± 0.10 | 0.60 | -0.26 | 0% | 31% |
+| local-not-tourist | fit | 744 | 0.45 ± 0.19 | -0.70 | 0.97 | 2% | 13% |
+
+### confidence が高い / 低いタグの例（静か Lens）
+
+| | タグ | confidence | Score |
+| --- | --- | --- | --- |
+| 高い | `amenity=nightclub` | 0.76 | 0.01 |
+| 高い | `healthcare:speciality=emergency` | 0.64 | 0.15 |
+| 高い | `leisure=amusement_arcade` | 0.63 | 0.19 |
+| 高い | `amenity=gambling` | 0.60 | 0.19 |
+| 高い | `amenity=karaoke_box` | 0.55 | 0.22 |
+| 高い | `amenity=fire_station` | 0.54 | 0.40 |
+| 高い | `leisure=karaoke` | 0.53 | 0.30 |
+| 高い | `brand=カラオケ まねきねこ` | 0.51 | 0.19 |
+| 高い | `shop=funeral_directors` | 0.47 | 1.65 |
+| 高い | `amenity=fuel` | 0.45 | 0.48 |
+| 高い | `amenity=police` | 0.44 | 0.74 |
+| 高い | `leisure=adult_gaming_centre` | 0.44 | 0.75 |
+| 低い | `brand=白洋舎` | 0.11 | 1.77 |
+| 低い | `brand=BOC` | 0.11 | 1.51 |
+| 低い | `brand=リカーマウンテン` | 0.11 | 1.68 |
+| 低い | `brand=コスモ` | 0.11 | 1.15 |
+| 低い | `brand=LUUP` | 0.11 | 1.66 |
+| 低い | `brand=NTT` | 0.10 | 1.52 |
+| 低い | `amenity=fixme` | 0.10 | 1.78 |
+| 低い | `brand=Boss` | 0.10 | 1.42 |
+| 低い | `brand=オーケー` | 0.10 | 1.44 |
+| 低い | `brand=Panasonic` | 0.10 | 1.75 |
+| 低い | `brand=サントリー` | 0.09 | 1.71 |
+| 低い | `brand=サミット` | 0.09 | 1.76 |
+
+## 7. Choice の選択肢を言い換えた再実験（v2: 主役 / 脇役 / 背景 / 妨げ / 無関係、トークンのみ）
+
+| Lens | 主役 | 脇役 | 背景 | 妨げ | 無関係 | 平均確信度 |
+| --- | --- | --- | --- | --- | --- | --- |
+| kids | 51 | 158 | 0 | 40 | 495 | 0.60 |
+| tourist | 194 | 390 | 2 | 7 | 151 | 0.58 |
+| quiet | 27 | 51 | 31 | 481 | 154 | 0.63 |
+| stroll | 76 | 435 | 26 | 40 | 167 | 0.52 |
+| local-not-tourist | 232 | 68 | 0 | 421 | 23 | 0.61 |
+
+### v1 → v2 の対応（全 Lens 合算）。行 = v1、列 = v2
+
+| v1 \ v2 | 主役 | 脇役 | 背景 | 妨げ | 無関係 |
+| --- | --- | --- | --- | --- | --- |
+| 目的地 | 282 | 35 | 0 | 6 | 1 |
+| 立ち寄り先 | 221 | 809 | 13 | 33 | 40 |
+| 雰囲気 | 13 | 25 | 42 | 10 | 2 |
+| 妨げ | 6 | 7 | 0 | 844 | 5 |
+| 無関係 | 58 | 226 | 4 | 96 | 942 |
+
+### v2 で各カテゴリに入ったタグの例（静か Lens、Score 併記）
+
+- **主役** (27): `cuisine=teahouse` 3.5, `leisure=park` 3.4, `leisure=garden` 3.4, `sport=yoga` 3.3, `amenity=library` 3.4, `shelter_type=gazebo` 3.1, `shop=massage` 3.0, `amenity=place_of_worship` 3.1
+- **脇役** (51): `amenity=drinking_water` 2.1, `amenity=shelter` 2.4, `amenity=bench` 3.1, `amenity=water_point` 2.1, `shop=books` 2.4, `amenity=toilets` 1.6, `social_facility:for=senior` 2.3, `amenity=library_dropoff` 1.8
+- **背景** (31): `artwork_type=sculpture` 2.1, `artwork_type=statue` 2.0, `historic=citywalls` 2.2, `historic=building` 2.1, `historic=statue` 2.1, `historic=monument` 2.2, `artwork_type=bust` 2.0, `board_type=plants` 2.5
+- **妨げ** (481): `amenity=fast_food` 0.6, `amenity=gambling` 0.2, `amenity=karaoke_box` 0.2, `amenity=nightclub` 0.0, `shop=mall` 0.3, `leisure=amusement_arcade` 0.2, `amenity=food_court` 0.6, `leisure=karaoke` 0.3
+- **無関係** (154): `amenity=fixme` 1.8, `brand=Panasonic` 1.8, `brand=サミット` 1.8, `brand=オーケー` 1.4, `clothes=underwear` 1.5, `brand=Lacoste` 1.3, `brand=ポニー` 1.6, `brand=NTT` 1.5
 
