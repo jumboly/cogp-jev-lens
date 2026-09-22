@@ -202,44 +202,63 @@ if a_c:
             P(f"| {label} | `{t}` | {c:.2f} | {sc if sc is None else f'{sc:.2f}'} |")
     P("")
 
-# --- Choice v2 ---
-P("## 7. Choice の選択肢を言い換えた再実験（v2: 主役 / 脇役 / 背景 / 妨げ / 無関係、トークンのみ）\n")
+# --- Choice v2 / v3 ---
 cats2 = ["主役", "脇役", "背景", "妨げ", "無関係"]
-P("| Lens | " + " | ".join(cats2) + " | 平均確信度 |")
-P("| --- | " + " | ".join("---" for _ in cats2) + " | --- |")
-for lens in lenses:
-    ans = answers[(lens, "token", "choice-v2")]
-    if not ans:
+for variant, title in (("choice-v2", "v2: 主役 / 脇役 / 背景 / 妨げ / 無関係"), ("choice-v3", "v3: v2 の語で「脇役」を「実際に役立つ」に締め、「無関係」を広げる")):
+    if not any(answers[(lens, "token", variant)] for lens in lenses):
         continue
-    cnt = defaultdict(int)
-    conf = []
-    for a in ans.values():
-        cnt[a.get("choice")] += 1
-        probs = a.get("probabilities") or {}
-        if probs:
-            conf.append(max(probs.values()))
-    P(f"| {lens} | " + " | ".join(str(cnt.get(c, 0)) for c in cats2) + f" | {st.mean(conf):.2f} |")
-P("")
-P("### v1 → v2 の対応（全 Lens 合算）。行 = v1、列 = v2\n")
-cross = defaultdict(lambda: defaultdict(int))
-for lens in lenses:
-    a1 = answers[(lens, "token", "choice")]
-    a2 = answers[(lens, "token", "choice-v2")]
-    for t in a1:
-        if t in a2:
-            cross[a1[t].get("choice")][a2[t].get("choice")] += 1
-if cross:
-    P("| v1 \\ v2 | " + " | ".join(cats2) + " |")
-    P("| --- | " + " | ".join("---" for _ in cats2) + " |")
-    for c1 in cats:
-        P(f"| {c1} | " + " | ".join(str(cross[c1].get(c2, 0)) for c2 in cats2) + " |")
+    P(f"## 7. Choice の選択肢を言い換えた再実験（{title}、トークンのみ）\n")
+    P("| Lens | " + " | ".join(cats2) + " | 平均確信度 |")
+    P("| --- | " + " | ".join("---" for _ in cats2) + " | --- |")
+    for lens in lenses:
+        ans = answers[(lens, "token", variant)]
+        if not ans:
+            continue
+        cnt = defaultdict(int)
+        conf = []
+        for a in ans.values():
+            cnt[a.get("choice")] += 1
+            probs = a.get("probabilities") or {}
+            if probs:
+                conf.append(max(probs.values()))
+        P(f"| {lens} | " + " | ".join(str(cnt.get(c, 0)) for c in cats2) + f" | {st.mean(conf):.2f} |")
     P("")
-P("### v2 で各カテゴリに入ったタグの例（静か Lens、Score 併記）\n")
-a2 = answers[("quiet", "token", "choice-v2")]
-a_s = answers[("quiet", "token", "score")]
-if a2:
+    for base, base_cats, base_name in (("choice", cats, "v1"), ("choice-v2", cats2, "v2")):
+        if base == variant:
+            continue
+        cross = defaultdict(lambda: defaultdict(int))
+        for lens in lenses:
+            a1 = answers[(lens, "token", base)]
+            a2 = answers[(lens, "token", variant)]
+            for t in a1:
+                if t in a2:
+                    cross[a1[t].get("choice")][a2[t].get("choice")] += 1
+        if cross:
+            P(f"### {base_name} → {variant.replace('choice-', '')} の対応（全 Lens 合算）。行 = {base_name}、列 = {variant.replace('choice-', '')}\n")
+            P(f"| {base_name} \\ {variant.replace('choice-', '')} | " + " | ".join(cats2) + " |")
+            P("| --- | " + " | ".join("---" for _ in cats2) + " |")
+            for c1 in base_cats:
+                P(f"| {c1} | " + " | ".join(str(cross[c1].get(c2, 0)) for c2 in cats2) + " |")
+            P("")
+    # Score との整合: 各カテゴリの Score 平均（脇役に沈める側が混ざっていないか）
+    P(f"### {variant.replace('choice-', '')} 各カテゴリの Score 平均（全 Lens 合算）\n")
+    P("| カテゴリ | n | Score 平均 | Score<1.5 の割合 |")
+    P("| --- | --- | --- | --- |")
     for c in cats2:
-        members = sorted(((t, (a.get("probabilities") or {}).get(c, 0)) for t, a in a2.items() if a.get("choice") == c), key=lambda x: -x[1])[:8]
-        P(f"- **{c}** ({sum(1 for a in a2.values() if a.get('choice') == c)}): " + ", ".join(f"`{t}` {val(a_s.get(t, {}), 'score') or 0:.1f}" for t, _ in members))
+        vals = []
+        for lens in lenses:
+            a2 = answers[(lens, "token", variant)]
+            a_s = answers[(lens, "token", "score")]
+            vals += [val(a_s[t], "score") for t, a in a2.items() if a.get("choice") == c and t in a_s and val(a_s[t], "score") is not None]
+        if vals:
+            P(f"| {c} | {len(vals)} | {st.mean(vals):.2f} | {sum(1 for v in vals if v < 1.5) / len(vals):.0%} |")
     P("")
+    P(f"### {variant.replace('choice-', '')} で各カテゴリに入ったタグの例（静か Lens、Score 併記）\n")
+    a2 = answers[("quiet", "token", variant)]
+    a_s = answers[("quiet", "token", "score")]
+    if a2:
+        for c in cats2:
+            members = sorted(((t, (a.get("probabilities") or {}).get(c, 0)) for t, a in a2.items() if a.get("choice") == c), key=lambda x: -x[1])[:8]
+            P(f"- **{c}** ({sum(1 for a in a2.values() if a.get('choice') == c)}): " + ", ".join(f"`{t}` {val(a_s.get(t, {}), 'score') or 0:.1f}" for t, _ in members))
+        P("")
 print("\n".join(out))

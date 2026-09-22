@@ -43,8 +43,10 @@ const noulVariant = (args.get('noul-variant') as NoulVariant | undefined) ?? 're
 /**
  * Choice の選択肢セット。v1（目的地 / 立ち寄り先 / 雰囲気 / 妨げ / 無関係）は「散歩で立ち寄りたくなる」のように
  * Lens の文言に選択肢の語が含まれると、そこに判定が吸われた。v2 は行為の語を避け、関係の種類だけを表す語にする。
+ * v2 では「脇役」が受け皿になった（v1 無関係の 17% が流入、Score が沈める側のトイレまで入る）ため、
+ * v3 は語は v2 のまま「脇役」を「実際に役立つ」に締め、「無関係」を「近くにある・害がないだけ」を含む形に広げる。
  */
-type ChoiceVariant = 'v1' | 'v2'
+type ChoiceVariant = 'v1' | 'v2' | 'v3'
 const choiceVariant = (args.get('choice-variant') as ChoiceVariant | undefined) ?? 'v1'
 
 const apiKey = process.env.AI_GATEWAY_API_KEY
@@ -128,6 +130,19 @@ function buildQuestion(tag: Tag, repr: Repr, primitive: Primitive): Record<strin
         ],
       }
     case 'choice':
+      if (choiceVariant === 'v3') {
+        return {
+          type: 'choice',
+          instructions: `タグ「${t}」を持つ場所は、この Lens に対してどういう意味で関わるか。最も当てはまるものを選ぶ。迷ったら「無関係」を選ぶ。`,
+          criteria: {
+            主役: 'その場所自体が Lens の対象であり、Lens が指す性質をそのまま持っている。',
+            脇役: 'Lens の対象そのものではないが、Lens の目的を果たすのに実際に役立つ設備・サービス・店。「役立つ」と言い切れる場合だけ選ぶ。',
+            背景: 'Lens の対象ではなく役立つわけでもないが、周囲の雰囲気・景観として Lens の性質を強める。',
+            妨げ: 'Lens が指す性質を損なう、または反する。',
+            無関係: 'Lens と関係がない。単に近くにある、害がない、誰でも使う、というだけの場所はここ。',
+          },
+        }
+      }
       if (choiceVariant === 'v2') {
         return {
           type: 'choice',
