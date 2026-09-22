@@ -35,7 +35,7 @@ const BASEMAPS = {
 const EMPTY: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: [] };
 
 /** worker の読み取り上限と揃える（docs/issues/13）。 */
-const MAX_ROWS = 20_000;
+const MAX_ROWS = 30_000;
 
 // ---- DOM ----
 
