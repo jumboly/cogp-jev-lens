@@ -21,7 +21,7 @@ body {
   top: 12px;
   left: 12px;
   z-index: 1;
-  width: 260px;
+  width: 290px;
   padding: 12px 14px;
   border-radius: 8px;
   background: rgb(255 255 255 / 0.94);
@@ -45,6 +45,8 @@ body {
 
 .row > span {
   color: #555;
+  /* 「背景地図」が折り返すと行が崩れる。 */
+  white-space: nowrap;
 }
 
 .stepper {

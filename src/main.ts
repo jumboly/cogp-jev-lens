@@ -24,7 +24,9 @@ const LAYER_ID = 'poi-dots';
 const INITIAL_VIEW = { center: [139.7671, 35.6812] as [number, number], zoom: 14 };
 
 const BASEMAPS = {
-  gsi: 'https://gsi-cyberjapan.github.io/gsivectortile-mapbox-gl-js/std.json',
+  // 淡色にするのは、この上に載る POI の点と Lens の色を主役にするため。
+  // 標準 (std.json) は建物と道路が濃く、点が沈む。
+  gsi: 'https://gsi-cyberjapan.github.io/gsivectortile-mapbox-gl-js/pale.json',
   osm: 'https://tiles.openfreemap.org/styles/liberty',
 } as const;
 
