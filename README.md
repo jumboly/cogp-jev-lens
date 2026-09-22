@@ -170,7 +170,8 @@ POI へ配り直して点の見た目だけを変える。**POI は 1 件も増�
 ### JEV BFF（`POST /api/evaluate-tags`）
 
 `.env` に `AI_GATEWAY_API_KEY` を置くと dev サーバーが受け付ける。
-本番の実行基盤は未決なので、中身は Vite に依存しない `src/server/` に分けてある。
+中身は Vite に依存しない `src/server/` に分けてあり、本番は **Cloudflare Workers の
+無料プラン**に載せる想定（[#4](docs/issues/04-jev-bff.md)）。
 
 ```bash
 curl -N -X POST localhost:5173/api/evaluate-tags \
@@ -190,8 +191,15 @@ Noul なら 190 問が載る。z14 の 623 タグは **21 本 → 16 本**にな
 並べる順は「先頭のタグを扱うバッチ」から。タグは出現数の多い順に送られるので、
 **多くの POI に効くタグから順に「大きさも色も決まった状態」で届く**。
 
+画面からは、上の `tags` 形ではなく**バッチを決めて送る**（`{"lens":…,"batches":[{"primitive":…,"tags":[…]}]}`）。
+1 リクエストは最大 8 バッチで、z14 の冷えた Lens は 2 リクエストに分かれる。
+BFF を Cloudflare Workers の無料プランに載せるためで、**1 回の呼び出しにつき外部 fetch 50 回**
+の上限に対し、8 バッチ × 再試行 6 回 = 最悪 48 回で収まる。
+タグの範囲で割ると切り口がバッチ境界と揃わず 16 → 19 本に増えるので、バッチまで作ってから
+本数で区切っている（分割規則は `src/server/batches.ts` に集約）。
+
 ```
-{"type":"start","lens":"子供が楽しめそう","tags":2,"batches":3,"schemaVersion":1}
+{"type":"start","lens":"子供が楽しめそう","tags":2,"batches":3,"schemaVersion":2}
 {"type":"result","primitive":"noul","batch":0,"answers":{…},"model":"typesafe-ai/jev",…}
 {"type":"error","primitive":"score","batch":1,"kind":"server","status":503,…}
 {"type":"done","ok":8,"failed":1,"tally":{"server":1},"elapsedMs":4900}

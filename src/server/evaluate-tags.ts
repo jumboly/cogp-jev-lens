@@ -10,72 +10,18 @@
  * （README の「取得と評価を分離する」）。失敗したバッチだけを個別に伝えられるのも
  * 一括 JSON にはない利点で、成功率が安定しない相手には必須。
  */
+import { type Batch, planBatches, requestOverhead, splitBatches } from './batches.js';
 import { callJev, type FailureTally, type JevLog } from './jev.js';
 import { PRIMITIVES, SCHEMA_VERSION, buildQuestion, buildState, normalizeLens, type Primitive } from './questions.js';
-
-/**
- * 1 リクエストの上限（本文の文字数）。
- *
- * なぜ問数でもトークン量でもなく本文の大きさで切るか。実測で順に潰した。
- *
- * 1. **問数ではない。** 実験 03 で 130 問に固定して中身だけ変えると成功率が
- *    0% / 20% / 30% と動いた。しかも Noul 190 問は実測で最も成功率が高い（42%）
- * 2. **トークン量でもない。** 段階 9 の通し実測で、同じ 28.9k トークンの 2 つが分かれた
- *
- * | 1 リクエスト | 問数 | 入力トークン | 本文 | 成功 |
- * | --- | --- | --- | --- | --- |
- * | Noul | 190 | 14.4k | 25.0 KiB | 42%（5/12） |
- * | Choice | 91 | 28.9k | 34.4 KiB | 21%（8/38） |
- * | Score | 156 | 28.9k | 39.4 KiB | **3%（1/35）** |
- *
- * 28.9k で揃えた 2 つの差（34.4 対 39.4 KiB）は Fisher の正確検定で p = 0.029。
- * 本文の大きさで並べると単調に下がる。
- *
- * 値は **Choice 90 問（34.0 KiB）** に合わせた。実験 02 で全実行 100% 通った唯一の
- * サイズで、段階 9 の不調な時間帯でも 21% と、他より明確に良かった。
- * 1 リクエストの重さをこれ以上にしないまま、軽いプリミティブを積む。
- *
- * 単位が文字数なのは、上流に渡る本文の大きさを表す指標として実測ログ（`requestChars`）と
- * 揃えるため。UTF-8 バイト数との比はプリミティブで 1.87〜2.16 とばらつくので、
- * バイト数で切ると Score に 148 問入ってしまい、実測で落ちた 156 問に近づく。
- */
-const REQUEST_BUDGET_CHARS = 34 * 1024;
-
-/**
- * 問数の上限。文字数だけ見れば Noul は 259 問積めるが、**通った実績があるのは 190 問まで**
- * （実験 02 / 03 / 段階 9）。それより上は未検証なので踏み込まない。
- */
-const MAX_QUESTIONS = 190;
-
-/**
- * タグを「本文がこの大きさに収まる」単位に切る。
- * z14 の 623 タグなら Choice 7 本 + Score 5 本 + Noul 4 本 = 16 本（問数固定なら 21 本）。
- */
-function splitBatches(tags: string[], primitive: Primitive, overhead: number): string[][] {
-  const out: string[][] = [];
-  let current: string[] = [];
-  // state とラッパーは全バッチに乗るので、最初から数に入れる。
-  let size = overhead;
-  for (const tag of tags) {
-    // 質問ごと丸ごと数える。キーはモデルに渡らないが本文には乗る。
-    const chars = JSON.stringify({ [tag]: buildQuestion(tag, primitive) }).length;
-    if (current.length > 0 && (size + chars > REQUEST_BUDGET_CHARS || current.length >= MAX_QUESTIONS)) {
-      out.push(current);
-      current = [];
-      size = overhead;
-    }
-    current.push(tag);
-    size += chars;
-  }
-  if (current.length > 0) out.push(current);
-  return out;
-}
 
 const DEFAULT_CONCURRENCY = 2;
 
 export interface EvaluateRequest {
   lens: string;
-  tags: string[];
+  /** バッチを呼び出し元が決めて送る形（`batches.ts` の planBatches / chunkBatches）。 */
+  batches?: Batch[];
+  /** バッチを任せる形。BFF 側で planBatches に掛ける。 */
+  tags?: string[];
   primitives?: Primitive[];
 }
 
@@ -96,58 +42,62 @@ export type EvaluateEvent =
 
 export class RequestError extends Error {}
 
-function parse(body: unknown): Required<EvaluateRequest> {
+/**
+ * 本文を読み、投げるバッチ列にする。
+ *
+ * 呼び出し元がバッチを決めて送る形（`batches`）と、タグだけ渡して任せる形（`tags`）の
+ * 両方を受ける。前者は 1 リクエストのバッチ数を呼び出し元が抑えるために要る
+ * （Workers 無料プランの外部 fetch 上限。`batches.ts`）。後者は curl で叩くときの口。
+ */
+function parse(body: unknown): { lens: string; batches: Batch[] } {
   const b = body as Partial<EvaluateRequest> | null;
   if (!b || typeof b.lens !== 'string' || !b.lens.trim()) throw new RequestError('lens が要る');
-  if (!Array.isArray(b.tags) || b.tags.length === 0) throw new RequestError('tags が要る');
+  const lens = normalizeLens(b.lens);
+
+  if (b.batches !== undefined) {
+    if (!Array.isArray(b.batches) || b.batches.length === 0) throw new RequestError('batches が空');
+    for (const batch of b.batches) {
+      if (!batch || !PRIMITIVES.includes(batch.primitive)) throw new RequestError(`primitive は ${PRIMITIVES.join(' / ')}`);
+      if (!Array.isArray(batch.tags) || batch.tags.length === 0) throw new RequestError('batches[].tags が空');
+      if (batch.tags.some((t) => typeof t !== 'string')) throw new RequestError('batches[].tags は文字列の配列');
+    }
+    // 受け取ったバッチも必ず分割に掛け直す。呼び出し元が同じ規則で切っていれば
+    // そのまま通り、大きすぎる本文が来ても予算（34 KiB）は守られる。
+    const overhead = requestOverhead(lens);
+    const out: Batch[] = [];
+    for (const batch of b.batches) {
+      for (const slice of splitBatches([...new Set(batch.tags)], batch.primitive, overhead)) {
+        out.push({ primitive: batch.primitive, tags: slice });
+      }
+    }
+    return { lens, batches: out };
+  }
+
+  if (!Array.isArray(b.tags) || b.tags.length === 0) throw new RequestError('batches か tags が要る');
   if (b.tags.some((t) => typeof t !== 'string')) throw new RequestError('tags は文字列の配列');
   const primitives = b.primitives ?? [...PRIMITIVES];
   if (primitives.some((p) => !PRIMITIVES.includes(p))) throw new RequestError(`primitives は ${PRIMITIVES.join(' / ')}`);
   // 同じタグが二度来ても 1 回しか評価しない
-  return { lens: b.lens, tags: [...new Set(b.tags)], primitives };
+  return { lens, batches: planBatches(lens, [...new Set(b.tags)], primitives) };
 }
 
-interface Job {
-  primitive: Primitive;
+interface Job extends Batch {
   batch: number;
-  /** このバッチが始まるタグの位置。流す順を決めるのに使う。 */
-  offset: number;
-  tags: string[];
 }
 
 export async function* evaluateTags(
   body: unknown,
   opts: { apiKey: string; concurrency?: number; onLog?: (entry: JevLog) => void },
 ): AsyncGenerator<EvaluateEvent> {
-  const { lens, tags, primitives } = parse(body);
-  const normalized = normalizeLens(lens);
+  const { lens: normalized, batches } = parse(body);
   const state = buildState(normalized);
 
-  // プリミティブごとにバッチサイズが違うので、まず素直に分割してから
-  // 「先頭のタグを扱うジョブ」から順に並べ替える。
-  //
-  // なぜ並べ替えるか: プリミティブを外側にしたまま流すと Score が全部届いてから
-  // Choice が届く順になり、「大きさだけ動いて色は灰のまま」という中途半端な画面が長く続く
-  // （段階 8 の実測で 20 秒）。呼び出し元はタグを出現数の多い順に並べて送るので、
-  // 先頭を扱うジョブから流せば、多くの POI に効くタグから 3 プリミティブ揃って埋まる。
-  // state はどのバッチにも同じものが乗る。予算はリクエスト本文全体に対する値なので、
-  // 質問を積む前にこのぶんを引いておく。
-  const overhead = JSON.stringify({ model: '', state, questions: {} }).length;
-
-  const jobs: Job[] = [];
-  for (const primitive of primitives) {
-    let offset = 0;
-    for (const slice of splitBatches(tags, primitive, overhead)) {
-      jobs.push({ primitive, batch: 0, offset, tags: slice });
-      offset += slice.length;
-    }
-  }
-  // sort は安定なので、同じ offset の中ではプリミティブの並び順が保たれる。
-  jobs.sort((a, b) => a.offset - b.offset);
-  for (const [index, job] of jobs.entries()) job.batch = index;
+  // 並びは planBatches が決めている（先頭のタグを扱うバッチから）。ここでは番号を振るだけ。
+  const jobs: Job[] = batches.map((batch, index) => ({ ...batch, batch: index }));
+  const tagCount = new Set(jobs.flatMap((job) => job.tags)).size;
 
   const startedAt = performance.now();
-  yield { type: 'start', lens: normalized, tags: tags.length, batches: jobs.length, schemaVersion: SCHEMA_VERSION };
+  yield { type: 'start', lens: normalized, tags: tagCount, batches: jobs.length, schemaVersion: SCHEMA_VERSION };
 
   // 終わった順に流したいので、完了を待つキューを挟む。
   const queue: EvaluateEvent[] = [];

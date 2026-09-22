@@ -13,6 +13,7 @@
  * - メモリのぶんは IndexedDB にも書き、再読み込みしても評価を引き継ぐ（#6）
  */
 
+import { type Batch, MAX_BATCHES_PER_REQUEST, chunkBatches, planBatches } from '../server/batches.js';
 import type { Primitive } from '../server/questions.js';
 import { CHOICE_OPTIONS, PRIMITIVES, normalizeLens } from '../server/questions.js';
 import type { TagEval } from './aggregate.js';
@@ -38,11 +39,6 @@ export interface LensProgress {
 }
 
 type Listener = () => void;
-
-interface Group {
-  primitives: Primitive[];
-  tags: string[];
-}
 
 export class LensEvaluator {
   /** Lens ごとのタグ評価。キーは正規化済み Lens。 */
@@ -174,10 +170,14 @@ export class LensEvaluator {
 
   /**
    * 未評価のタグをプリミティブごとに洗い出し、**タグ集合が同じプリミティブをまとめる**。
-   * 初回はどのプリミティブも同じ集合なのでリクエストは 1 本になる。まとめるのは
-   * BFF 側の同時実行数（2）を超えて上流に当たらないため。
+   * まとめるのは BFF 側の同時実行数（2）を超えて上流に当たらないため。
+   *
+   * まとめた上で、1 リクエストがバッチ MAX_BATCHES_PER_REQUEST 本に収まるよう割る。
+   * BFF は 1 バッチにつき最大 6 回 JEV を叩くので、本数を抑えないと Workers 無料プランの
+   * 外部 fetch 上限（50）に、上流が不調な日だけ当たる（`batches.ts`）。
+   * z14 の冷えた Lens は 2 リクエストになる。
    */
-  private plan(tags: string[], includeFailed: boolean): Group[] {
+  private plan(tags: string[], includeFailed: boolean): Batch[][] {
     const evals = this.store.get(this.lens);
     const failed = this.failures.get(this.lens);
     const byPrimitive = new Map<Primitive, string[]>();
@@ -191,17 +191,22 @@ export class LensEvaluator {
       if (missing.length > 0) byPrimitive.set(primitive, missing);
     }
 
-    const groups = new Map<string, Group>();
+    const groups = new Map<string, { primitives: Primitive[]; tags: string[] }>();
     for (const [primitive, list] of byPrimitive) {
       const key = list.join('\n');
       const group = groups.get(key);
       if (group) group.primitives.push(primitive);
       else groups.set(key, { primitives: [primitive], tags: list });
     }
-    return [...groups.values()];
+    // バッチまで作ってから本数で区切る。タグの範囲で区切ると切り口がバッチ境界と
+    // 揃わず、実測で z14 の 16 バッチが 19 本に増えた（`batches.ts`）。
+    const batches = [...groups.values()].flatMap((group) =>
+      planBatches(this.lens, group.tags, group.primitives),
+    );
+    return chunkBatches(batches, MAX_BATCHES_PER_REQUEST);
   }
 
-  private async start(groups: Group[], viewportTags: string[]): Promise<void> {
+  private async start(groups: Batch[][], viewportTags: string[]): Promise<void> {
     const controller = new AbortController();
     this.controller = controller;
     this.progress = { ...idleProgress(this.lens), running: true };
@@ -236,18 +241,21 @@ export class LensEvaluator {
     if (next && !controller.signal.aborted) void this.ensure(next);
   }
 
-  private async request(group: Group, signal: AbortSignal): Promise<void> {
+  private async request(batches: Batch[], signal: AbortSignal): Promise<void> {
     const lens = this.lens;
     // 届かなかったぶんを後で失敗として記録するため、送った組み合わせを控える。
-    const outstanding = new Map<Primitive, Set<string>>(
-      group.primitives.map((p) => [p, new Set(group.tags)]),
-    );
+    const outstanding = new Map<Primitive, Set<string>>();
+    for (const batch of batches) {
+      const left = outstanding.get(batch.primitive) ?? new Set<string>();
+      for (const tag of batch.tags) left.add(tag);
+      outstanding.set(batch.primitive, left);
+    }
 
     try {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lens, tags: group.tags, primitives: group.primitives }),
+        body: JSON.stringify({ lens, batches }),
         signal,
       });
       if (!res.ok || !res.body) {

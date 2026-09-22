@@ -14,6 +14,12 @@ const MODEL_ID = 'typesafe-ai/jev';
 const ROUTE = 'vercel-ai-gateway';
 
 const TIMEOUT_MS = 30_000;
+/**
+ * 1 バッチあたりの試行回数。
+ * 上げるときは `batches.ts` の MAX_BATCHES_PER_REQUEST と一緒に見る。
+ * 「1 リクエストのバッチ数 × ここ」が Workers 無料プランの外部 fetch 上限（50）を
+ * 超えると、冷えた Lens が上流の不調な日だけ途中で切れる。
+ */
 const MAX_ATTEMPTS = 6;
 /** 上流の不調は数百 ms で解けることもあるので、最初の待ちは短く刻む。 */
 const BACKOFF_MS = [300, 700, 1500, 3000, 6000];
