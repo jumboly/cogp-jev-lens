@@ -74,10 +74,15 @@ export async function* evaluateTags(
   const normalized = normalizeLens(lens);
   const state = buildState(normalized);
 
+  // なぜタグのバッチを外側にするか: プリミティブを外側にすると Score が全部届いてから
+  // Choice が届く順になり、「大きさだけ動いて色は灰のまま」という中途半端な画面が長く続く。
+  // タグ側を外に置けば、先頭のバッチから 3 プリミティブが揃って完成した見え方で届く。
+  // 呼び出し元はタグを出現数の多い順に並べて送るので、多くの POI に効くタグから順に埋まる。
   const jobs: Job[] = [];
-  for (const primitive of primitives) {
-    for (let i = 0; i < tags.length; i += BATCH_SIZE) {
-      jobs.push({ primitive, batch: jobs.length, tags: tags.slice(i, i + BATCH_SIZE) });
+  for (let i = 0; i < tags.length; i += BATCH_SIZE) {
+    const slice = tags.slice(i, i + BATCH_SIZE);
+    for (const primitive of primitives) {
+      jobs.push({ primitive, batch: jobs.length, tags: slice });
     }
   }
 

@@ -121,3 +121,140 @@ body {
   max-height: 320px;
   overflow-y: auto;
 }
+
+/* ---- Lens ---- */
+
+.lens {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.lens input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.panel button {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.panel button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.panel button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.presets button[aria-pressed='true'] {
+  border-color: #555;
+  background: #eee;
+  font-weight: 600;
+}
+
+.lens-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.lens-actions button[hidden] {
+  display: none;
+}
+
+.legend {
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  font-size: 12px;
+}
+
+.legend summary {
+  cursor: pointer;
+  color: #555;
+}
+
+.legend p {
+  margin: 8px 0 0;
+  color: #666;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 3px 8px;
+  margin: 8px 0 0;
+}
+
+.swatches dt {
+  display: flex;
+}
+
+.swatches i {
+  width: 12px;
+  height: 12px;
+  border: 0.5px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.5px #bbb;
+}
+
+.swatches dd {
+  margin: 0;
+  color: #444;
+}
+
+/* ---- Popup の Lens 欄 ---- */
+
+.popup .lens-detail {
+  margin: 8px 0 0;
+  border-top: 1px solid #eee;
+  padding-top: 6px;
+  font-size: 12px;
+}
+
+.popup .lens-detail h3 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #555;
+}
+
+.popup table {
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.popup th,
+.popup td {
+  padding: 1px 6px 1px 0;
+  text-align: left;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.popup th {
+  color: #666;
+}
+
+.popup td.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}

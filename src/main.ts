@@ -9,6 +9,14 @@ import {
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './style.css';
 
+import { CHOICE_OPTIONS } from './server/questions.js';
+import {
+  UNEVALUATED_STYLE,
+  aggregate,
+  type PoiStyle,
+  type TagEval,
+} from './lens/aggregate.js';
+import { LensEvaluator } from './lens/client.js';
 import type {
   CountResult,
   ViewportQuery,
@@ -37,6 +45,19 @@ const EMPTY: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: 
 /** worker の読み取り上限と揃える（docs/issues/13）。 */
 const MAX_ROWS = 30_000;
 
+/**
+ * Lens を有効にする最小ズーム（docs/issues/10）。
+ * COGP の粗いレベルは「重要な POI が先」ではなく空間間引きなので、低ズームで
+ * 残る POI 集合に意味的な代表性がない。「この辺りは子供向けが少ない」と読ませてしまう。
+ */
+const LENS_MIN_ZOOM = 13;
+
+/**
+ * 評価が届いてから塗り直すまでの間。NDJSON はバッチ単位で次々届き、
+ * そのたびに数千件を再集約して setData すると描画が詰まる。
+ */
+const REPAINT_DEBOUNCE_MS = 150;
+
 // ---- DOM ----
 
 const statusEl = must<HTMLParagraphElement>('status');
@@ -46,6 +67,13 @@ const basemapEl = must<HTMLSelectElement>('basemap');
 const lodValueEl = must<HTMLOutputElement>('lod-value');
 const lodDownEl = must<HTMLButtonElement>('lod-down');
 const lodUpEl = must<HTMLButtonElement>('lod-up');
+const lensFormEl = must<HTMLFormElement>('lens-form');
+const lensInputEl = must<HTMLInputElement>('lens-input');
+const lensStatusEl = must<HTMLParagraphElement>('lens-status');
+const lensAppliedEl = must<HTMLParagraphElement>('lens-applied');
+const lensRetryEl = must<HTMLButtonElement>('lens-retry');
+const lensStopEl = must<HTMLButtonElement>('lens-stop');
+const legendEl = must<HTMLDetailsElement>('legend');
 
 function must<T extends HTMLElement>(id: string): T {
   const el = document.getElementById(id);
@@ -95,8 +123,9 @@ map.addControl(new NavigationControl(), 'top-right');
 map.addControl(new ScaleControl());
 
 /**
- * Lens 適用前は全 POI を同じ小さな点で出す（docs/issues/13）。
- * 種別ごとに色を付けると Lens の色と意味が二重になるため、ここでは一律にする。
+ * POI の層。塗りはすべて feature の properties を読む式にしてある。
+ * Lens 適用前・低ズーム・未評価では素の点（一律の小さな黒点、#13）と同じ値が入るので、
+ * 層を差し替えずに Lens の有無を切り替えられる。
  */
 function addPoiLayer(data: GeoJSON.FeatureCollection): void {
   map.addSource(SOURCE_ID, { type: 'geojson', data });
@@ -105,9 +134,22 @@ function addPoiLayer(data: GeoJSON.FeatureCollection): void {
     type: 'circle',
     source: SOURCE_ID,
     paint: {
-      'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 1.6, 14, 3, 18, 5],
-      'circle-color': '#333333',
-      'circle-opacity': 0.75,
+      // 半径は「z14 での px」を properties に持たせ、ズームでの拡縮だけを式で掛ける。
+      // 混色と同じくらい細かい浮沈の差を式で組むより、集約側で決めた方が見通しがよい。
+      // zoom はトップレベルの interpolate の入力にしか置けないので、掛け算は各ストップの中に入れる。
+      'circle-radius': [
+        'interpolate',
+        ['linear'],
+        ['zoom'],
+        10,
+        ['*', 0.533, ['get', 'lensRadius']],
+        14,
+        ['get', 'lensRadius'],
+        18,
+        ['*', 1.667, ['get', 'lensRadius']],
+      ],
+      'circle-color': ['get', 'lensColor'],
+      'circle-opacity': ['get', 'lensOpacity'],
       'circle-stroke-width': 0.5,
       'circle-stroke-color': '#ffffff',
     },
@@ -150,6 +192,160 @@ for (const [el, delta] of [
   });
 }
 
+// ---- Lens ----
+
+const lens = new LensEvaluator(scheduleRepaint, renderLensStatus);
+
+/** 表示範囲の評価対象タグ（出現数の多い順）。評価の依頼と再試行の範囲になる。 */
+let viewportTags: string[] = [];
+
+function lensActive(): boolean {
+  return lens.getLens() !== '' && map.getZoom() >= LENS_MIN_ZOOM;
+}
+
+lensFormEl.addEventListener('submit', (e) => {
+  e.preventDefault();
+  applyLensInput(lensInputEl.value);
+});
+
+for (const button of document.querySelectorAll<HTMLButtonElement>('.presets button')) {
+  button.addEventListener('click', () => {
+    lensInputEl.value = button.dataset['lens'] ?? '';
+    applyLensInput(lensInputEl.value);
+  });
+}
+
+function applyLensInput(value: string): void {
+  lens.setLens(value);
+  for (const button of document.querySelectorAll<HTMLButtonElement>('.presets button')) {
+    // 「解除」は data-lens が空なので、Lens なしの状態で押下表示にならないよう除く。
+    const preset = button.dataset['lens'] ?? '';
+    button.setAttribute('aria-pressed', String(preset !== '' && preset === lens.getLens()));
+  }
+  legendEl.hidden = lens.getLens() === '';
+  requestEvaluation();
+}
+
+lensRetryEl.addEventListener('click', () => lens.retry(viewportTags));
+lensStopEl.addEventListener('click', () => {
+  lens.abort();
+  renderLensStatus();
+});
+
+/** 表示範囲のタグのうち未評価のものを評価に出す。失敗済みのタグは含まれない（再試行は手動）。 */
+function requestEvaluation(): void {
+  if (!lensActive()) {
+    lens.abort();
+    renderLensStatus();
+    scheduleRepaint();
+    return;
+  }
+  lens.ensure(viewportTags);
+  renderLensStatus();
+  scheduleRepaint();
+}
+
+function renderLensStatus(): void {
+  const p = lens.getProgress();
+  const retryable = p.running ? p.retryable : lens.countRetryable(viewportTags);
+
+  lensStopEl.hidden = !p.running;
+  lensRetryEl.hidden = p.running || retryable === 0;
+  lensRetryEl.textContent = `失敗した ${retryable.toLocaleString()} 件を再試行`;
+
+  if (lens.getLens() === '') {
+    lensStatusEl.textContent = '';
+    return;
+  }
+  if (map.getZoom() < LENS_MIN_ZOOM) {
+    // 低ズームの POI 集合は空間間引きで代表性がないため、Lens は掛けない（#10）。
+    lensStatusEl.textContent = `z${LENS_MIN_ZOOM} までズームすると Lens が有効になります`;
+    return;
+  }
+
+  const parts: string[] = [];
+  if (p.running) parts.push(`評価中 ${p.ok + p.failed}/${p.batchesTotal} バッチ`);
+  else if (p.batchesTotal > 0) parts.push(`評価 ${p.batchesTotal} バッチ / ${((p.elapsedMs ?? 0) / 1000).toFixed(1)} 秒`);
+  // バッチが 1 つも始まっていない。評価が要らなかった場合と、BFF に届かなかった場合がある。
+  else if (p.error) parts.push('評価できていません');
+  else parts.push('評価済み');
+
+  if (p.failed > 0) {
+    const tally = Object.entries(p.tally)
+      .map(([kind, n]) => `${kind} ${n}`)
+      .join(' / ');
+    parts.push(`失敗 ${p.failed}（${tally}）`);
+  }
+  if (p.error) parts.push(p.error);
+  lensStatusEl.textContent = parts.join('・');
+}
+
+// ---- Lens を地図に載せる ----
+
+let repaintTimer: number | null = null;
+
+function scheduleRepaint(): void {
+  if (repaintTimer !== null) return;
+  repaintTimer = window.setTimeout(() => {
+    repaintTimer = null;
+    repaint();
+  }, REPAINT_DEBOUNCE_MS);
+}
+
+/**
+ * タグ評価を POI へ配り直し、見え方を properties に書いて地図へ流す。
+ *
+ * 数千件なので GeoJSON をまるごと差し替える（#8 の未決事項。feature-state を使うと
+ * 更新経路が 2 本になり、背景地図の切り替えで層を入れ直すたびに張り直す必要が出る）。
+ */
+function repaint(): void {
+  const active = lensActive();
+  const evals: Map<string, TagEval> = active ? lens.evals() : new Map();
+  // 同じタグ構成の POI は同じ見え方になる。半数以上が 1 タグなので効きが大きい。
+  const cache = new Map<string, PoiStyle>();
+  let applied = 0;
+  let partial = 0;
+  let colorless = 0;
+
+  for (const feature of lastData.features) {
+    const props = feature.properties ?? (feature.properties = {});
+    let style = UNEVALUATED_STYLE;
+    if (active) {
+      const key = String(props['tagIds'] ?? '[]');
+      const found = cache.get(key);
+      style = found ?? aggregate(JSON.parse(key) as string[], evals);
+      if (!found) cache.set(key, style);
+    }
+    if (style.state !== 'none') {
+      applied++;
+      if (style.state === 'partial') partial++;
+      // Choice のバッチだけ落ちた POI。大きさは Lens に従うが色は未評価のまま（#8）。
+      if (style.choice === null) colorless++;
+    }
+    props['lensRadius'] = style.radius;
+    props['lensOpacity'] = style.opacity;
+    props['lensColor'] = style.color;
+    props['lensState'] = style.state;
+  }
+
+  (map.getSource(SOURCE_ID) as GeoJSONSource | undefined)?.setData(lastData);
+
+  if (!active) {
+    lensAppliedEl.textContent = '';
+    return;
+  }
+  const total = lastData.features.length;
+  // 何がどれだけ欠けているかを出す。「評価が届いていない」と「無関係と判断された」は
+  // 別物で、混ぜると欠測を Lens の答えとして読まれてしまう（#13 の「穴」と同じ考え方）。
+  const notes: string[] = [];
+  if (partial > 0) notes.push(`一部のタグのみ ${partial.toLocaleString()} 件`);
+  if (colorless > 0) notes.push(`色が未達 ${colorless.toLocaleString()} 件`);
+  lensAppliedEl.textContent =
+    `Lens 適用 ${applied.toLocaleString()} 件` +
+    (notes.length > 0 ? `（${notes.join(' / ')}）` : '') +
+    ` / 未評価 ${(total - applied).toLocaleString()} 件`;
+}
+
 // ---- 表示範囲の読み取り ----
 
 /** 経度の度/px。Web メルカトルではズームだけで決まるので緯度補正はしない。 */
@@ -179,7 +375,10 @@ async function refresh(): Promise<void> {
     if (token !== latestToken) return;
 
     lastData = result.geojson;
-    (map.getSource(SOURCE_ID) as GeoJSONSource | undefined)?.setData(result.geojson);
+    viewportTags = result.tags.map((t) => t.id);
+    // 読み取り直後に 1 度塗る。Lens が無ければ素の点、あれば既知の評価がすぐ載る。
+    repaint();
+    requestEvaluation();
 
     currentLevel = result.level;
     renderLod();
@@ -218,7 +417,7 @@ function setWarning(message: string): void {
 map.on('click', LAYER_ID, (e: MapLayerMouseEvent) => {
   const feature = e.features?.[0];
   if (!feature) return;
-  new Popup({ maxWidth: '320px' })
+  new Popup({ maxWidth: '360px' })
     .setLngLat((feature.geometry as GeoJSON.Point).coordinates as [number, number])
     .setDOMContent(popupContent(feature.properties ?? {}))
     .addTo(map);
@@ -244,7 +443,66 @@ function popupContent(props: Record<string, unknown>): HTMLElement {
     list.append(dt, dd);
   }
   root.append(list);
+
+  const detail = lensDetail(props);
+  if (detail) root.append(detail);
   return root;
+}
+
+/** なぜこの見え方になったかを開いて確かめられるようにする（#8）。 */
+function lensDetail(props: Record<string, unknown>): HTMLElement | null {
+  if (!lensActive()) return null;
+  const tagIds = JSON.parse(String(props['tagIds'] ?? '[]')) as string[];
+  if (tagIds.length === 0) return null;
+
+  const evals = lens.evals();
+  const style = aggregate(tagIds, evals);
+
+  const box = document.createElement('section');
+  box.className = 'lens-detail';
+
+  const heading = document.createElement('h3');
+  heading.textContent =
+    style.state === 'none'
+      ? `Lens「${lens.getLens()}」: まだ評価が届いていない`
+      : `Lens「${lens.getLens()}」: Score ${style.score?.toFixed(2) ?? '—'} / ${style.evaluated} of ${style.total} タグ`;
+  box.append(heading);
+
+  const table = document.createElement('table');
+  table.append(row('th', ['タグ', 'Score', '判断', '確信度']));
+  for (const id of tagIds) {
+    const e = evals.get(id);
+    table.append(
+      row('td', [
+        id,
+        e?.score?.toFixed(2) ?? '—',
+        e?.choice ? topChoice(e.choice) : '—',
+        e?.noul?.toFixed(2) ?? '—',
+      ]),
+    );
+  }
+  box.append(table);
+  return box;
+}
+
+function row(cell: 'th' | 'td', values: string[]): HTMLTableRowElement {
+  const tr = document.createElement('tr');
+  for (const [i, value] of values.entries()) {
+    const el = document.createElement(cell);
+    el.textContent = value;
+    // タグ名以外は数値・短い語なので右寄せの等幅にする。
+    if (cell === 'td' && i > 0) el.className = 'num';
+    tr.append(el);
+  }
+  return tr;
+}
+
+function topChoice(probabilities: number[]): string {
+  let best = 0;
+  for (let i = 1; i < probabilities.length; i++) {
+    if ((probabilities[i] ?? 0) > (probabilities[best] ?? 0)) best = i;
+  }
+  return `${CHOICE_OPTIONS[best]} ${Math.round((probabilities[best] ?? 0) * 100)}%`;
 }
 
 function parseTags(value: unknown): Record<string, string> {
@@ -260,6 +518,7 @@ function parseTags(value: unknown): Record<string, string> {
 
 async function boot(): Promise<void> {
   renderLod();
+  renderLensStatus();
   try {
     await ask<null>({ type: 'open', url: COGP_URL });
     opened = true;

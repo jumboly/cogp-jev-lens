@@ -12,6 +12,17 @@ export const SCHEMA_VERSION = 1;
 export const PRIMITIVES = ['noul', 'score', 'choice'] as const;
 export type Primitive = (typeof PRIMITIVES)[number];
 
+/**
+ * Choice の選択肢。下の `buildQuestion` の criteria のキーと同じ順で並べる。
+ * 可視化側（#8）の配色・混色がこの順に依存するため、定義をここ 1 か所に置く。
+ */
+export const CHOICE_OPTIONS = ['主役', '脇役', '背景', '妨げ', '無関係'] as const;
+export type ChoiceOption = (typeof CHOICE_OPTIONS)[number];
+
+/** Score のレベル数（0〜4）。中央の 2 が「変化なし」の絶対アンカー（#8）。 */
+export const SCORE_LEVELS = 5;
+export const SCORE_NEUTRAL = 2;
+
 export function buildState(lens: string): Record<string, unknown> {
   return {
     task: '地図上の場所（POI）に付いた OpenStreetMap のタグを、利用者が指定した「Lens（見方）」に照らして評価する。',

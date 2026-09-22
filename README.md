@@ -94,8 +94,8 @@ POI 評価
 | 5 | 小規模な JEV 評価実験、Noul / Score / Choice の役割再評価 | ✅ → [`experiments/01-jev-tag-eval/`](experiments/01-jev-tag-eval/README.md) |
 | 6 | COGP + MapLibre による POI 表示 | ✅ |
 | 7 | JEV BFF（`POST /api/evaluate-tags`） | ✅ |
-| 8 | AI Lens 可視化 | 🔄 次 |
-| 9 | キャッシュ・性能改善 | ⏳ |
+| 8 | **AI Lens 可視化** | ✅ → [`docs/issues/08-maplibre-visualization.md`](docs/issues/08-maplibre-visualization.md) |
+| 9 | キャッシュ・性能改善 | 🔄 次 |
 
 課題・未決事項・改善案は [GitHub Issues](../../issues) に「なぜ検討が必要か / 現在わかっていること / 未決事項」の形で記録する。
 
@@ -141,10 +141,28 @@ COGP リーダーが表示範囲の POI を読む。初期表示は東京駅周�
 | 背景地図 | 地理院地図 Vector 淡色（既定）と OpenFreeMap を切り替え |
 | LOD | 自動で L = z − 1。開発用に手動 ±1 |
 | タグ抽出 | 表示範囲の POI から正規化・許可リスト通過後のユニークタグを数える |
+| AI Lens | Lens を入れると表示範囲のタグを JEV で評価し、点の大きさ・色・濃さに反映する（下記） |
 | 状態表示 | 件数 / ズーム / レベル / 読み取り時間 / 評価対象タグ数。上限 30,000 件に当たったら実件数と読めた割合を出す |
 
 COGP リーダーは npm 未公開のため `src/vendor/cogp/` にタグ固定で取り込んでいる。
 更新は `scripts/vendor_cogp.sh v1.0.0` を叩き直す。
+
+### AI Lens の見え方
+
+Lens を入れると、表示範囲のユニークタグが BFF 経由で JEV に渡り、返ってきた評価を
+POI へ配り直して点の見た目だけを変える。**POI は 1 件も増えず、1 件も減らない。**
+
+| 表現 | 元 | 意味 |
+| --- | --- | --- |
+| 大きさ | Score | 3 px（= 素の点、Score 2 の「変化なし」）を基準に、浮く側は 6 px まで大きく、沈む側は 1.5 px まで小さく |
+| 濃さ | Score | 沈む側だけ薄くする（下限 0.3）。浮く側は一律で不透明 |
+| 色 | Choice の確率分布 | 主役 / 脇役 / 背景 / 妨げ / 無関係の 5 色を OKLab で加重混色。判断が割れた POI は灰に寄ってくすむ |
+| （重み） | Noul（確信度） | 見え方には出さず、1 POI が複数タグを持つときの集約の重みに使う |
+
+- **z13 未満では Lens を無効にする。** 低ズームで残る POI は空間間引きの結果で、
+  意味的な代表性がない（[#10](docs/issues/10-low-zoom-lens.md)）
+- 評価はバッチごとに届くので、地図は一度に塗り替わらず、**多くの POI に効くタグから順に**埋まる
+- Popup には集約後の Score と、タグごとの Score / Choice / 確信度が出る
 
 ### JEV BFF（`POST /api/evaluate-tags`）
 
@@ -159,6 +177,8 @@ curl -N -X POST localhost:5173/api/evaluate-tags \
 
 応答は **NDJSON**（1 行 = 1 個の JSON）。タグを 90 個ずつのバッチに分け、
 終わったバッチから順に流す。全部揃うのを待たせない。
+バッチはタグの並び順を外側にして 3 プリミティブを揃えて投げるので、
+**先頭のタグから順に「大きさも色も決まった状態」で届く**。
 
 ```
 {"type":"start","lens":"子供が楽しめそう","tags":2,"batches":3,"schemaVersion":1}
@@ -167,12 +187,16 @@ curl -N -X POST localhost:5173/api/evaluate-tags \
 {"type":"done","ok":8,"failed":1,"tally":{"server":1},"elapsedMs":4900}
 ```
 
-JEV は公開直後でサービス側の一時障害が通常運用でも起こる。実測でも失敗はすべて
-`503`（`service_unavailable_error`）で `429` は 1 件も出ていない。そのため
+JEV は公開直後でサービス側の一時障害が通常運用でも起こる。実測の失敗はほとんどが
+`503`（`service_unavailable_error`）だが、21 バッチを通しで流すと `429` も混ざる
+（`Retry-After` は 50 秒前後）。そのため
 **失敗の原因を種別（`rate_limit` / `overloaded` / `server` / `timeout` / `network` /
 `invalid` / `auth`）に分けて観測でき、一時障害だけを自動で再試行する**作りにしている。
 再試行は指数バックオフ + ジッタで、`Retry-After` があればそちらを優先する。
 入力不正と認証エラーは再試行しない。
+
+それでも落ちるバッチは残る。Lens の画面は**評価が全部揃うことを前提にしていない**
+（[#8](docs/issues/08-maplibre-visualization.md) の「JEV の障害を前提にした見せ方」）。
 
 全リクエストの記録は `logs/jev.ndjson` に残る（git には入れない）。
 Gateway の `generationId` も残すので、問い合わせるときの手がかりになる。

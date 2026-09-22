@@ -11,6 +11,55 @@
     <div class="panel">
       <h1>cogp-jev-lens</h1>
 
+      <form id="lens-form" class="lens">
+        <input
+          id="lens-input"
+          type="text"
+          placeholder="Lens（見方）を入れる"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="lens-apply" type="submit">適用</button>
+      </form>
+
+      <div class="presets">
+        <button type="button" data-lens="子供が楽しめそう">子供</button>
+        <button type="button" data-lens="観光客が興味を持ちそう">観光客</button>
+        <button type="button" data-lens="静かに過ごせそう">静か</button>
+        <button type="button" data-lens="散歩で立ち寄りたくなる">散歩</button>
+        <button type="button" data-lens="">解除</button>
+      </div>
+
+      <p id="lens-status" class="status"></p>
+      <p id="lens-applied" class="status"></p>
+
+      <div class="lens-actions">
+        <button id="lens-retry" type="button" hidden>失敗分を再試行</button>
+        <button id="lens-stop" type="button" hidden>中止</button>
+      </div>
+
+      <details id="legend" class="legend" hidden>
+        <summary>凡例</summary>
+        <dl class="swatches">
+          <dt><i style="background: #d55e00"></i></dt>
+          <dd>主役（Lens そのもの）</dd>
+          <dt><i style="background: #e69f00"></i></dt>
+          <dd>脇役（役に立つ）</dd>
+          <dt><i style="background: #009e73"></i></dt>
+          <dd>背景（雰囲気を強める）</dd>
+          <dt><i style="background: #0072b2"></i></dt>
+          <dd>妨げ（避けたい）</dd>
+          <dt><i style="background: #999999"></i></dt>
+          <dd>無関係と判断された</dd>
+          <dt><i style="background: #333333"></i></dt>
+          <dd>まだ評価が届いていない</dd>
+        </dl>
+        <p>
+          中間色は判断が割れていることを表す。大きい点ほど浮き、小さく薄い点ほど沈む。
+          点の集合は Lens で増減しない。
+        </p>
+      </details>
+
       <label class="row">
         <span>背景地図</span>
         <select id="basemap">
