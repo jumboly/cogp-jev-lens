@@ -9,12 +9,14 @@
  * - 届いたタグから順に地図へ反映する（プリミティブが不揃いでも構わない）
  * - 落ちたタグは記録し、**自動では再送しない**。上流が不調なときの自動連打は
  *   実測で逆効果だった（並列度を上げても完了時間は縮まなかった）。再送は利用者の操作で行う
- * - 評価は Lens ごとにメモリへ溜め、地図を動かしても同じタグを二度評価しない（#6 の初期形）
+ * - 評価は Lens ごとにメモリへ溜め、地図を動かしても同じタグを二度評価しない
+ * - メモリのぶんは IndexedDB にも書き、再読み込みしても評価を引き継ぐ（#6）
  */
 
 import type { Primitive } from '../server/questions.js';
 import { CHOICE_OPTIONS, PRIMITIVES, normalizeLens } from '../server/questions.js';
 import type { TagEval } from './aggregate.js';
+import { EvalCache, type CacheStats } from './store.js';
 
 const ENDPOINT = '/api/evaluate-tags';
 
@@ -48,6 +50,12 @@ export class LensEvaluator {
   /** Lens ごとの失敗記録。再送するまで自動評価の対象から外す。 */
   private readonly failures = new Map<string, Map<string, Set<Primitive>>>();
 
+  /** 保存側のキャッシュ（#6）。開けない環境では null のままキャッシュ無しで動く。 */
+  private cache: EvalCache | null = null;
+  /** キャッシュから読み込みを済ませた Lens。1 Lens につき 1 回だけ読む。 */
+  private readonly hydrated = new Set<string>();
+  private stats: (CacheStats & { total: number }) | null = null;
+
   private lens = '';
   private controller: AbortController | null = null;
   private running: Promise<void> | null = null;
@@ -63,8 +71,30 @@ export class LensEvaluator {
     private readonly onProgress: Listener,
   ) {}
 
+  /** IndexedDB を開く。開けなくても Lens は動くので、失敗は握って進む。 */
+  async init(): Promise<void> {
+    this.cache = await EvalCache.open();
+    if (this.cache) this.stats = { loaded: 0, elapsedMs: 0, total: await this.cache.count() };
+    this.onProgress();
+  }
+
   getLens(): string {
     return this.lens;
+  }
+
+  getCacheStats(): (CacheStats & { total: number }) | null {
+    return this.stats;
+  }
+
+  /** 保存した評価を全部捨てる（問い方を変えた実験のとき、手で消せるようにしておく）。 */
+  async clearCache(): Promise<void> {
+    await this.cache?.clear();
+    this.store.clear();
+    this.failures.clear();
+    this.hydrated.clear();
+    if (this.cache) this.stats = { loaded: 0, elapsedMs: 0, total: 0 };
+    this.onEvaluated();
+    this.onProgress();
   }
 
   getProgress(): LensProgress {
@@ -97,19 +127,44 @@ export class LensEvaluator {
    * 表示範囲のタグのうち、まだ評価が無く失敗もしていないものを評価する。
    * 実行中に呼ばれた場合は、いまの実行が終わってからもう一度見直す。
    */
-  ensure(tags: string[]): void {
+  async ensure(tags: string[]): Promise<void> {
     if (!this.lens) return;
     if (this.running) {
       this.recheck = tags;
       return;
     }
+    const lens = this.lens;
+    // 保存済みの評価を先に載せる。これを待たずに投げると、キャッシュにあるタグまで
+    // JEV に問い直してしまう。
+    await this.hydrate(lens);
+    if (this.lens !== lens || this.running) return;
+
     const groups = this.plan(tags, false);
     if (groups.length === 0) return;
     void this.start(groups, tags);
   }
 
+  /** その Lens の保存済み評価をメモリへ載せる。 */
+  private async hydrate(lens: string): Promise<void> {
+    if (!this.cache || this.hydrated.has(lens)) return;
+    const { evals, stats } = await this.cache.load(lens);
+    // 読んでいる間に Lens が変わっていたら、いま要る評価ではない。
+    if (this.lens !== lens) return;
+    this.hydrated.add(lens);
+
+    const store = upsert(this.store, lens);
+    for (const [tag, cached] of evals) {
+      // メモリ側は保存側より新しいので、衝突したらメモリを残す。
+      store.set(tag, { ...cached, ...store.get(tag) });
+    }
+    this.stats = { ...stats, total: await this.cache.count() };
+    if (stats.loaded > 0) this.onEvaluated();
+    this.onProgress();
+  }
+
   /** 失敗して落ちたタグだけを送り直す。利用者が押したときだけ走る。 */
   retry(tags: string[]): void {
+    // 再試行ボタンは評価を 1 度走らせた後にしか出ないので、hydrate は済んでいる。
     if (!this.lens || this.running) return;
     this.failures.get(this.lens)?.clear();
     const groups = this.plan(tags, true);
@@ -178,7 +233,7 @@ export class LensEvaluator {
 
     const next = this.recheck;
     this.recheck = null;
-    if (next && !controller.signal.aborted) this.ensure(next);
+    if (next && !controller.signal.aborted) void this.ensure(next);
   }
 
   private async request(group: Group, signal: AbortSignal): Promise<void> {
@@ -230,13 +285,18 @@ export class LensEvaluator {
         if (!answers || !PRIMITIVES.includes(primitive)) return;
         const evals = upsert(this.store, lens);
         const left = outstanding.get(primitive);
+        const fresh: [string, number | number[]][] = [];
         for (const [tag, answer] of Object.entries(answers)) {
           const value = parseAnswer(primitive, answer);
           if (value === undefined) continue;
           const current = evals.get(tag) ?? {};
           evals.set(tag, { ...current, [primitive]: value });
+          fresh.push([tag, value]);
           left?.delete(tag);
         }
+        // 保存はバッチ 1 本ぶんを 1 トランザクションで。待たない（地図の更新を止めない）。
+        const model = typeof event['model'] === 'string' ? event['model'] : null;
+        void this.cache?.put(lens, primitive, fresh, model);
         this.progress = { ...this.progress, ok: this.progress.ok + 1 };
         this.onProgress();
         this.onEvaluated();

@@ -74,6 +74,8 @@ const lensAppliedEl = must<HTMLParagraphElement>('lens-applied');
 const lensRetryEl = must<HTMLButtonElement>('lens-retry');
 const lensStopEl = must<HTMLButtonElement>('lens-stop');
 const legendEl = must<HTMLDetailsElement>('legend');
+const perfEl = must<HTMLParagraphElement>('perf');
+const cacheClearEl = must<HTMLButtonElement>('cache-clear');
 
 function must<T extends HTMLElement>(id: string): T {
   const el = document.getElementById(id);
@@ -194,7 +196,10 @@ for (const [el, delta] of [
 
 // ---- Lens ----
 
-const lens = new LensEvaluator(scheduleRepaint, renderLensStatus);
+const lens = new LensEvaluator(scheduleRepaint, () => {
+  renderLensStatus();
+  renderPerf();
+});
 
 /** 表示範囲の評価対象タグ（出現数の多い順）。評価の依頼と再試行の範囲になる。 */
 let viewportTags: string[] = [];
@@ -227,6 +232,10 @@ function applyLensInput(value: string): void {
 }
 
 lensRetryEl.addEventListener('click', () => lens.retry(viewportTags));
+cacheClearEl.addEventListener('click', () => {
+  // 消したら表示範囲のタグを評価し直す（Lens が入っていれば自動で走る）。
+  void lens.clearCache().then(requestEvaluation);
+});
 lensStopEl.addEventListener('click', () => {
   lens.abort();
   renderLensStatus();
@@ -240,7 +249,7 @@ function requestEvaluation(): void {
     scheduleRepaint();
     return;
   }
-  lens.ensure(viewportTags);
+  void lens.ensure(viewportTags);
   renderLensStatus();
   scheduleRepaint();
 }
@@ -280,6 +289,20 @@ function renderLensStatus(): void {
   lensStatusEl.textContent = parts.join('・');
 }
 
+/**
+ * 性能の内訳（#9）。COGP の読み取りは `#status` に出ているので、ここには
+ * 「評価が届いてから地図が変わるまで」に効く 2 つ（集約と保存キャッシュ）を出す。
+ */
+function renderPerf(): void {
+  const c = lens.getCacheStats();
+  const parts = [`集約 ${Math.round(lastRepaintMs)} ms`];
+  if (!c) parts.push('キャッシュ 使えない');
+  else if (c.loaded > 0) parts.push(`キャッシュ ${c.total.toLocaleString()} 件（${c.loaded.toLocaleString()} 件を ${Math.round(c.elapsedMs)} ms で復元）`);
+  else parts.push(`キャッシュ ${c.total.toLocaleString()} 件`);
+  perfEl.textContent = parts.join(' / ');
+  cacheClearEl.disabled = !c || c.total === 0;
+}
+
 // ---- Lens を地図に載せる ----
 
 let repaintTimer: number | null = null;
@@ -298,7 +321,11 @@ function scheduleRepaint(): void {
  * 数千件なので GeoJSON をまるごと差し替える（#8 の未決事項。feature-state を使うと
  * 更新経路が 2 本になり、背景地図の切り替えで層を入れ直すたびに張り直す必要が出る）。
  */
+/** 直近の repaint（集約 + setData）がメインスレッドを占めた時間。 */
+let lastRepaintMs = 0;
+
 function repaint(): void {
+  const startedAt = performance.now();
   const active = lensActive();
   const evals: Map<string, TagEval> = active ? lens.evals() : new Map();
   // 同じタグ構成の POI は同じ見え方になる。半数以上が 1 タグなので効きが大きい。
@@ -329,6 +356,10 @@ function repaint(): void {
   }
 
   (map.getSource(SOURCE_ID) as GeoJSONSource | undefined)?.setData(lastData);
+  // setData の後でタイルを作り直すのは worker 側なので、ここに出るのは
+  // メインスレッドを占めた時間だけ。描画の詰まりに直結するのはこちら。
+  lastRepaintMs = performance.now() - startedAt;
+  renderPerf();
 
   if (!active) {
     lensAppliedEl.textContent = '';
@@ -519,6 +550,9 @@ function parseTags(value: unknown): Record<string, string> {
 async function boot(): Promise<void> {
   renderLod();
   renderLensStatus();
+  // 保存キャッシュを先に開ける。開く前に評価を投げると、保存済みのタグまで問い直す。
+  await lens.init();
+  renderPerf();
   try {
     await ask<null>({ type: 'open', url: COGP_URL });
     opened = true;

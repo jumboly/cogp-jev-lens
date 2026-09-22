@@ -80,8 +80,9 @@ POI 評価
 1. **POI ではなくタグを評価する。** 多数の POI が `tourism=museum` を持っていても JEV の評価は 1 回で、
    結果を該当する全 POI で再利用する。
 2. **取得と評価を分離する。** POI はまず通常表示し、JEV の結果が届いた時点で Lens の表現を重ねる。
-3. **評価はキャッシュする。** `Lens + 正規化タグ + JEV モデル版 + 評価スキーマ版` をキーにした
-   Semantic Cache で、同じ Lens・同じタグを何度も評価させない。
+3. **評価はキャッシュする。** `Lens + 正規化タグ + プリミティブ + 評価スキーマ版` をキーに
+   IndexedDB へ保存し、同じ Lens・同じタグを二度評価しない。
+   z14 の東京駅周辺で **147.9 秒 → 8 ms**（段階 9 の実測）。
 
 ## 現在の実験段階
 
@@ -95,7 +96,7 @@ POI 評価
 | 6 | COGP + MapLibre による POI 表示 | ✅ |
 | 7 | JEV BFF（`POST /api/evaluate-tags`） | ✅ |
 | 8 | **AI Lens 可視化** | ✅ → [`docs/issues/08-maplibre-visualization.md`](docs/issues/08-maplibre-visualization.md) |
-| 9 | キャッシュ・性能改善 | 🔄 次 |
+| 9 | **キャッシュ・性能改善** | ✅ → [`docs/issues/06-semantic-cache.md`](docs/issues/06-semantic-cache.md) / [`09-performance.md`](docs/issues/09-performance.md) / [実験 03](experiments/03-batch-boundary/README.md) / [実験 04](experiments/04-question-slimming/README.md) |
 
 課題・未決事項・改善案は [GitHub Issues](../../issues) に「なぜ検討が必要か / 現在わかっていること / 未決事項」の形で記録する。
 
@@ -142,7 +143,9 @@ COGP リーダーが表示範囲の POI を読む。初期表示は東京駅周�
 | LOD | 自動で L = z − 1。開発用に手動 ±1 |
 | タグ抽出 | 表示範囲の POI から正規化・許可リスト通過後のユニークタグを数える |
 | AI Lens | Lens を入れると表示範囲のタグを JEV で評価し、点の大きさ・色・濃さに反映する（下記） |
+| 評価キャッシュ | タグ評価を IndexedDB に保存。同じ Lens・同じ範囲なら JEV を呼ばない。手で消せる |
 | 状態表示 | 件数 / ズーム / レベル / 読み取り時間 / 評価対象タグ数。上限 30,000 件に当たったら実件数と読めた割合を出す |
+| 性能表示 | 集約（POI への配り直し + 描画）とキャッシュ復元の所要時間 |
 
 COGP リーダーは npm 未公開のため `src/vendor/cogp/` にタグ固定で取り込んでいる。
 更新は `scripts/vendor_cogp.sh v1.0.0` を叩き直す。
@@ -175,10 +178,17 @@ curl -N -X POST localhost:5173/api/evaluate-tags \
   -d '{"lens":"子供が楽しめそう","tags":["amenity=cafe","tourism=museum"]}'
 ```
 
-応答は **NDJSON**（1 行 = 1 個の JSON）。タグを 90 個ずつのバッチに分け、
-終わったバッチから順に流す。全部揃うのを待たせない。
-バッチはタグの並び順を外側にして 3 プリミティブを揃えて投げるので、
-**先頭のタグから順に「大きさも色も決まった状態」で届く**。
+応答は **NDJSON**（1 行 = 1 個の JSON）。タグをバッチに分け、終わったバッチから順に流す。
+全部揃うのを待たせない。
+
+バッチは問数ではなく **1 リクエストの本文の大きさ（34 KiB）で切る**。落ちる境界が
+問数でもトークン量でもなく本文の大きさだと実測できたため
+（[実験 03](experiments/03-batch-boundary/README.md)）。予算は実験で唯一 100% 通った
+Choice 90 問の本文に合わせてあり、同じ重さのリクエストに Score なら 135 問、
+Noul なら 190 問が載る。z14 の 623 タグは **21 本 → 16 本**になった。
+
+並べる順は「先頭のタグを扱うバッチ」から。タグは出現数の多い順に送られるので、
+**多くの POI に効くタグから順に「大きさも色も決まった状態」で届く**。
 
 ```
 {"type":"start","lens":"子供が楽しめそう","tags":2,"batches":3,"schemaVersion":1}

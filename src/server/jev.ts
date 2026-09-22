@@ -1,10 +1,10 @@
 /**
  * JEV 呼び出しの共通口。すべての JEV へのリクエストはここを通す。
  *
- * なぜ共通化するか: JEV は公開直後で一時障害が通常運用でも起こる。実測でも失敗は
- * すべて 503（`service_unavailable_error`）で、429 は 1 件も出ていない。つまり
- * こちらのレート制限ではなく上流の不調である。「失敗したら原因不明で落ちる」のではなく
- * 「何が原因で失敗したかを観測でき、適切な場合だけ再試行する」状態にする。
+ * なぜ共通化するか: JEV は公開直後で一時障害が通常運用でも起こる。実測の失敗は
+ * ほとんどが 503（`service_unavailable_error`）だが、まとまった本数を流すと 429 も混ざる
+ * （`Retry-After` は 50 秒前後。段階 8 で初めて観測した）。「失敗したら原因不明で落ちる」
+ * のではなく「何が原因で失敗したかを観測でき、適切な場合だけ再試行する」状態にする。
  */
 
 /** Gateway ネイティブの評価エンドポイント。`model` が返るので #6 のキャッシュ鍵に使える。 */
@@ -71,7 +71,8 @@ export interface JevLog {
   /** Gateway が返す追跡 ID。問い合わせるときの手がかり。 */
   generationId: string | null;
   questions: number;
-  requestBytes: number;
+  /** リクエスト本文の文字数。バッチを切る基準と同じ単位にしてある（#4）。 */
+  requestChars: number;
   attempt: number;
   status: number | null;
   kind: FailureKind | null;
@@ -187,7 +188,7 @@ function entry(
   kind: FailureKind | null,
   started: number,
   questions: number,
-  requestBytes: number,
+  requestChars: number,
   genId: string | null,
   body: string | null,
 ): JevLog {
@@ -198,7 +199,7 @@ function entry(
     model: MODEL_ID,
     generationId: genId,
     questions,
-    requestBytes,
+    requestChars,
     attempt,
     status,
     kind,

@@ -14,16 +14,63 @@ import { callJev, type FailureTally, type JevLog } from './jev.js';
 import { PRIMITIVES, SCHEMA_VERSION, buildQuestion, buildState, normalizeLens, type Primitive } from './questions.js';
 
 /**
- * 1 リクエストに載せる質問数。実測で 90 問（約 28,700 トークン）までは安定して通り、
- * 130 問以上は落ちやすかった（experiments/02-jev-request-limits）。
- * ただし計測時は上流に障害が出ていたため、健全時に測り直す余地がある。
+ * 1 リクエストの上限（本文の文字数）。
+ *
+ * なぜ問数でもトークン量でもなく本文の大きさで切るか。実測で順に潰した。
+ *
+ * 1. **問数ではない。** 実験 03 で 130 問に固定して中身だけ変えると成功率が
+ *    0% / 20% / 30% と動いた。しかも Noul 190 問は実測で最も成功率が高い（42%）
+ * 2. **トークン量でもない。** 段階 9 の通し実測で、同じ 28.9k トークンの 2 つが分かれた
+ *
+ * | 1 リクエスト | 問数 | 入力トークン | 本文 | 成功 |
+ * | --- | --- | --- | --- | --- |
+ * | Noul | 190 | 14.4k | 25.0 KiB | 42%（5/12） |
+ * | Choice | 91 | 28.9k | 34.4 KiB | 21%（8/38） |
+ * | Score | 156 | 28.9k | 39.4 KiB | **3%（1/35）** |
+ *
+ * 28.9k で揃えた 2 つの差（34.4 対 39.4 KiB）は Fisher の正確検定で p = 0.029。
+ * 本文の大きさで並べると単調に下がる。
+ *
+ * 値は **Choice 90 問（34.0 KiB）** に合わせた。実験 02 で全実行 100% 通った唯一の
+ * サイズで、段階 9 の不調な時間帯でも 21% と、他より明確に良かった。
+ * 1 リクエストの重さをこれ以上にしないまま、軽いプリミティブを積む。
+ *
+ * 単位が文字数なのは、上流に渡る本文の大きさを表す指標として実測ログ（`requestChars`）と
+ * 揃えるため。UTF-8 バイト数との比はプリミティブで 1.87〜2.16 とばらつくので、
+ * バイト数で切ると Score に 148 問入ってしまい、実測で落ちた 156 問に近づく。
  */
-const BATCH_SIZE = 90;
+const REQUEST_BUDGET_CHARS = 34 * 1024;
 
 /**
- * 同時実行数。障害中の実測では 2 は 1 より悪かった（完了 9/14 対 12/14）ので控えめに置く。
- * 上流が健全なときに測り直す前提の暫定値。
+ * 問数の上限。文字数だけ見れば Noul は 259 問積めるが、**通った実績があるのは 190 問まで**
+ * （実験 02 / 03 / 段階 9）。それより上は未検証なので踏み込まない。
  */
+const MAX_QUESTIONS = 190;
+
+/**
+ * タグを「本文がこの大きさに収まる」単位に切る。
+ * z14 の 623 タグなら Choice 7 本 + Score 5 本 + Noul 4 本 = 16 本（問数固定なら 21 本）。
+ */
+function splitBatches(tags: string[], primitive: Primitive, overhead: number): string[][] {
+  const out: string[][] = [];
+  let current: string[] = [];
+  // state とラッパーは全バッチに乗るので、最初から数に入れる。
+  let size = overhead;
+  for (const tag of tags) {
+    // 質問ごと丸ごと数える。キーはモデルに渡らないが本文には乗る。
+    const chars = JSON.stringify({ [tag]: buildQuestion(tag, primitive) }).length;
+    if (current.length > 0 && (size + chars > REQUEST_BUDGET_CHARS || current.length >= MAX_QUESTIONS)) {
+      out.push(current);
+      current = [];
+      size = overhead;
+    }
+    current.push(tag);
+    size += chars;
+  }
+  if (current.length > 0) out.push(current);
+  return out;
+}
+
 const DEFAULT_CONCURRENCY = 2;
 
 export interface EvaluateRequest {
@@ -63,6 +110,8 @@ function parse(body: unknown): Required<EvaluateRequest> {
 interface Job {
   primitive: Primitive;
   batch: number;
+  /** このバッチが始まるタグの位置。流す順を決めるのに使う。 */
+  offset: number;
   tags: string[];
 }
 
@@ -74,17 +123,28 @@ export async function* evaluateTags(
   const normalized = normalizeLens(lens);
   const state = buildState(normalized);
 
-  // なぜタグのバッチを外側にするか: プリミティブを外側にすると Score が全部届いてから
-  // Choice が届く順になり、「大きさだけ動いて色は灰のまま」という中途半端な画面が長く続く。
-  // タグ側を外に置けば、先頭のバッチから 3 プリミティブが揃って完成した見え方で届く。
-  // 呼び出し元はタグを出現数の多い順に並べて送るので、多くの POI に効くタグから順に埋まる。
+  // プリミティブごとにバッチサイズが違うので、まず素直に分割してから
+  // 「先頭のタグを扱うジョブ」から順に並べ替える。
+  //
+  // なぜ並べ替えるか: プリミティブを外側にしたまま流すと Score が全部届いてから
+  // Choice が届く順になり、「大きさだけ動いて色は灰のまま」という中途半端な画面が長く続く
+  // （段階 8 の実測で 20 秒）。呼び出し元はタグを出現数の多い順に並べて送るので、
+  // 先頭を扱うジョブから流せば、多くの POI に効くタグから 3 プリミティブ揃って埋まる。
+  // state はどのバッチにも同じものが乗る。予算はリクエスト本文全体に対する値なので、
+  // 質問を積む前にこのぶんを引いておく。
+  const overhead = JSON.stringify({ model: '', state, questions: {} }).length;
+
   const jobs: Job[] = [];
-  for (let i = 0; i < tags.length; i += BATCH_SIZE) {
-    const slice = tags.slice(i, i + BATCH_SIZE);
-    for (const primitive of primitives) {
-      jobs.push({ primitive, batch: jobs.length, tags: slice });
+  for (const primitive of primitives) {
+    let offset = 0;
+    for (const slice of splitBatches(tags, primitive, overhead)) {
+      jobs.push({ primitive, batch: 0, offset, tags: slice });
+      offset += slice.length;
     }
   }
+  // sort は安定なので、同じ offset の中ではプリミティブの並び順が保たれる。
+  jobs.sort((a, b) => a.offset - b.offset);
+  for (const [index, job] of jobs.entries()) job.batch = index;
 
   const startedAt = performance.now();
   yield { type: 'start', lens: normalized, tags: tags.length, batches: jobs.length, schemaVersion: SCHEMA_VERSION };

@@ -1,13 +1,21 @@
 /**
  * JEV に投げる state と質問の組み立て。
  *
- * 文言は実験 01（`experiments/01-jev-tag-eval/run.ts`）と一字一句同じにしてある。
- * ここを変えると 01 の結果と比べられなくなるため、変えるときは SCHEMA_VERSION を上げて
- * キャッシュを無効化する（#6）。
+ * state と Score / Choice の文言は実験 01（`experiments/01-jev-tag-eval/run.ts`）と
+ * 一字一句同じ。Noul の criteria だけ、実験 04 の実測（入力 51% 減・集約後の判断は
+ * 97.5〜98.9% 一致）を受けて落としてある。
+ * 変えるときは SCHEMA_VERSION を上げてキャッシュを無効化する（#6）。
  */
 
-/** 問い方（state の注意書き・criteria・Choice の選択肢）を変えたら上げる（#6 のキャッシュ鍵）。 */
-export const SCHEMA_VERSION = 1;
+/**
+ * 問い方（state の注意書き・criteria・Choice の選択肢）を変えたら上げる。
+ * #6 のキャッシュ鍵に入るので、上げると保存済みの評価が捨てられる。
+ *
+ * - 1: 実験 01 で確定した文言
+ * - 2: Noul の criteria を落とした（実験 04。入力が 51% 減り、集約まで通した判断は
+ *   97.5〜98.9% 一致した。Score と Choice の criteria は判断が 14〜16% 変わるので残す）
+ */
+export const SCHEMA_VERSION = 2;
 
 export const PRIMITIVES = ['noul', 'score', 'choice'] as const;
 export type Primitive = (typeof PRIMITIVES)[number];
@@ -36,17 +44,16 @@ export function buildState(lens: string): Record<string, unknown> {
   };
 }
 
-/** 実験 01 で採用した版: noul = 確信度、choice = v3。 */
+/** 実験 01 で採用した版（noul = 確信度、choice = v3）に、実験 04 の結果を反映したもの。 */
 export function buildQuestion(tagId: string, primitive: Primitive): Record<string, unknown> {
   switch (primitive) {
     case 'noul':
+      // criteria は任意なので落とした（実験 04）。確信度そのものは 0.1 ほど高く出るが、
+      // 使うのは POI 内の相対値だけなので、集約まで通すと判断はほぼ変わらない。
+      // 1 問 155 → 76 トークン。
       return {
         type: 'boolean',
         instructions: `タグ「${tagId}」だけを手がかりに、それを持つ場所をこの Lens でどう扱うか（浮かせる・沈める・変えない）を迷いなく判断できるか。`,
-        criteria: {
-          true: 'このタグは決定的で、他のタグや名前を見なくても扱いが決まる。',
-          false: 'このタグだけでは判断できない。他のタグや名前など追加の情報が必要。',
-        },
       };
     case 'score':
       return {
